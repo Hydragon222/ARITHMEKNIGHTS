@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Start Button Clicked!");
         // Load the game scene (replace "GameScene" with your scene name)
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     // Method to quit the game
