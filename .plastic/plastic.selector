@@ -1,4 +1,0 @@
-repository "ARITHMEKNIGHTS/ARITHMEKNIGHTS@20067118359437@cloud"
-  path "/"
-    br "/main"
-    co "/main"
