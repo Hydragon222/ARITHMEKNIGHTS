@@ -513,9 +513,9 @@ GameObject:
   - component: {fileID: 1457387747}
   - component: {fileID: 1457387746}
   - component: {fileID: 1457387745}
-  - component: {fileID: 1457387744}
   - component: {fileID: 1457387743}
   - component: {fileID: 1457387749}
+  - component: {fileID: 1457387750}
   m_Layer: 3
   m_Name: MC
   m_TagString: Player
@@ -568,21 +568,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1457387744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1457387742}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c276a32e33ef3404ead798b14d6b0fc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movSpeed: 550
-  animator: {fileID: 1457387746}
-  playerInput: {fileID: 1457387749}
 --- !u!50 &1457387745
 Rigidbody2D:
   serializedVersion: 4
@@ -733,6 +718,19 @@ MonoBehaviour:
   m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1457387750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457387742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6183fe966512324e8333123a82443fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveActionToUse: {fileID: -7609837475890351273, guid: c6578ba56f65ad64085926aedaafcf7d, type: 3}
 --- !u!1 &1843092162
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementRange: 50
+  m_MovementRange: 100
   m_DynamicOriginRange: 100
   m_ControlPath: <Gamepad>/leftStick
   m_Behaviour: 0
