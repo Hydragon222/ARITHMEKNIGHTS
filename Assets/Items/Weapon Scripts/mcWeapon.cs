@@ -5,7 +5,7 @@ using UnityEngine;
 public class mcWeapon : MonoBehaviour
 {
     Rigidbody2D rb;
-    public Camera cam;
+    //public Camera cam;
 
     Vector2 mousePos;
     // Start is called before the first frame update
@@ -16,14 +16,14 @@ public class mcWeapon : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-    }
-    private void FixedUpdate()
-    {
+   {
+       //mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+   }
+    //private void FixedUpdate()
+    //{
 
-        Vector2 look = mousePos - rb.position;
-        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
-    }
+        //Vector2 look = mousePos - rb.position;
+        //float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90f;
+        //rb.rotation = angle;
+    //}
 }

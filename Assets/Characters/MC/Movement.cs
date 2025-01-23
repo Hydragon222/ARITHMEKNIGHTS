@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -10,17 +11,22 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     public Animator animator;
     private SpriteRenderer spriteRenderer;
+    public PlayerInput playerInput;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector2 input = playerInput.actions["Walk"].ReadValue<Vector2>();
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         XY = movement.x + movement.y * movSpeed;

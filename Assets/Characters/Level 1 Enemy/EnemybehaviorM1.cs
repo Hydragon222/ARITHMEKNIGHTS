@@ -11,7 +11,7 @@ public class EnemybehaviorM1 : MonoBehaviour
     public float followRange;
 
     public equationMaker equationGenerator;
-    public chargeCounter chargeCounter;
+    //public chargeCounter chargeCounter;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     
@@ -43,23 +43,23 @@ public class EnemybehaviorM1 : MonoBehaviour
             }
     }
 
-    void OnMouseDown()
-    {
+    //void OnMouseDown()
+   // {
         // This function is called when the enemy is clicked
-        Debug.Log("Enemy clicked!");
+        //Debug.Log("Enemy clicked!");
         // Add your desired action here
-        if (chargeCounter.counter == equationGenerator.expectedAnswer)
-        {
-            Debug.Log("CORRECT");
-            equationGenerator.equationText.text = equationGenerator.expectedAnswer.ToString();
-            animator.SetTrigger("Death");
-            speed = 0;
-        }
-        else
-        {
-            Debug.Log("WRONG");
-        }
-    }
+        //if (chargeCounter.counter == equationGenerator.expectedAnswer)
+        //{
+            //Debug.Log("CORRECT");
+            //equationGenerator.equationText.text = equationGenerator.expectedAnswer.ToString();
+            //animator.SetTrigger("Death");
+            //speed = 0;
+        //}
+        //else
+        //{
+            //Debug.Log("WRONG");
+       // }
+    //}
 
     public void GetRekt()
     {
