@@ -44,4 +44,9 @@ public class PlayerControls : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+
+    public void OnAttackTap()
+    {
+        Debug.Log("attack");
+    }
 }

@@ -10,7 +10,7 @@ public class EnemybehaviorM1 : MonoBehaviour
     private float distance;
     public float followRange;
 
-    public equationMaker equationGenerator;
+    //public equationMaker equationGenerator;
     //public chargeCounter chargeCounter;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
