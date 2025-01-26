@@ -45,8 +45,5 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    public void OnAttackTap()
-    {
-        Debug.Log("attack");
-    }
+  
 }

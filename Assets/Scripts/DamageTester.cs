@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class DamageTester : MonoBehaviour
 {
+    [SerializeField] private InputActionAsset inputActions;
     public AttributesManager playerAtm;
     public AttributesManager enemyAtm;
     
@@ -20,5 +21,11 @@ public class DamageTester : MonoBehaviour
         {
             enemyAtm.DealDamage(playerAtm.gameObject);
         }
+   
     }
+    //public void OnAttackTap()
+    //{
+        //playerAtm.DealDamage(enemyAtm.gameObject);
+        //Debug.Log("PLSS PLSSS PLSS WORK");
+    //}
 }

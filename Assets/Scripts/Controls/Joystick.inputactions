@@ -46,6 +46,17 @@
                     "action": "AttackTap",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "959bda89-065f-41ff-93cb-af0e7783aa22",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
