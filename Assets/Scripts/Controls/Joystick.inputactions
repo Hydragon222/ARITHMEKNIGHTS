@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "AttackTap",
+                    "name": "Tap",
                     "type": "Button",
                     "id": "4b1bbb3c-ea85-40ce-a696-71a9348ad5f9",
                     "expectedControlType": "Button",
@@ -38,12 +38,23 @@
                 },
                 {
                     "name": "",
-                    "id": "d5d1dfba-113e-4c0f-9039-0de26f3e9c59",
-                    "path": "<Gamepad>/buttonNorth",
+                    "id": "5f2fb5e2-b5d1-4e40-807d-a5e3ca336299",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AttackTap",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "233f8176-f79e-46f0-b48a-efbb5d5a73c2",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class PlayerControls : MonoBehaviour
 {
-    [SerializeField] private InputActionReference moveActionToUse;
+    [SerializeField] private InputActionReference moveAction;  // Existing move action reference
+    [SerializeField] private InputActionReference tapAction;   // Tap action reference
     [SerializeField] private float speed;
     public float XY;
     public float YX;
@@ -14,21 +17,22 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private Animator animator;
     private SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
+        Vector2 moveDirection = moveAction.action.ReadValue<Vector2>();
         transform.Translate(moveDirection * speed * Time.deltaTime);
 
         currentDirection = moveDirection;
+
+        // Enable the tap action
+        tapAction.action.performed += OnTap;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
+        Vector2 moveDirection = moveAction.action.ReadValue<Vector2>();
         transform.Translate(moveDirection * speed * Time.deltaTime);
         currentDirection = moveDirection;
         XY = moveDirection.x + moveDirection.y * speed;
@@ -44,6 +48,31 @@ public class PlayerControls : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-    
 
+    private void OnTap(InputAction.CallbackContext context)
+    {
+        Debug.Log("OnTap method called");
+
+        Vector2 tapPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(tapPosition);
+
+        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
+
+        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        {
+            Debug.Log("Tapped");
+        }
+    }
+
+    private void OnEnable()
+    {
+        moveAction.action.Enable();
+        tapAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.action.Disable();
+        tapAction.action.Disable();
+    }
 }
