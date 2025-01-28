@@ -9,27 +9,20 @@ public class HealthManager : MonoBehaviour
     public float healthAmmount;
 
     [SerializeField] private GameObject mc;
-    public AttributesManager attributes;
-    public DamageTester damageTester;
+    public Health playerHealth;
     // Start is called before the first frame update
     void Start()
     {
-        attributes = mc.GetComponent<AttributesManager>();
-        healthAmmount = attributes.health;
-        GetComponent<DamageTester>();
+        playerHealth = mc.GetComponent<Health>();
+        healthAmmount = playerHealth.maxHealth;
+        healthBar.fillAmount = healthAmmount / 100f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthAmmount = attributes.health;
+        healthAmmount = playerHealth.health;
         healthBar.fillAmount = healthAmmount / 100f;
     }
 }
-
-   //public void OnDealDamage(int damage)
-    //{
-        //healthAmmount -= damage;
-        //healthBar.fillAmount = healthAmmount / 100f;
-    //}
 

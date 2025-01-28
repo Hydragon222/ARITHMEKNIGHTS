@@ -47,31 +47,28 @@ public class EnemybehaviorM1 : MonoBehaviour
                 spriteRenderer.flipX = false; // Face right
             }
     }
-    
-    
-        
+
     
 
-    //void OnMouseDown()
-   // {
+        //void OnMouseDown()
+        // {
         // This function is called when the enemy is clicked
         //Debug.Log("Enemy clicked!");
         // Add your desired action here
         //if (chargeCounter.counter == equationGenerator.expectedAnswer)
         //{
-            //Debug.Log("CORRECT");
-            //equationGenerator.equationText.text = equationGenerator.expectedAnswer.ToString();
-            //animator.SetTrigger("Death");
-            //speed = 0;
+        //Debug.Log("CORRECT");
+        //equationGenerator.equationText.text = equationGenerator.expectedAnswer.ToString();
+        //animator.SetTrigger("Death");
+        //speed = 0;
         //}
         //else
         //{
-            //Debug.Log("WRONG");
-       // }
-    //}
-
-    public void GetRekt()
-    {
-        Destroy(gameObject);
-    }
+        //Debug.Log("WRONG");
+        // }
+        //}
+        public void GetRekt()
+        {
+            Destroy(gameObject);
+        }
 }

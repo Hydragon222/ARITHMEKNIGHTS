@@ -10,7 +10,7 @@ public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
-    [SerializeField] private float speed;
+    public float speed;
     public float XY;
     public float YX;
     public Vector2 currentDirection;
