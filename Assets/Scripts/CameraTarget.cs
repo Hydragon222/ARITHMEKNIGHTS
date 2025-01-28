@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class CameraTarget : MonoBehaviour
 {
     public float Followspeed = 2f;
-    public Transform target;
+    [SerializeField] private Transform target;
     public float yOffset = 1f;
     //[SerializeField] Camera cam;
     //[SerializeField] Transform MC;

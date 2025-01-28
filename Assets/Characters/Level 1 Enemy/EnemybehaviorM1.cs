@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemybehaviorM1 : MonoBehaviour
 {
     Rigidbody2D rb;
-    public GameObject mc;
+    [SerializeField] private GameObject mc;
     public float speed;
     private float distance;
     public float followRange;
@@ -28,9 +28,14 @@ public class EnemybehaviorM1 : MonoBehaviour
     {
         distance = Vector2.Distance(transform.position, mc.transform.position);
         Vector2 direction = mc.transform.position - transform.position;
-        if (distance < followRange)
+        if (distance <= followRange)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, mc.transform.position, speed * Time.deltaTime);
+            animator.SetTrigger("Run");
+        }
+        else
+        {
+            animator.SetTrigger("Stand");
         }
        
             if (direction.x < 0)
@@ -42,6 +47,10 @@ public class EnemybehaviorM1 : MonoBehaviour
                 spriteRenderer.flipX = false; // Face right
             }
     }
+    
+    
+        
+    
 
     //void OnMouseDown()
    // {
