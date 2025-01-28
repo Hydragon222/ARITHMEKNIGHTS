@@ -2,7 +2,7 @@
     "name": "Joystick",
     "maps": [
         {
-            "name": "MC",
+            "name": "Game",
             "id": "5e97e432-49a8-49ad-b4f6-d2fff3bc9754",
             "actions": [
                 {
@@ -17,7 +17,7 @@
                 {
                     "name": "AttackTap",
                     "type": "Button",
-                    "id": "4b1bbb3c-ea85-40ce-a696-71a9348ad5f9",
+                    "id": "31521326-5056-4e19-a657-f74bb8dbda9a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -38,8 +38,19 @@
                 },
                 {
                     "name": "",
-                    "id": "d5d1dfba-113e-4c0f-9039-0de26f3e9c59",
+                    "id": "8ac99035-88a0-4a1d-8157-00ecef1b4115",
                     "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "959bda89-065f-41ff-93cb-af0e7783aa22",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

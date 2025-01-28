@@ -44,6 +44,6 @@ public class PlayerControls : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-    
 
+  
 }
