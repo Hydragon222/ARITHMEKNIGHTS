@@ -21,9 +21,6 @@ public class locking : MonoBehaviour
         transform.parent = parentObject.transform;
         transform.localPosition = offset;
         flip = -offset;
-
-       
-
     }
 
     // Update is called once per frame

@@ -8,7 +8,7 @@ public class HealthManager : MonoBehaviour
     public Image healthBar;
     public float healthAmmount;
 
-    public GameObject mc;
+    [SerializeField] private GameObject mc;
     public AttributesManager attributes;
     public DamageTester damageTester;
     // Start is called before the first frame update
