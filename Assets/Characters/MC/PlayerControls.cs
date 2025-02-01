@@ -8,8 +8,10 @@ using UnityEngine.InputSystem.Controls;
 
 public class PlayerControls : MonoBehaviour
 {
+    [SerializeField] private GameObject shield;
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
+    
     public float speed;
     public float XY;
     public float YX;
@@ -61,6 +63,7 @@ public class PlayerControls : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Enemy"))
         {
             Debug.Log("Tapped");
+            ActivateInvincibility();
         }
     }
 
@@ -68,11 +71,36 @@ public class PlayerControls : MonoBehaviour
     {
         moveAction.action.Enable();
         tapAction.action.Enable();
+        shield.SetActive(false);
     }
 
     private void OnDisable()
     {
         moveAction.action.Disable();
         tapAction.action.Disable();
+        shield.SetActive(false);
+        
+    }
+
+    public void ShieldMode()
+    {
+        StartCoroutine(InvincibilityCoroutine());
+        Debug.Log("Shield up");
+        shield.SetActive(true);
+       
+
+    }
+
+    public void ActivateInvincibility()
+    {
+        StartCoroutine(InvincibilityCoroutine());
+        
+    }
+
+    private IEnumerator InvincibilityCoroutine()
+    {
+        Debug.Log("IMMORTALITY OR DEATH");
+        yield return new WaitForSeconds(5f);  // Wait for 5 seconds
+        shield.SetActive(false);
     }
 }

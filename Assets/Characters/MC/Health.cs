@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public int maxHealth = 100;
     public int health;
     private Transform tr;
+    [SerializeField] private GameObject sword;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +41,6 @@ public class Health : MonoBehaviour
     {
         Debug.Log("GAME OVER");
         animator.SetTrigger("Death");
+        sword.SetActive(false);
     }
 }
