@@ -29,7 +29,8 @@ public class EnemybehaviorM1 : MonoBehaviour
 
         childTransform = transform.GetChild(0);
         childSpriteRenderer = childTransform.GetComponent<SpriteRenderer>();
-        childTransform.localPosition = wpnoffset;
+        wpnoffset = childTransform.localPosition;
+        
     }
 
     // Update is called once per frame
