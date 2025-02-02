@@ -11,7 +11,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private GameObject shield;
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
-    
+    public bool isInvincible = false;
     public float speed;
     public float XY;
     public float YX;
@@ -99,8 +99,13 @@ public class PlayerControls : MonoBehaviour
 
     private IEnumerator InvincibilityCoroutine()
     {
+        isInvincible = true;
         Debug.Log("IMMORTALITY OR DEATH");
+
         yield return new WaitForSeconds(5f);  // Wait for 5 seconds
+
+        isInvincible = false;
+        Debug.Log("OVER");
         shield.SetActive(false);
     }
 }

@@ -31,15 +31,10 @@ public class Health : MonoBehaviour
         {
             Dead();
         }
-        else if (health > 0)
-        {
-            Debug.Log("i live");
-        }
     }
 
     public void Dead()
     {
-        Debug.Log("GAME OVER");
         animator.SetTrigger("Death");
         sword.SetActive(false);
     }

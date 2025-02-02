@@ -14,9 +14,7 @@ public class Shield : MonoBehaviour
     }
 
     public void OnButtonPressed()
-    {
-        Debug.Log("Button pressed!");
-
+    { 
         // Disable the button and start the cooldown coroutine
         button.interactable = false;
         StartCoroutine(CooldownCoroutine());
