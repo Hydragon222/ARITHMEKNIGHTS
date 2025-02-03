@@ -2,28 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Add this for scene management
 using TMPro; 
 
 public class SettingsMenuManager : MonoBehaviour
 {
     public TMP_Dropdown graphicsDropdown; 
 
-
-
     public void ChangeGraphicsQuality()
     {
         QualitySettings.SetQualityLevel(graphicsDropdown.value); 
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // Function to return to the Main Menu
+    public void BackToMainMenu()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Back Button Clicked! Returning to Main Menu...");
+        SceneManager.LoadScene("MainMenu"); // Ensure "MainMenu" is the correct scene name
     }
 }
