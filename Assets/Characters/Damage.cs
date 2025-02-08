@@ -9,11 +9,13 @@ public class Damage : MonoBehaviour
     private bool isColliding = false;
     private Coroutine damageCoroutine;
     private SpriteRenderer spriteRenderer;
+    private Stun stun;
 
     private void Start()
     {
         weaponTransform = transform.GetChild(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
+        stun = GetComponent<Stun>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -81,4 +83,9 @@ public class Damage : MonoBehaviour
             
         }
     }
+    private void Update()
+    {
+   
+    }
 }
+
