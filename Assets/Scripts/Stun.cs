@@ -26,7 +26,7 @@ public class Stun : MonoBehaviour
         yield return new WaitForSeconds(15f); // 10 seconds cooldown
         button.interactable = true; // Re-enable the button
     }
-    void StunAllEnemies()
+    public void StunAllEnemies()
     {
         // Find all enemies with the tag "Enemy"
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
