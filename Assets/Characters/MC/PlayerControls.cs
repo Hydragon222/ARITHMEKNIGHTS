@@ -10,6 +10,7 @@ public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private Stun stun;
     [SerializeField] private GameObject shield;
+    [SerializeField] private GameObject slashPrefab;
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
     [SerializeField] private Animator animator;
@@ -20,12 +21,12 @@ public class PlayerControls : MonoBehaviour
     public bool isInvincible = false;
     private bool isDashing = false;
     public float speed;
-    public float dashSpeed = 35f; // Dash speed
+    public float dashSpeed = 30f; // Dash speed
     public float dashDuration = 0.2f; // Dash duration
     public float XY;
     public float YX;
     public Vector2 currentDirection;
-
+    
     private void Start()
     {
         mcSwordTransform = transform.GetChild(0);
@@ -74,20 +75,25 @@ public class PlayerControls : MonoBehaviour
             stun.StunAllEnemies();
             if (spriteRenderer.flipX)
             {
-                mcSwordTransform.rotation = Quaternion.Euler(0, 0, 65);
+                mcSwordTransform.rotation = Quaternion.Euler(0, 0, 90);
             }
             else
             {
-                mcSwordTransform.rotation = Quaternion.Euler(0, 0, -65);
+                mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
             }
             
         // !!!!!!!!ARBIEEE DIRI BUTANG ANG POP UP QUESTIONN!!!!!!!
         }
-        mcSwordTransform.rotation = Quaternion.Euler(0, 0, 0);
+        
     }
+
     private IEnumerator DashToPosition(Vector3 targetPosition)
     {
         isDashing = true;
+
+        GameObject slashEffect = Instantiate(slashPrefab, transform.position, Quaternion.identity);
+        TrailRenderer trail = slashEffect.GetComponent<TrailRenderer>();
+        slashEffect.transform.SetParent(transform);
 
         float dashTime = 0f;
         Vector3 startPosition = transform.position;
@@ -101,6 +107,12 @@ public class PlayerControls : MonoBehaviour
 
         transform.position = targetPosition;
         isDashing = false;
+        Destroy(slashEffect, trail.time);
+        slashEffect.transform.SetParent(null);
+
+        yield return new WaitForSeconds(0.3f);
+
+        mcSwordTransform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void OnEnable()
@@ -123,8 +135,6 @@ public class PlayerControls : MonoBehaviour
         StartCoroutine(InvincibilityCoroutine());
         Debug.Log("Shield up");
         shield.SetActive(true);
-       
-
     }
 
     public void ActivateInvincibility()

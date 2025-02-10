@@ -37050,6 +37050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stun: {fileID: 325379517}
   shield: {fileID: 1124903650}
+  slashPrefab: {fileID: 3731080382579465158, guid: 040db2fb5875a584fa69c458d5330628, type: 3}
   moveAction: {fileID: -7609837475890351273, guid: c6578ba56f65ad64085926aedaafcf7d, type: 3}
   tapAction: {fileID: 2216554659706832806, guid: c6578ba56f65ad64085926aedaafcf7d, type: 3}
   animator: {fileID: 312061490}
