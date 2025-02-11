@@ -10,12 +10,14 @@ public class Damage : MonoBehaviour
     private Coroutine damageCoroutine;
     private SpriteRenderer spriteRenderer;
     private Stun stun;
+    public SpriteRenderer player;
 
     private void Start()
     {
         weaponTransform = transform.GetChild(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
         stun = GetComponent<Stun>();
+        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -55,6 +57,7 @@ public class Damage : MonoBehaviour
             if (!playerControls.isInvincible)
             {
                 health.TakeDamage(damage);
+                player.color = Color.red;
                 // Rotate the weapon based on the enemy's facing direction
                 if (spriteRenderer.flipX)
                 {
@@ -68,7 +71,7 @@ public class Damage : MonoBehaviour
                 }
 
                 yield return new WaitForSeconds(0.2f); // Small delay to make the rotation noticeable
-
+                player.color = Color.white;
                 // Reset the weapon rotation
                 weaponTransform.rotation = Quaternion.Euler(0, 0, 0);
             }
@@ -77,10 +80,9 @@ public class Damage : MonoBehaviour
                 Debug.Log("Player is invincible and takes no damage!");
             }
             
-
             yield return new WaitForSeconds(0.4f);
+            player.color = Color.white;
 
-            
         }
     }
     private void Update()
