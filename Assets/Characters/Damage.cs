@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Damage : MonoBehaviour
@@ -45,7 +44,6 @@ public class Damage : MonoBehaviour
             isColliding = false;
             if (damageCoroutine != null)
             {
-                player.color = Color.white;
                 StopCoroutine(damageCoroutine);
             }
             weaponTransform.rotation = Quaternion.Euler(0, 0, 0);
@@ -72,7 +70,7 @@ public class Damage : MonoBehaviour
                     weaponTransform.rotation = Quaternion.Euler(0, 0, -65);
                 }
 
-                yield return new WaitForSeconds(0.3f); // Small delay to make the rotation noticeable
+                yield return new WaitForSeconds(0.2f); // Small delay to make the rotation noticeable
                 player.color = Color.white;
                 // Reset the weapon rotation
                 weaponTransform.rotation = Quaternion.Euler(0, 0, 0);
@@ -82,10 +80,14 @@ public class Damage : MonoBehaviour
                 Debug.Log("Player is invincible and takes no damage!");
             }
             
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.4f);
             player.color = Color.white;
 
         }
+    }
+    private void Update()
+    {
+   
     }
 }
 

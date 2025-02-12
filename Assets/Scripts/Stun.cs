@@ -11,6 +11,7 @@ public class Stun : MonoBehaviour
     
     void Start()
     {
+        
         button = GetComponent<Button>();
     }
 
@@ -22,7 +23,7 @@ public class Stun : MonoBehaviour
     }
     private IEnumerator CooldownCoroutine()
     {
-        yield return new WaitForSeconds(9f); // 10 seconds cooldown
+        yield return new WaitForSeconds(15f); // 10 seconds cooldown
         button.interactable = true; // Re-enable the button
     }
     public void StunAllEnemies()
