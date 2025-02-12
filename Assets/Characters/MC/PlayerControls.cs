@@ -30,38 +30,46 @@ public class PlayerControls : MonoBehaviour
     public float YX;
     public Vector2 currentDirection;
     private Vector3 targetPosition;
+    private RaycastHit2D currentHit;
 
     private void Start()
     {
         mcSwordTransform = transform.GetChild(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        Vector2 moveDirection = moveAction.action.ReadValue<Vector2>();
-        transform.Translate(moveDirection * speed * Time.deltaTime);
-
-        currentDirection = moveDirection;
+        currentDirection = Vector2.zero;
         isDashing = false;
+
+        moveAction.action.started += ctx => Move(ctx.ReadValue<Vector2>());
+        moveAction.action.performed += ctx => Move(ctx.ReadValue<Vector2>());
+        moveAction.action.canceled += ctx => Move(Vector2.zero);
 
         tapAction.action.performed += OnTap;
         popupManager.gameObject.SetActive(false);
     }
 
+    private void Move(Vector2 direction)
+    {
+        currentDirection = direction;
+    }
+
     private void Update()
     {
-        Vector2 moveDirection = moveAction.action.ReadValue<Vector2>();
-        transform.Translate(moveDirection * speed * Time.deltaTime);
-        currentDirection = moveDirection;
-        XY = moveDirection.x + moveDirection.y * speed;
-        YX = moveDirection.x + moveDirection.y;
-        animator.SetFloat("Speed", Mathf.Abs(XY));
+        if (!isDashing)
+        {
+            transform.Translate(currentDirection * speed * Time.deltaTime);
+            XY = currentDirection.x + currentDirection.y * speed;
+            YX = currentDirection.x + currentDirection.y;
+            animator.SetFloat("Speed", Mathf.Abs(XY));
 
-        if (moveDirection.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if (moveDirection.x > 0)
-        {
-            spriteRenderer.flipX = false;
+            if (currentDirection.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (currentDirection.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
         }
     }
 
@@ -70,25 +78,29 @@ public class PlayerControls : MonoBehaviour
         Vector2 tapPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(tapPosition);
 
-        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
+        currentHit = Physics2D.Raycast(worldPosition, Vector2.zero);
 
-        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        if (currentHit.collider != null && currentHit.collider.CompareTag("Enemy"))
         {
-            targetPosition = hit.collider.transform.position;
+            targetPosition = currentHit.collider.transform.position;
             popupManager.ShowPopup();
             stun.StunAllEnemies();
             ActivateInvincibility();
-
         }
     }
+
     public void TriggerDashToPosition()
     {
-        StartCoroutine(DashToPosition(targetPosition));
-        StartCoroutine(enemy.GetRektCoroutine());
+        if (currentHit.collider != null)
+        {
+            StartCoroutine(DashToPosition(targetPosition, currentHit.collider.gameObject)); // Pass the target position and the enemy GameObject
+        }
     }
 
-    private IEnumerator DashToPosition(Vector3 targetPosition)
+    private IEnumerator DashToPosition(Vector3 targetPosition, GameObject enemy)
     {
+        if (enemy == null) yield break;
+
         isDashing = true;
         GameObject slashEffect = Instantiate(slashPrefab, transform.position, Quaternion.identity);
         TrailRenderer trail = slashEffect.GetComponent<TrailRenderer>();
@@ -112,7 +124,11 @@ public class PlayerControls : MonoBehaviour
         Destroy(slashEffect, trail.time);
         slashEffect.transform.SetParent(null);
 
-        
+        if (enemy != null)
+        {
+            Destroy(enemy); // Destroy the enemy after the dash is complete
+        }
+
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(RotateWeapon(0, 0.3f));
     }

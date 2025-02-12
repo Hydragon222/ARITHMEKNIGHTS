@@ -38,7 +38,7 @@ public partial class @Joystick: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Tap"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""4b1bbb3c-ea85-40ce-a696-71a9348ad5f9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -50,7 +50,7 @@ public partial class @Joystick: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""09a1ddc1-028b-4e88-81d3-3b483dcec090"",
-                    ""path"": ""<Joystick>/stick"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -62,17 +62,6 @@ public partial class @Joystick: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""5f2fb5e2-b5d1-4e40-807d-a5e3ca336299"",
                     ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""27503c93-247e-4da7-b236-95d4b4b0bef3"",
-                    ""path"": ""<Pointer>/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
