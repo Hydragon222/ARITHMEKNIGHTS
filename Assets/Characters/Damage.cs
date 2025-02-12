@@ -47,6 +47,7 @@ public class Damage : MonoBehaviour
                 StopCoroutine(damageCoroutine);
             }
             weaponTransform.rotation = Quaternion.Euler(0, 0, 0);
+            player.color = Color.white;
         }
     }
 
@@ -70,8 +71,7 @@ public class Damage : MonoBehaviour
                     weaponTransform.rotation = Quaternion.Euler(0, 0, -65);
                 }
 
-                yield return new WaitForSeconds(0.2f); // Small delay to make the rotation noticeable
-                player.color = Color.white;
+                yield return new WaitForSeconds(0.3f); // Small delay to make the rotation noticeable
                 // Reset the weapon rotation
                 weaponTransform.rotation = Quaternion.Euler(0, 0, 0);
             }
@@ -81,13 +81,9 @@ public class Damage : MonoBehaviour
             }
             
             yield return new WaitForSeconds(0.4f);
-            player.color = Color.white;
+            
 
         }
-    }
-    private void Update()
-    {
-   
     }
 }
 

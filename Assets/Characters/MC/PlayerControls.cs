@@ -15,6 +15,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
     [SerializeField] private Animator animator;
 
+    public Pop pop;
     private Transform mcSwordTransform; 
     private SpriteRenderer spriteRenderer;
 
@@ -26,7 +27,7 @@ public class PlayerControls : MonoBehaviour
     public float XY;
     public float YX;
     public Vector2 currentDirection;
-    
+    private RaycastHit2D currentHit;
     private void Start()
     {
         mcSwordTransform = transform.GetChild(0);
@@ -65,28 +66,37 @@ public class PlayerControls : MonoBehaviour
         Vector2 tapPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(tapPosition);
 
-        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
+        currentHit = Physics2D.Raycast(worldPosition, Vector2.zero);
 
-        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        if (currentHit.collider != null && currentHit.collider.CompareTag("Enemy"))
         {
-            StartCoroutine(DashToPosition(hit.collider.transform.position));
             ActivateInvincibility();
-            Destroy(hit.collider.gameObject);
             stun.StunAllEnemies();
-            if (spriteRenderer.flipX)
-            {
-                mcSwordTransform.rotation = Quaternion.Euler(0, 0, 90);
-            }
-            else
-            {
-                mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
-            }
-            
+            Debug.Log("Tapped");
+            pop.ShowPopup();
         // !!!!!!!!ARBIEEE DIRI BUTANG ANG POP UP QUESTIONN!!!!!!!
         }
         
     }
+    public void TriggerDashToPosition()
+    {
+    }
 
+    private IEnumerator RotateWeapon(float targetAngle, float duration)
+    {
+        float startAngle = mcSwordTransform.rotation.eulerAngles.z;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float currentAngle = Mathf.LerpAngle(startAngle, targetAngle, elapsed / duration);
+            mcSwordTransform.rotation = Quaternion.Euler(0, 0, currentAngle);
+            yield return null;
+        }
+
+        mcSwordTransform.rotation = Quaternion.Euler(0, 0, targetAngle);
+    }
     private IEnumerator DashToPosition(Vector3 targetPosition)
     {
         isDashing = true;
@@ -110,11 +120,15 @@ public class PlayerControls : MonoBehaviour
         Destroy(slashEffect, trail.time);
         slashEffect.transform.SetParent(null);
 
-        yield return new WaitForSeconds(0.3f);
-
-        mcSwordTransform.rotation = Quaternion.Euler(0, 0, 0);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(RotateWeapon(0, 0.3f));
     }
-
+    public IEnumerator Right()
+    {
+        StartCoroutine(DashToPosition(currentHit.collider.transform.position));
+        yield return new WaitForSeconds(0.5f);
+        Destroy(currentHit.collider.gameObject);
+    }
     private void OnEnable()
     {
         moveAction.action.Enable();
