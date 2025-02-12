@@ -8,26 +8,35 @@ using UnityEngine.InputSystem.Controls;
 
 public class PlayerControls : MonoBehaviour
 {
+    [SerializeField] private Stun stun;
     [SerializeField] private GameObject shield;
+    [SerializeField] private GameObject slashPrefab;
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
+    [SerializeField] private Animator animator;
+
+    private Transform mcSwordTransform; 
+    private SpriteRenderer spriteRenderer;
+
     public bool isInvincible = false;
+    private bool isDashing = false;
     public float speed;
+    public float dashSpeed = 30f; // Dash speed
+    public float dashDuration = 0.2f; // Dash duration
     public float XY;
     public float YX;
     public Vector2 currentDirection;
-    [SerializeField] private Animator animator;
-    private SpriteRenderer spriteRenderer;
-
+    
     private void Start()
     {
+        mcSwordTransform = transform.GetChild(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         Vector2 moveDirection = moveAction.action.ReadValue<Vector2>();
         transform.Translate(moveDirection * speed * Time.deltaTime);
 
         currentDirection = moveDirection;
-
+        isDashing = false;
         // Enable the tap action
         tapAction.action.performed += OnTap;
     }
@@ -53,8 +62,6 @@ public class PlayerControls : MonoBehaviour
 
     private void OnTap(InputAction.CallbackContext context)
     {
-        Debug.Log("OnTap method called");
-
         Vector2 tapPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(tapPosition);
 
@@ -62,9 +69,50 @@ public class PlayerControls : MonoBehaviour
 
         if (hit.collider != null && hit.collider.CompareTag("Enemy"))
         {
-            Debug.Log("Tapped");
+            StartCoroutine(DashToPosition(hit.collider.transform.position));
             ActivateInvincibility();
+            Destroy(hit.collider.gameObject);
+            stun.StunAllEnemies();
+            if (spriteRenderer.flipX)
+            {
+                mcSwordTransform.rotation = Quaternion.Euler(0, 0, 90);
+            }
+            else
+            {
+                mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
+            }
+            
+        // !!!!!!!!ARBIEEE DIRI BUTANG ANG POP UP QUESTIONN!!!!!!!
         }
+        
+    }
+
+    private IEnumerator DashToPosition(Vector3 targetPosition)
+    {
+        isDashing = true;
+
+        GameObject slashEffect = Instantiate(slashPrefab, transform.position, Quaternion.identity);
+        TrailRenderer trail = slashEffect.GetComponent<TrailRenderer>();
+        slashEffect.transform.SetParent(transform);
+
+        float dashTime = 0f;
+        Vector3 startPosition = transform.position;
+
+        while (dashTime < dashDuration)
+        {
+            dashTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, dashTime / dashDuration);
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+        isDashing = false;
+        Destroy(slashEffect, trail.time);
+        slashEffect.transform.SetParent(null);
+
+        yield return new WaitForSeconds(0.3f);
+
+        mcSwordTransform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void OnEnable()
@@ -87,8 +135,6 @@ public class PlayerControls : MonoBehaviour
         StartCoroutine(InvincibilityCoroutine());
         Debug.Log("Shield up");
         shield.SetActive(true);
-       
-
     }
 
     public void ActivateInvincibility()

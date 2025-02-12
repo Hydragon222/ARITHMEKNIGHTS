@@ -12,7 +12,6 @@ public class enemylocking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         enemyControls = parentObject.GetComponent<EnemybehaviorM1>();
         transform.parent = parentObject.transform;
         transform.localPosition = offset;
