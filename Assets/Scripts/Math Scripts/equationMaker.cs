@@ -23,4 +23,9 @@ public class equationMaker : MonoBehaviour
         equationText.text = number1.ToString() + "x" + number2.ToString();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

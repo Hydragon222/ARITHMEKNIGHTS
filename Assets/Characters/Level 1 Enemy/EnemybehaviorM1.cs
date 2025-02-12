@@ -124,13 +124,8 @@ public class EnemybehaviorM1 : MonoBehaviour
     //Debug.Log("WRONG");
     // }
     //}
-    public IEnumerator GetRektCoroutine()
+    public void GetRekt()
         {
-            animator.SetTrigger("Death");
-            speed = 0;
-            originalDamage = 0;
-            Destroy(childTransform);
-            yield return new WaitForSeconds(5f);
             Destroy(gameObject);
-    }
+        }
 }
