@@ -6,11 +6,12 @@ using UnityEngine.InputSystem;
 
 public class Stun : MonoBehaviour
 {
-    public float stunDuration = 5f;
+    public float stunDuration = 6f;
     private Button button;
     
     void Start()
     {
+        
         button = GetComponent<Button>();
     }
 
