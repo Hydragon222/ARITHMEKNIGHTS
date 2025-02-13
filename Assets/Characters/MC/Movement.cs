@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-
+        
     }
 
     private void FixedUpdate() 

@@ -58,8 +58,22 @@ public class PlayerControls : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+        if (XY == 0) // If the player is moving
+        {
+            return;
+        }
+        if (XY == 0) // If the player is moving
+        {
+            FindAnyObjectByType<AudioManager>().Stop("Walking"); // Stop when the player stops moving
+        }
+        else
+        {
+            if (!FindAnyObjectByType<AudioManager>().IsPlaying("Walking")) // Play only if not already playing
+            {
+                FindAnyObjectByType<AudioManager>().Play("Walking");
+            }
+        }
     }
-
     private void OnTap(InputAction.CallbackContext context)
     {
         Vector2 tapPosition = Touchscreen.current.primaryTouch.position.ReadValue();
@@ -113,6 +127,8 @@ public class PlayerControls : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         mcSwordTransform.rotation = Quaternion.Euler(0, 0, 0);
+
+        FindAnyObjectByType<AudioManager>().Play("Slash");
     }
 
     private void OnEnable()

@@ -32,6 +32,7 @@ public class locking : MonoBehaviour
         {
             spriteRenderer.flipX = false;
             offset.x = flip.x;
+
         }
         else if (playerControls.currentDirection.x > 0)
         {
