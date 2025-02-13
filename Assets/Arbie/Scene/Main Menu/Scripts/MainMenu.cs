@@ -6,7 +6,7 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Start Button Clicked!");
-        SceneManager.LoadScene("GameScene"); // Load the game scene
+        SceneManager.LoadScene("LevelSelection"); // Load the game scene
     }
 
     // Method to open the settings menu
