@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,20 +31,30 @@ public class EnemybehaviorM1 : MonoBehaviour
     void Start()
     {
         dScript = GetComponent<Damage>();
-        Vector2 direction = direction1;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        childTransform = transform.GetChild(0);
-        childSpriteRenderer = childTransform.GetComponent<SpriteRenderer>();
-        wpnoffset = childTransform.localPosition;
+        if (transform.childCount > 0) // ✅ Check if the object has children
+        {
+            childTransform = transform.GetChild(0);
+            childSpriteRenderer = childTransform.GetComponent<SpriteRenderer>();
 
-        
+            if (childSpriteRenderer == null)
+            {
+                Debug.LogError("No SpriteRenderer found on " + childTransform.name);
+            }
+        }
+        else
+        {
+            Debug.LogError("No child object found on " + gameObject.name + "! childTransform is NULL.");
+            childTransform = null; // Prevent further errors
+        }
+
+        wpnoffset = childTransform != null ? childTransform.localPosition : Vector3.zero;
         originalSpeed = speed;
-        originalDamage = dScript.damage;
+        if (dScript != null)
+            originalDamage = dScript.damage;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (isStunned)
