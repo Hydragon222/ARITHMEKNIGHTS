@@ -88,15 +88,7 @@ public class PlayerControls : MonoBehaviour
             }
         }
     }
-<<<<<<< HEAD
 
-    
-
-    
-
-
-=======
->>>>>>> 2e3bf10d66722eb6ad84fca1daa0dab3e0d224bf
     private void OnTap(InputAction.CallbackContext context)
     {
         if (EventSystem.current.IsPointerOverGameObject())
