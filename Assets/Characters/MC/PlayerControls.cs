@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UIElements;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
     [SerializeField] private Animator animator;
+    public PopupQuestion popupQuestion;
 
-    private Transform mcSwordTransform; 
+    private Transform mcSwordTransform;
     private SpriteRenderer spriteRenderer;
+    private RaycastHit2D hit;
+    private GameObject lastTappedEnemy;
+    public Transform targetEnemy;
 
     public bool isInvincible = false;
     private bool isDashing = false;
@@ -26,9 +31,18 @@ public class PlayerControls : MonoBehaviour
     public float XY;
     public float YX;
     public Vector2 currentDirection;
-    
+
     private void Start()
     {
+        targetEnemy = GameObject.FindWithTag("Enemy")?.transform;
+        if (targetEnemy != null)
+        {
+            Debug.Log("TEST: Enemy found at start: " + targetEnemy.name);
+        }
+        else
+        {
+            Debug.LogWarning("TEST: No enemy found at start.");
+        }
         mcSwordTransform = transform.GetChild(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -60,19 +74,30 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    
+
+    
+
+
     private void OnTap(InputAction.CallbackContext context)
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Tap detected on UI, ignoring.");
+            return;
+        }
         Vector2 tapPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(tapPosition);
 
-        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
+        hit = Physics2D.Raycast(worldPosition, Vector2.zero);
 
         if (hit.collider != null && hit.collider.CompareTag("Enemy"))
-        {
-            StartCoroutine(DashToPosition(hit.collider.transform.position));
-            ActivateInvincibility();
-            Destroy(hit.collider.gameObject);
+        { 
+            targetEnemy = hit.collider.transform;
+            Debug.Log("Enemy stored: " + targetEnemy.name);
+
             stun.StunAllEnemies();
+            ActivateInvincibility();
             if (spriteRenderer.flipX)
             {
                 mcSwordTransform.rotation = Quaternion.Euler(0, 0, 90);
@@ -82,9 +107,25 @@ public class PlayerControls : MonoBehaviour
                 mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
             }
             
-        // !!!!!!!!ARBIEEE DIRI BUTANG ANG POP UP QUESTIONN!!!!!!!
+            popupQuestion.ShowQuestionUI();
         }
-        
+        else
+        {
+            Debug.LogWarning("No enemy detected on tap.");
+        }
+    }
+
+
+
+    public void Correct()
+    {
+        if (hit.collider == null)
+        {
+            Debug.LogError("Error: No enemy stored! Cannot dash.");
+            return; // Exit if no valid target
+        }
+        Debug.Log("Dashing to enemy: " + targetEnemy.name);
+        StartCoroutine(DashToPosition(targetEnemy.position));
     }
 
     private IEnumerator DashToPosition(Vector3 targetPosition)
@@ -111,7 +152,7 @@ public class PlayerControls : MonoBehaviour
         slashEffect.transform.SetParent(null);
 
         yield return new WaitForSeconds(0.3f);
-
+        Destroy(targetEnemy.gameObject);
         mcSwordTransform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -140,7 +181,6 @@ public class PlayerControls : MonoBehaviour
     public void ActivateInvincibility()
     {
         StartCoroutine(InvincibilityCoroutine());
-        
     }
 
     private IEnumerator InvincibilityCoroutine()
@@ -148,7 +188,7 @@ public class PlayerControls : MonoBehaviour
         isInvincible = true;
         Debug.Log("IMMORTALITY OR DEATH");
 
-        yield return new WaitForSeconds(5f);  // Wait for 5 seconds
+        yield return new WaitForSeconds(5.8f);  // Wait for 5 seconds
 
         isInvincible = false;
         Debug.Log("OVER");
