@@ -83,7 +83,7 @@ public class PopupQuestion : MonoBehaviour
         if (questionUIPanel != null)
         {
             questionUIPanel.SetActive(true); // Show the question UI
-            
+
             StartCoroutine(CloseQuestionUIAfterDelay(5f));
         }
         else
@@ -101,7 +101,7 @@ public class PopupQuestion : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
         }
-        
+
         questionUIPanel.SetActive(false); // Hide the question UI
     }
     // Called when the correct answer is clicked
@@ -127,3 +127,4 @@ public class PopupQuestion : MonoBehaviour
         questionUIPanel.SetActive(false);
     }
 }
+

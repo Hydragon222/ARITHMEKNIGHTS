@@ -102,7 +102,7 @@ public class PlayerControls : MonoBehaviour
         hit = Physics2D.Raycast(worldPosition, Vector2.zero);
 
         if (hit.collider != null && hit.collider.CompareTag("Enemy"))
-        { 
+        {
             targetEnemy = hit.collider.transform;
             Debug.Log("Enemy stored: " + targetEnemy.name);
 
@@ -116,7 +116,7 @@ public class PlayerControls : MonoBehaviour
             {
                 mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
             }
-            
+
             popupQuestion.ShowQuestionUI();
         }
         else
@@ -180,7 +180,7 @@ public class PlayerControls : MonoBehaviour
         moveAction.action.Disable();
         tapAction.action.Disable();
         shield.SetActive(false);
-        
+
     }
 
     public void ShieldMode()

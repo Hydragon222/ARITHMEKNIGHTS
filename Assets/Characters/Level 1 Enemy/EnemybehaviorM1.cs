@@ -2,29 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class EnemybehaviorM1 : MonoBehaviour
 {
     Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
     [SerializeField] private GameObject mc;
     public float speed;
     private float distance;
     public float followRange;
-    public Vector3 wpnoffset;
-    //public equationMaker equationGenerator;
-    //public chargeCounter chargeCounter;
-    private SpriteRenderer childSpriteRenderer;
-    private SpriteRenderer spriteRenderer;
-    private Transform childTransform;
-    [SerializeField] private Animator animator;
     public Vector2 direction1;
+
+    private SpriteRenderer childSpriteRenderer;
+    private Transform childTransform;
+    public Vector3 wpnoffset;
 
     private bool isStunned = false;
     private float stunDuration;
     private float stunTimer;
     private float originalSpeed;
     private int originalDamage;
-    
+
+    private IObjectPool<EnemybehaviorM1> enemyPool;
+    public void SetPool(IObjectPool<EnemybehaviorM1> pool)
+    {
+        enemyPool = pool;
+    }
 
     private Damage dScript;
     // Start is called before the first frame update
@@ -135,7 +140,7 @@ public class EnemybehaviorM1 : MonoBehaviour
     // }
     //}
     public void GetRekt()
-        {
-            Destroy(gameObject);
-        }
+    {
+        enemyPool.Release(this);  
+    }
 }

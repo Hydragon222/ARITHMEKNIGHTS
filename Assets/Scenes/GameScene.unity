@@ -549,7 +549,6 @@ GameObject:
   - component: {fileID: 315432506}
   - component: {fileID: 315432505}
   - component: {fileID: 315432504}
-  - component: {fileID: 315432503}
   - component: {fileID: 315432511}
   m_Layer: 3
   m_Name: MC
@@ -558,20 +557,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &315432503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315432502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55cd1987bb4601a469b5c026872d27ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  attack: 10
 --- !u!114 &315432504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14227,7 +14212,6 @@ GameObject:
   - component: {fileID: 720365437}
   - component: {fileID: 720365436}
   - component: {fileID: 720365435}
-  - component: {fileID: 720365434}
   - component: {fileID: 720365439}
   - component: {fileID: 720365440}
   - component: {fileID: 720365441}
@@ -14238,20 +14222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &720365434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720365433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55cd1987bb4601a469b5c026872d27ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  attack: 5
 --- !u!95 &720365435
 Animator:
   serializedVersion: 5
@@ -14337,12 +14307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5b930e7d483bd49acd86d1741253da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 720365435}
   mc: {fileID: 315432502}
   speed: 2
   followRange: 5
-  wpnoffset: {x: -0.4, y: 0, z: 0}
-  animator: {fileID: 720365435}
   direction1: {x: 0, y: 0}
+  wpnoffset: {x: -0.4, y: 0, z: 0}
 --- !u!4 &720365438
 Transform:
   m_ObjectHideFlags: 0
@@ -71893,8 +71863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c21677e3d1ae94594b64d0ae0d11cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAtm: {fileID: 315432503}
-  enemyAtm: {fileID: 720365434}
 --- !u!4 &1403518296
 Transform:
   m_ObjectHideFlags: 0
@@ -73672,6 +73640,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906814309}
   m_CullTransparentMesh: 1
+--- !u!1 &2094358615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2094358617}
+  - component: {fileID: 2094358616}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2094358616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094358615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96aed04b53ed8e4987cb0a02ba6ea16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds:
+  - name: Walking
+    clip: {fileID: 8300000, guid: d4828998b69a15a44a48bace131921e9, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 2
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: acda68b200ee1cc41ad77981e1b8c188, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Slash
+    clip: {fileID: 8300000, guid: f267e9be2dedf2c4ab5967268810745a, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: f2bc8e669b41ea7458168b6c0a39b4f3, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Shield
+    clip: {fileID: 8300000, guid: 3b61136991c4e9745a406da0974df47c, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+--- !u!4 &2094358617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094358615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.3650503, y: 8.9810705, z: 0.0282389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2129398900
 GameObject:
   m_ObjectHideFlags: 0
@@ -73807,6 +73866,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1396422320}
+  - {fileID: 2094358617}
   - {fileID: 1606328155}
   - {fileID: 650592735}
   - {fileID: 953456834}
