@@ -18,6 +18,7 @@ public class Shield : MonoBehaviour
         // Disable the button and start the cooldown coroutine
         button.interactable = false;
         StartCoroutine(CooldownCoroutine());
+        AudioManager.instance.Play("Shield");
     }
 
     private IEnumerator CooldownCoroutine()
