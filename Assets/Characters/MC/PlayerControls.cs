@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour
     public Stun stun;
     [SerializeField] private GameObject shield;
     [SerializeField] private GameObject slashPrefab;
+    [SerializeField] private GameObject curvedSlashPrefab;
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
     [SerializeField] private Animator animator;
@@ -19,6 +20,7 @@ public class PlayerControls : MonoBehaviour
 
     private Transform mcSwordTransform;
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer slashface;
     private RaycastHit2D hit;
     private GameObject lastTappedEnemy;
     public Transform targetEnemy;
@@ -116,14 +118,7 @@ public class PlayerControls : MonoBehaviour
 
             stun.StunAllEnemies();
             ActivateInvincibility();
-            if (spriteRenderer.flipX)
-            {
-                mcSwordTransform.rotation = Quaternion.Euler(0, 0, 90);
-            }
-            else
-            {
-                mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
-            }
+            
             hasTappedEnemy = true;
             popupQuestion.ShowQuestionUI();
         }
@@ -158,8 +153,25 @@ public class PlayerControls : MonoBehaviour
 
         while (dashTime < dashDuration)
         {
+            GameObject curvedSlash = Instantiate(curvedSlashPrefab, mcSwordTransform.position, mcSwordTransform.rotation);
+            curvedSlash.transform.SetParent(transform);
+            slashface = curvedSlash.GetComponent<SpriteRenderer>();
+            Destroy(curvedSlash, 0.5f);
+
             dashTime += Time.deltaTime;
             transform.position = Vector3.Lerp(startPosition, targetPosition, dashTime / dashDuration);
+            if (spriteRenderer.flipX)
+            {
+                mcSwordTransform.rotation = Quaternion.Euler(0, 0, 90);
+                
+                slashface.flipX = true;
+            }
+            else
+            {
+                mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
+                
+                slashface.flipX = false;
+            }
             yield return null;
         }
 

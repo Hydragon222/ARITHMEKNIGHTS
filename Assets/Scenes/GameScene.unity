@@ -572,6 +572,7 @@ MonoBehaviour:
   stun: {fileID: 242221033}
   shield: {fileID: 1441482273}
   slashPrefab: {fileID: 3731080382579465158, guid: 040db2fb5875a584fa69c458d5330628, type: 3}
+  curvedSlashPrefab: {fileID: 267800198146292769, guid: 191f4613f97333f47befbf647159ac1d, type: 3}
   moveAction: {fileID: -7609837475890351273, guid: c6578ba56f65ad64085926aedaafcf7d, type: 3}
   tapAction: {fileID: 2216554659706832806, guid: c6578ba56f65ad64085926aedaafcf7d, type: 3}
   animator: {fileID: 315432508}
