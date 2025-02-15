@@ -8,6 +8,15 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Loading Practice Level: GameScene");
         SceneManager.LoadScene("GameScene");
+        AudioManager.instance.Play("Clicking Sound");
+        AudioManager.instance.Stop("Menu");
+    }
+    private void Start()
+    {
+        if (!AudioManager.instance.IsPlaying("Menu"))
+        {
+            AudioManager.instance.Play("Menu");
+        }
     }
 
     // Load Level 1
@@ -15,6 +24,8 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Loading Level 1...");
         SceneManager.LoadScene("Level 1");
+        AudioManager.instance.Play("Clicking Sound");
+        AudioManager.instance.Stop("Menu");
     }
 
     // Load Level 2
@@ -22,6 +33,9 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Loading Level 2...");
         SceneManager.LoadScene("Level 2");
+        AudioManager.instance.Play("Clicking Sound");
+        AudioManager.instance.Stop("Menu");
+
     }
 
     // Return to the Main Menu
@@ -29,6 +43,7 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Returning to Main Menu...");
         SceneManager.LoadScene("MainMenu");
+        AudioManager.instance.Play("Clicking Sound");
     }
 
     // Return to the Level Selection Menu

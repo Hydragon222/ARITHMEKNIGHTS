@@ -32,11 +32,8 @@ public class AudioManager : MonoBehaviour
             s.source.outputAudioMixerGroup = mixerGroup;
         }
     }
+            
 
-    private void Start()
-    {
-        Play("Theme");
-    }
     public void Play(string sound)
     {
         Sound s = Array.Find(sounds, item => item.name == sound);
@@ -74,5 +71,39 @@ public class AudioManager : MonoBehaviour
         }
 
         return s.source.isPlaying;
+    }
+    private void PlaySceneMusic(string sceneName)
+    {
+        string musicToPlay = "";
+
+        switch (sceneName)
+        {
+            case "MainMenu":
+                musicToPlay = "Menu";
+                break;
+            case "GameScene":
+                musicToPlay = "L1Theme";
+                break;
+            case "GameOver":
+                musicToPlay = "Death";
+                break;
+        }
+
+        if (!string.IsNullOrEmpty(musicToPlay))
+        {
+            StopAllMusic();
+            Play(musicToPlay);
+        }
+    }
+
+    private void StopAllMusic()
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
+        }
     }
 }

@@ -7,6 +7,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void OpenPauseMenu()
     {
+        AudioManager.instance.Play("Clicking Sound");
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(true); // Show Pause Menu
@@ -22,11 +23,13 @@ public class PauseMenuController : MonoBehaviour
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(false); // Hide Pause Menu
+            AudioManager.instance.Play("Clicking Sound");
         }
     }
 
     public void QuitToLevelSelection()
     {
         SceneManager.LoadScene("LevelSelection"); // Load Level Selection Scene
+        AudioManager.instance.Play("Clicking Sound");
     }
 }

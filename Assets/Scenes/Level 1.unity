@@ -105277,6 +105277,7 @@ MonoBehaviour:
   followRange: 5
   direction1: {x: 0, y: 0}
   wpnoffset: {x: -0.4, y: 0, z: 0}
+  isStunned: 0
 --- !u!4 &1176745865
 Transform:
   m_ObjectHideFlags: 0
@@ -119444,6 +119445,7 @@ MonoBehaviour:
   animator: {fileID: 1754268831}
   popupQuestion: {fileID: 1031697668}
   targetEnemy: {fileID: 0}
+  hasTappedEnemy: 0
   isInvincible: 0
   speed: 8
   dashSpeed: 30
@@ -138374,6 +138376,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1453270746}
   - {fileID: 20327960}
   - {fileID: 1176745865}
   - {fileID: 66071950}
@@ -138384,5 +138387,4 @@ SceneRoots:
   - {fileID: 1109234457}
   - {fileID: 1029782651}
   - {fileID: 1754268833}
-  - {fileID: 1453270746}
   - {fileID: 844224105}
