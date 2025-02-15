@@ -101,8 +101,9 @@ public class PopupQuestion : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
         }
-
         questionUIPanel.SetActive(false); // Hide the question UI
+        playerControls.targetEnemy = null;
+        playerControls.hasTappedEnemy = false;
     }
     // Called when the correct answer is clicked
     public void CorrectAnswer()
@@ -125,6 +126,9 @@ public class PopupQuestion : MonoBehaviour
     {
         Debug.Log("Wrong Answer! Try Again.");
         questionUIPanel.SetActive(false);
+        playerControls.stun.UnstunAllEnemies();
+        playerControls.targetEnemy = null;
+        playerControls.hasTappedEnemy = false;
     }
 }
 

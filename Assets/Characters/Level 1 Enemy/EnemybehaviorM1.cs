@@ -19,7 +19,7 @@ public class EnemybehaviorM1 : MonoBehaviour
     private Transform childTransform;
     public Vector3 wpnoffset;
 
-    private bool isStunned = false;
+    public bool isStunned = false;
     private float stunDuration;
     private float stunTimer;
     private float originalSpeed;
@@ -32,6 +32,7 @@ public class EnemybehaviorM1 : MonoBehaviour
     }
 
     private Damage dScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +60,7 @@ public class EnemybehaviorM1 : MonoBehaviour
         originalSpeed = speed;
         if (dScript != null)
             originalDamage = dScript.damage;
+
     }
     void Update()
     {
@@ -67,11 +69,7 @@ public class EnemybehaviorM1 : MonoBehaviour
             stunTimer -= Time.deltaTime;
             if (stunTimer <= 0)
             {
-                isStunned = false;
-                // Reset any effects (e.g., sprite color)
-                spriteRenderer.color = Color.white;
-                speed = originalSpeed; // Restore the original speed
-                dScript.damage = originalDamage;
+               UnStun();
             }
         }
         else
@@ -113,14 +111,21 @@ public class EnemybehaviorM1 : MonoBehaviour
         spriteRenderer.color = Color.blue;
 
         // Stop all movement by setting speed to 0
-        
+
         speed = 0f;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
         dScript.damage = 0;
     }
 
-
+    public void UnStun()
+    {
+        isStunned = false;
+        // Reset any effects (e.g., sprite color)
+        spriteRenderer.color = Color.white;
+        speed = originalSpeed; // Restore the original speed
+        dScript.damage = originalDamage;
+    }
 
     //void OnMouseDown()
     // {

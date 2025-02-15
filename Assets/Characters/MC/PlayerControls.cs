@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 public class PlayerControls : MonoBehaviour
 {
-    [SerializeField] private Stun stun;
+    public Stun stun;
     [SerializeField] private GameObject shield;
     [SerializeField] private GameObject slashPrefab;
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
@@ -22,6 +22,7 @@ public class PlayerControls : MonoBehaviour
     private RaycastHit2D hit;
     private GameObject lastTappedEnemy;
     public Transform targetEnemy;
+    public bool hasTappedEnemy = false;
 
     public bool isInvincible = false;
     private bool isDashing = false;
@@ -91,11 +92,18 @@ public class PlayerControls : MonoBehaviour
 
     private void OnTap(InputAction.CallbackContext context)
     {
+        if (hasTappedEnemy)
+        {
+            Debug.Log("Enemy already tapped, ignoring further taps.");
+            return;
+        }
+
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Debug.Log("Tap detected on UI, ignoring.");
             return;
         }
+
         Vector2 tapPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(tapPosition);
 
@@ -116,7 +124,7 @@ public class PlayerControls : MonoBehaviour
             {
                 mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
             }
-
+            hasTappedEnemy = true;
             popupQuestion.ShowQuestionUI();
         }
         else
@@ -124,8 +132,6 @@ public class PlayerControls : MonoBehaviour
             Debug.LogWarning("No enemy detected on tap.");
         }
     }
-
-
 
     public void Correct()
     {
@@ -136,6 +142,7 @@ public class PlayerControls : MonoBehaviour
         }
         Debug.Log("Dashing to enemy: " + targetEnemy.name);
         StartCoroutine(DashToPosition(targetEnemy.position));
+        hasTappedEnemy = false;
     }
 
     private IEnumerator DashToPosition(Vector3 targetPosition)

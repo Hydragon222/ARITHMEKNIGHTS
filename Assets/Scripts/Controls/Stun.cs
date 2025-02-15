@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Stun : MonoBehaviour
 {
-    public float stunDuration = 6f;
+    public float stunDuration = 5f;
     private Button button;
     
     void Start()
@@ -41,6 +41,22 @@ public class Stun : MonoBehaviour
             if (enemyBehavior != null)
             {
                 enemyBehavior.Stun(stunDuration);
+            }
+        }
+    }
+    public void UnstunAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        Debug.Log("Unstunning all enemies.");
+
+        foreach (GameObject enemy in enemies)
+        {
+            EnemybehaviorM1 enemyBehavior = enemy.GetComponent<EnemybehaviorM1>();
+            if (enemyBehavior != null)
+            {
+                // Reset the enemy's state to normal
+                enemyBehavior.UnStun();
+                // Make sure this method exists in EnemybehaviorM1
             }
         }
     }
