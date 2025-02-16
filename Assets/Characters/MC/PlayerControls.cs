@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -20,7 +21,7 @@ public class PlayerControls : MonoBehaviour
 
     private Transform mcSwordTransform;
     private SpriteRenderer spriteRenderer;
-    private SpriteRenderer slashface;
+    
     private RaycastHit2D hit;
     private GameObject lastTappedEnemy;
     public Transform targetEnemy;
@@ -54,8 +55,6 @@ public class PlayerControls : MonoBehaviour
 
         currentDirection = moveDirection;
         isDashing = false;
-        // Enable the tap action
-        tapAction.action.performed += OnTap;
     }
 
     private void Update()
@@ -75,10 +74,7 @@ public class PlayerControls : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-        if (XY == 0) // If the player is moving
-        {
-            return;
-        }
+
         if (XY == 0) // If the player is moving
         {
             FindAnyObjectByType<AudioManager>().Stop("Walking"); // Stop when the player stops moving
@@ -90,54 +86,82 @@ public class PlayerControls : MonoBehaviour
                 FindAnyObjectByType<AudioManager>().Play("Walking");
             }
         }
+        OnTap();
     }
 
-    private void OnTap(InputAction.CallbackContext context)
+    private void OnTap()
     {
-        if (hasTappedEnemy)
+        // Check all active touches
+        foreach (TouchControl touch in Touchscreen.current.touches)
         {
-            Debug.Log("Enemy already tapped, ignoring further taps.");
-            return;
-        }
+            // Only check for taps that just began
+            if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
+            {
+                // Get the world position of the touch
+                Vector2 touchPosition = touch.position.ReadValue();
+                Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            Debug.Log("Tap detected on UI, ignoring.");
-            return;
-        }
+                // Check if the touch is on the UI (e.g., joystick), but allow enemy taps
+                PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = touchPosition };
+                List<RaycastResult> raycastResults = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointerData, raycastResults);
 
-        Vector2 tapPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(tapPosition);
+                bool tappedOnUI = false;
+                foreach (RaycastResult result in raycastResults)
+                {
+                    if (result.gameObject.CompareTag("JoystickUI"))
+                    {
+                        tappedOnUI = true;
+                        break;
+                    }
+                }
 
-        hit = Physics2D.Raycast(worldPosition, Vector2.zero);
+                if (tappedOnUI)
+                {
+                    Debug.Log("Tap detected on Joystick UI, ignoring.");
+                    continue;
+                }
 
-        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
-        {
-            targetEnemy = hit.collider.transform;
-            Debug.Log("Enemy stored: " + targetEnemy.name);
+                // Expand the raycast detection area slightly for better accuracy
+                Vector2 detectionSize = new Vector2(0.5f, 0.5f); // Adjust this value as needed
+                Collider2D hitCollider = Physics2D.OverlapBox(worldPosition, detectionSize, 0);
 
-            stun.StunAllEnemies();
-            ActivateInvincibility();
-            
-            hasTappedEnemy = true;
-            popupQuestion.ShowQuestionUI();
-        }
-        else
-        {
-            Debug.LogWarning("No enemy detected on tap.");
+                if (hitCollider != null && hitCollider.CompareTag("Enemy"))
+                {
+                    // Allow only one enemy tap
+                    if (hasTappedEnemy)
+                    {
+                        Debug.Log("Enemy already tapped, ignoring further taps.");
+                        return;
+                    }
+
+                    targetEnemy = hitCollider.transform;
+                    Debug.Log("Enemy stored: " + targetEnemy.name);
+
+                    stun.StunAllEnemies();
+                    ActivateInvincibility();
+
+                    hasTappedEnemy = true;
+                    popupQuestion.ShowQuestionUI();
+                }
+                else
+                {
+                    Debug.LogWarning("No enemy detected on tap.");
+                }
+            }
         }
     }
 
     public void Correct()
     {
-        if (hit.collider == null)
+        if (targetEnemy == null)
         {
             Debug.LogError("Error: No enemy stored! Cannot dash.");
             return; // Exit if no valid target
         }
         Debug.Log("Dashing to enemy: " + targetEnemy.name);
         StartCoroutine(DashToPosition(targetEnemy.position));
-        hasTappedEnemy = false;
+       
     }
 
     private IEnumerator DashToPosition(Vector3 targetPosition)
@@ -151,27 +175,19 @@ public class PlayerControls : MonoBehaviour
         float dashTime = 0f;
         Vector3 startPosition = transform.position;
 
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
         while (dashTime < dashDuration)
         {
-            GameObject curvedSlash = Instantiate(curvedSlashPrefab, mcSwordTransform.position, mcSwordTransform.rotation);
+            GameObject curvedSlash = Instantiate(curvedSlashPrefab, mcSwordTransform.position, Quaternion.Euler(0, 0, angle - 125));
             curvedSlash.transform.SetParent(transform);
-            slashface = curvedSlash.GetComponent<SpriteRenderer>();
             Destroy(curvedSlash, 0.5f);
 
             dashTime += Time.deltaTime;
             transform.position = Vector3.Lerp(startPosition, targetPosition, dashTime / dashDuration);
-            if (spriteRenderer.flipX)
-            {
-                mcSwordTransform.rotation = Quaternion.Euler(0, 0, 90);
-                
-                slashface.flipX = true;
-            }
-            else
-            {
-                mcSwordTransform.rotation = Quaternion.Euler(0, 0, -90);
-                
-                slashface.flipX = false;
-            }
+
+            mcSwordTransform.rotation = Quaternion.Euler(0, 0, angle);
             yield return null;
         }
 
@@ -185,6 +201,9 @@ public class PlayerControls : MonoBehaviour
         mcSwordTransform.rotation = Quaternion.Euler(0, 0, 0);
 
         FindAnyObjectByType<AudioManager>().Play("Slash");
+
+        hasTappedEnemy = false;
+        targetEnemy = null;
     }
 
     private void OnEnable()

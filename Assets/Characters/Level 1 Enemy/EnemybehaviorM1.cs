@@ -9,7 +9,8 @@ public class EnemybehaviorM1 : MonoBehaviour
     Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
-    [SerializeField] private GameObject mc;
+    private GameObject mc;
+    private SpriteRenderer mcSpriteRenderer;
     public float speed;
     private float distance;
     public float followRange;
@@ -30,6 +31,18 @@ public class EnemybehaviorM1 : MonoBehaviour
     {
         enemyPool = pool;
     }
+
+    public void SetTarget(GameObject player)
+    {
+        mc = player;
+        mcSpriteRenderer = mc.GetComponent<SpriteRenderer>();
+        Damage damageScript = GetComponent<Damage>();
+        if (damageScript != null)
+        {
+            damageScript.SetPlayerSprite(mcSpriteRenderer);
+        }
+    }
+
 
     private Damage dScript;
 
@@ -69,35 +82,42 @@ public class EnemybehaviorM1 : MonoBehaviour
             stunTimer -= Time.deltaTime;
             if (stunTimer <= 0)
             {
-               UnStun();
+                UnStun();
             }
         }
         else
         {
-            distance = Vector2.Distance(transform.position, mc.transform.position);
-            Vector2 direction = mc.transform.position - transform.position;
-
-            if (distance <= followRange)
+            if (mc != null)
             {
-                transform.position = Vector2.MoveTowards(this.transform.position, mc.transform.position, speed * Time.deltaTime);
-                animator.SetTrigger("Run");
+                distance = Vector2.Distance(transform.position, mc.transform.position);
+                Vector2 direction = mc.transform.position - transform.position;
+
+                if (distance <= followRange)
+                {
+                    transform.position = Vector2.MoveTowards(this.transform.position, mc.transform.position, speed * Time.deltaTime);
+                    animator.SetTrigger("Run");
+                }
+                else
+                {
+                    animator.SetTrigger("Stand");
+                }
+
+                if (direction.x < 0)
+                {
+                    spriteRenderer.flipX = true;
+                    childSpriteRenderer.flipX = true;
+                    childTransform.localPosition = new Vector3(-wpnoffset.x, wpnoffset.y, wpnoffset.z);
+                }
+                else if (direction.x > 0)
+                {
+                    spriteRenderer.flipX = false;
+                    childSpriteRenderer.flipX = false;
+                    childTransform.localPosition = wpnoffset;
+                }
             }
             else
             {
-                animator.SetTrigger("Stand");
-            }
-
-            if (direction.x < 0)
-            {
-                spriteRenderer.flipX = true; // Face left
-                childSpriteRenderer.flipX = true;
-                childTransform.localPosition = new Vector3(-wpnoffset.x, wpnoffset.y, wpnoffset.z);
-            }
-            else if (direction.x > 0)
-            {
-                spriteRenderer.flipX = false; // Face right
-                childSpriteRenderer.flipX = false;
-                childTransform.localPosition = wpnoffset;
+                Debug.LogWarning("No player assigned to follow!");
             }
         }
     }
@@ -146,6 +166,9 @@ public class EnemybehaviorM1 : MonoBehaviour
     //}
     public void GetRekt()
     {
-        enemyPool.Release(this);  
+        animator.SetTrigger("Death");
+        speed = 0;
+        dScript.damage = 0;
+        enemyPool.Release(this);        
     }
 }

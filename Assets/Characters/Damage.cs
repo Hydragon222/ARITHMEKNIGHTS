@@ -11,13 +11,27 @@ public class Damage : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Stun stun;
     public SpriteRenderer player;
-
+    private EnemybehaviorM1 enemybehaviorm1;
     private void Start()
     {
         weaponTransform = transform.GetChild(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemybehaviorm1 = GetComponent<EnemybehaviorM1>();
         stun = GetComponent<Stun>();
-        
+        if (player == null)
+        {
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (playerObject != null)
+            {
+                SpriteRenderer playerSprite = playerObject.GetComponent<SpriteRenderer>();
+                SetPlayerSprite(playerSprite);
+            }
+            else
+            {
+                Debug.LogError("Player GameObject with tag 'Player' not found!");
+            }
+        }
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -35,6 +49,10 @@ public class Damage : MonoBehaviour
                 }
             }
         }
+    }
+    public void SetPlayerSprite(SpriteRenderer playerSprite)
+    {
+        player = playerSprite;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -55,7 +73,7 @@ public class Damage : MonoBehaviour
     {
         while (isColliding)
         {
-            if (!playerControls.isInvincible)
+            if (!playerControls.isInvincible && !enemybehaviorm1.isStunned)
             {
                 health.TakeDamage(damage);
                 player.color = Color.red;
@@ -82,8 +100,6 @@ public class Damage : MonoBehaviour
             }
             
             yield return new WaitForSeconds(0.4f);
-            
-
         }
     }
     private void Update()
