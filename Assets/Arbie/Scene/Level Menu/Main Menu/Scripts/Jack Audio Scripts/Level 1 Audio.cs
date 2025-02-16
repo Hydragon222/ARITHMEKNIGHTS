@@ -1,28 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneSoundManager : MonoBehaviour
+public class PlaySoundInScene : MonoBehaviour
 {
-    public AudioClip soundClip;
+    public AudioClip soundClip; // Assign this in the Inspector
     private AudioSource audioSource;
 
-    void OnEnable()
+    void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "Game Scene") // Replace with your scene name
+        // Get or add an AudioSource component
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource == null)
         {
-            AudioManager.instance.Play("L1Theme");
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        // Set the audio clip and play it
+        audioSource.clip = soundClip;
+        audioSource.playOnAwake = false; // Prevent auto-play on load
+        audioSource.Play();
     }
 }
