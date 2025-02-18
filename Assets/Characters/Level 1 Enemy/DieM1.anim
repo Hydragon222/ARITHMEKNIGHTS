@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.8
+        time: 1.3166667
         value: 1
         inSlope: 0
         outSlope: 0
@@ -40,7 +40,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.4833333
+        time: 1.5166667
         value: 0
         inSlope: 0
         outSlope: 0
@@ -81,7 +81,7 @@ AnimationClip:
       value: {fileID: 555235282, guid: db038b5afd1e4a244a2afc5e34cb4582, type: 3}
     - time: 1.1666666
       value: {fileID: 555235282, guid: db038b5afd1e4a244a2afc5e34cb4582, type: 3}
-    - time: 2.4833333
+    - time: 1.5166667
       value: {fileID: 555235282, guid: db038b5afd1e4a244a2afc5e34cb4582, type: 3}
     attribute: m_Sprite
     path: 
@@ -131,7 +131,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.5
+    m_StopTime: 1.5333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -161,7 +161,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.8
+        time: 1.3166667
         value: 1
         inSlope: 0
         outSlope: 0
@@ -170,7 +170,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.4833333
+        time: 1.5166667
         value: 0
         inSlope: 0
         outSlope: 0
@@ -189,11 +189,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 2.4833333
-    functionName: GetRekt
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

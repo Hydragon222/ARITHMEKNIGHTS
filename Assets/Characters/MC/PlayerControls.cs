@@ -161,7 +161,12 @@ public class PlayerControls : MonoBehaviour
         }
         Debug.Log("Dashing to enemy: " + targetEnemy.name);
         StartCoroutine(DashToPosition(targetEnemy.position));
-       
+        EnemybehaviorM1 enemyBehavior = targetEnemy.GetComponent<EnemybehaviorM1>();
+        if (enemyBehavior != null)
+        {
+            // Trigger GetRekt() only for the tapped enemy
+            enemyBehavior.GetRekt();
+        }
     }
 
     private IEnumerator DashToPosition(Vector3 targetPosition)
@@ -198,7 +203,7 @@ public class PlayerControls : MonoBehaviour
         slashEffect.transform.SetParent(null);
 
         yield return new WaitForSeconds(0.3f);
-        Destroy(targetEnemy.gameObject);
+        
         mcSwordTransform.rotation = Quaternion.Euler(0, 0, 0);
 
         FindAnyObjectByType<AudioManager>().Play("Slash");

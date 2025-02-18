@@ -18,6 +18,7 @@ public class EnemybehaviorM1 : MonoBehaviour
 
     private SpriteRenderer childSpriteRenderer;
     private Transform childTransform;
+    private GameObject child;
     public Vector3 wpnoffset;
 
     public bool isStunned = false;
@@ -49,6 +50,7 @@ public class EnemybehaviorM1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         dScript = GetComponent<Damage>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -56,6 +58,7 @@ public class EnemybehaviorM1 : MonoBehaviour
         if (transform.childCount > 0) // ✅ Check if the object has children
         {
             childTransform = transform.GetChild(0);
+            
             childSpriteRenderer = childTransform.GetComponent<SpriteRenderer>();
 
             if (childSpriteRenderer == null)
@@ -136,6 +139,9 @@ public class EnemybehaviorM1 : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
         dScript.damage = 0;
+        childSpriteRenderer.color = Color.blue;
+
+        animator.SetTrigger("Stand");
     }
 
     public void UnStun()
@@ -143,6 +149,7 @@ public class EnemybehaviorM1 : MonoBehaviour
         isStunned = false;
         // Reset any effects (e.g., sprite color)
         spriteRenderer.color = Color.white;
+        childSpriteRenderer.color = Color.white;
         speed = originalSpeed; // Restore the original speed
         dScript.damage = originalDamage;
     }
@@ -169,6 +176,21 @@ public class EnemybehaviorM1 : MonoBehaviour
         animator.SetTrigger("Death");
         speed = 0;
         dScript.damage = 0;
-        enemyPool.Release(this);        
+
+        childSpriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
+        StartCoroutine(WaitAndRelease());
+    }
+
+    private IEnumerator WaitAndRelease()
+    {
+        speed = 0;
+        dScript.damage = 0;
+        // Wait for 4 seconds before releasing
+        yield return new WaitForSeconds(2f);
+        childSpriteRenderer.color = Color.white;
+        spriteRenderer.color = Color.white;
+        // Release the enemy back into the pool
+        enemyPool.Release(this);
+
     }
 }
