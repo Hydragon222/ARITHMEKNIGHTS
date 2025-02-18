@@ -38,7 +38,7 @@ public class Health : MonoBehaviour
     public void Dead()
     {
         animator.SetTrigger("Death");
-        AudioManager.instance.Stop("Theme");
+        AudioManager.instance.Stop("Level 1 Theme");
         AudioManager.instance.Play("Death");
         sword.SetActive(false);
         

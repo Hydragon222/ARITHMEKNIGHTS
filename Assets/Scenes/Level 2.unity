@@ -1162,97 +1162,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &354030273
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 354030276}
-  - component: {fileID: 354030277}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &354030276
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 354030273}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3650503, y: 8.9810705, z: 0.0282389}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &354030277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 354030273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96aed04b53ed8e4987cb0a02ba6ea16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
-  sounds:
-  - name: Walking
-    clip: {fileID: 8300000, guid: d4828998b69a15a44a48bace131921e9, type: 3}
-    volume: 0.15
-    volumeVariance: 0
-    pitch: 2
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Theme
-    clip: {fileID: 8300000, guid: acda68b200ee1cc41ad77981e1b8c188, type: 3}
-    volume: 0.25
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Slash
-    clip: {fileID: 8300000, guid: f267e9be2dedf2c4ab5967268810745a, type: 3}
-    volume: 0.55
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Death
-    clip: {fileID: 8300000, guid: f2bc8e669b41ea7458168b6c0a39b4f3, type: 3}
-    volume: 0.55
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Shield
-    clip: {fileID: 8300000, guid: 3b61136991c4e9745a406da0974df47c, type: 3}
-    volume: 0.55
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
 --- !u!1 &464235152
 GameObject:
   m_ObjectHideFlags: 0
@@ -72672,6 +72581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
+  player: {fileID: 0}
 --- !u!50 &1033271089
 Rigidbody2D:
   serializedVersion: 4
@@ -72843,12 +72753,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5b930e7d483bd49acd86d1741253da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mc: {fileID: 1083748406}
+  animator: {fileID: 1033271092}
   speed: 2
   followRange: 5
-  wpnoffset: {x: 0, y: 0, z: 0}
-  animator: {fileID: 1033271092}
   direction1: {x: 0, y: 0}
+  wpnoffset: {x: 0, y: 0, z: 0}
+  isStunned: 0
 --- !u!4 &1033271095
 Transform:
   m_ObjectHideFlags: 0
@@ -72902,7 +72812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1083748406}
-  movementScript: {fileID: 0}
+  controls: {fileID: 0}
   animator: {fileID: 1083748413}
   maxHealth: 100
   health: 0
@@ -72936,9 +72846,13 @@ MonoBehaviour:
   stun: {fileID: 0}
   shield: {fileID: 155617079}
   slashPrefab: {fileID: 0}
+  curvedSlashPrefab: {fileID: 0}
   moveAction: {fileID: -7609837475890351273, guid: c6578ba56f65ad64085926aedaafcf7d, type: 3}
   tapAction: {fileID: 2216554659706832806, guid: c6578ba56f65ad64085926aedaafcf7d, type: 3}
   animator: {fileID: 1083748413}
+  popupQuestion: {fileID: 0}
+  targetEnemy: {fileID: 0}
+  hasTappedEnemy: 0
   isInvincible: 0
   speed: 8
   dashSpeed: 30
@@ -74318,6 +74232,151 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156624764}
   m_CullTransparentMesh: 1
+--- !u!1 &1245436638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245436640}
+  - component: {fileID: 1245436639}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1245436639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245436638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96aed04b53ed8e4987cb0a02ba6ea16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds:
+  - name: Walking
+    clip: {fileID: 8300000, guid: d4828998b69a15a44a48bace131921e9, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 2
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: acda68b200ee1cc41ad77981e1b8c188, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Slash
+    clip: {fileID: 8300000, guid: f267e9be2dedf2c4ab5967268810745a, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: f2bc8e669b41ea7458168b6c0a39b4f3, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Shield
+    clip: {fileID: 8300000, guid: 3b61136991c4e9745a406da0974df47c, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Clicking Sound
+    clip: {fileID: 8300000, guid: 8194d6b90bc8da94fb433236960341db, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: 9255c46c7a11afb459920d3f03990586, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: L1Theme
+    clip: {fileID: 8300000, guid: 5f1024d32805c5f478bac312e10d2434, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Practice Level Theme
+    clip: {fileID: 8300000, guid: 2175439b3d9a64e46b72dadc654d647d, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level 1 Theme
+    clip: {fileID: 8300000, guid: 810e727a105a9024a8fbc57af91cb05a, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level 2 Theme
+    clip: {fileID: 8300000, guid: c3670f80f0a0cad4cbd95bdeb19b7034, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+--- !u!4 &1245436640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245436638}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.3650503, y: 8.9810705, z: 0.0282389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1384604754
 GameObject:
   m_ObjectHideFlags: 0
@@ -77804,10 +77863,10 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 354030276}
   - {fileID: 791970897}
   - {fileID: 41664489}
   - {fileID: 124233284}
   - {fileID: 1083748415}
   - {fileID: 1033271095}
   - {fileID: 971674502}
+  - {fileID: 1245436640}

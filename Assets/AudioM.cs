@@ -49,18 +49,19 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-    public void Stop(string name)
+    public void Stop(string soundName)
     {
-        Sound s = System.Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
         if (s == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
+            Debug.LogWarning("Sound: " + soundName + " not found!");
             return;
         }
-
-        s.source.Stop();
+        if (s.source.isPlaying)
+        {
+            s.source.Stop();
+        }
     }
-
     public bool IsPlaying(string name)
     {
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
@@ -72,30 +73,50 @@ public class AudioManager : MonoBehaviour
 
         return s.source.isPlaying;
     }
-    private void PlaySceneMusic(string sceneName)
+    public void PlaySceneMusic(string sceneName)
     {
         string musicToPlay = "";
 
         switch (sceneName)
         {
             case "MainMenu":
+            case "LevelSelection": // Ensure LevelSelection uses Menu music
                 musicToPlay = "Menu";
                 break;
             case "GameScene":
-                musicToPlay = "L1Theme";
+                musicToPlay = "Practice Level Theme";
                 break;
-            case "GameOver":
-                musicToPlay = "Death";
+            case "Level 1":
+                musicToPlay = "Level 1 Theme";
+                break;
+            case "Level 2":
+                musicToPlay = "Level 2 Theme";
                 break;
         }
 
         if (!string.IsNullOrEmpty(musicToPlay))
         {
-            StopAllMusic();
-            Play(musicToPlay);
+            // Stop all sounds before playing new music
+            StopAll();
+
+            // Check if the music is already playing before playing it again
+            if (!IsPlaying(musicToPlay))
+            {
+                Play(musicToPlay);
+            }
         }
     }
-
+    public void StopAll()
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound.source.isPlaying)
+            {
+                Debug.Log("Stopping sound: " + sound.name);
+                sound.source.Stop();
+            }
+        }
+    }
     private void StopAllMusic()
     {
         foreach (Sound s in sounds)

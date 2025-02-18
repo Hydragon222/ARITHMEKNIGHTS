@@ -437,6 +437,33 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Practice Level Theme
+    clip: {fileID: 8300000, guid: 2175439b3d9a64e46b72dadc654d647d, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level 1 Theme
+    clip: {fileID: 8300000, guid: 810e727a105a9024a8fbc57af91cb05a, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level 2 Theme
+    clip: {fileID: 8300000, guid: c3670f80f0a0cad4cbd95bdeb19b7034, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &154599397
 Transform:
   m_ObjectHideFlags: 0

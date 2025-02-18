@@ -10,13 +10,16 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("GameScene");
         AudioManager.instance.Play("Clicking Sound");
         AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Practice Level Theme");
     }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AudioManager.instance.PlaySceneMusic(scene.name);
+    }
+
     private void Start()
     {
-        if (!AudioManager.instance.IsPlaying("Menu"))
-        {
-            AudioManager.instance.Play("Menu");
-        }
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     // Load Level 1
@@ -26,6 +29,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("Level 1");
         AudioManager.instance.Play("Clicking Sound");
         AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Level 1 Theme");
     }
 
     // Load Level 2
@@ -35,6 +39,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("Level 2");
         AudioManager.instance.Play("Clicking Sound");
         AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Level 2 Theme");
 
     }
 
@@ -44,12 +49,23 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Returning to Main Menu...");
         SceneManager.LoadScene("MainMenu");
         AudioManager.instance.Play("Clicking Sound");
-    }
 
-    // Return to the Level Selection Menu
+        // Stop all sounds to prevent duplicates
+        AudioManager.instance.StopAll();
+
+        // Only play the menu music if it's not already playing
+        if (!AudioManager.instance.IsPlaying("Menu"))
+        {
+            AudioManager.instance.Play("Menu");
+        }
+    }
     public void BackToLevelSelection()
     {
         Debug.Log("Returning to Level Selection...");
         SceneManager.LoadScene("LevelSelection");
+        AudioManager.instance.Stop("Practice Level Theme");
+        AudioManager.instance.Stop("Level 1 Theme");
+        AudioManager.instance.Stop("Level 2 Theme");
     }
+
 }

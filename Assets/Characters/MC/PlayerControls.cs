@@ -171,6 +171,7 @@ public class PlayerControls : MonoBehaviour
         GameObject slashEffect = Instantiate(slashPrefab, transform.position, Quaternion.identity);
         TrailRenderer trail = slashEffect.GetComponent<TrailRenderer>();
         slashEffect.transform.SetParent(transform);
+        AudioManager.instance.Play("Slash");
 
         float dashTime = 0f;
         Vector3 startPosition = transform.position;
