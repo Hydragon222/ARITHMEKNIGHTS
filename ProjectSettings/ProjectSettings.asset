@@ -15,7 +15,7 @@ PlayerSettings:
   companyName: DefaultCompany
   productName: ARITHMEKNIGHTS
   defaultCursor: {fileID: 2800000, guid: 4d58613bc4e4138479ba41c33bbed227, type: 3}
-  cursorHotspot: {x: 0, y: 0}
+  cursorHotspot: {x: 16, y: 16}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
@@ -160,7 +160,9 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Android: com.DefaultCompany.ARITHMEKNIGHTS
+    Standalone: com.DefaultCompany.ARITHMEKNIGHTS
   buildNumber:
     Standalone: 0
     VisionOS: 0

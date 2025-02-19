@@ -60,8 +60,15 @@ public class PlayerControls : MonoBehaviour
     private void Update()
     {
         Vector2 moveDirection = moveAction.action.ReadValue<Vector2>();
+
+        if (moveDirection.magnitude > 1)
+        {
+            moveDirection.Normalize();
+        }
+
         transform.Translate(moveDirection * speed * Time.deltaTime);
         currentDirection = moveDirection;
+
         XY = moveDirection.x + moveDirection.y * speed;
         YX = moveDirection.x + moveDirection.y;
         animator.SetFloat("Speed", Mathf.Abs(XY));
@@ -91,66 +98,87 @@ public class PlayerControls : MonoBehaviour
 
     private void OnTap()
     {
-        // Check all active touches
-        foreach (TouchControl touch in Touchscreen.current.touches)
+        Vector2 worldPosition = Vector2.zero; // Store the tap/click position
+        bool isTap = false; // Flag to check if an input happened
+
+        // **Handle Touch Input (Mobile) - Prevents Null Errors**
+        if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
         {
-            // Only check for taps that just began
-            if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
+            foreach (TouchControl touch in Touchscreen.current.touches)
             {
-                // Get the world position of the touch
-                Vector2 touchPosition = touch.position.ReadValue();
-                Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-
-                // Check if the touch is on the UI (e.g., joystick), but allow enemy taps
-                PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = touchPosition };
-                List<RaycastResult> raycastResults = new List<RaycastResult>();
-                EventSystem.current.RaycastAll(pointerData, raycastResults);
-
-                bool tappedOnUI = false;
-                foreach (RaycastResult result in raycastResults)
+                if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
                 {
-                    if (result.gameObject.CompareTag("JoystickUI"))
-                    {
-                        tappedOnUI = true;
-                        break;
-                    }
-                }
-
-                if (tappedOnUI)
-                {
-                    Debug.Log("Tap detected on Joystick UI, ignoring.");
-                    continue;
-                }
-
-                // Expand the raycast detection area slightly for better accuracy
-                Vector2 detectionSize = new Vector2(0.5f, 0.5f); // Adjust this value as needed
-                Collider2D hitCollider = Physics2D.OverlapBox(worldPosition, detectionSize, 0);
-
-                if (hitCollider != null && hitCollider.CompareTag("Enemy"))
-                {
-                    // Allow only one enemy tap
-                    if (hasTappedEnemy)
-                    {
-                        Debug.Log("Enemy already tapped, ignoring further taps.");
-                        return;
-                    }
-
-                    targetEnemy = hitCollider.transform;
-                    Debug.Log("Enemy stored: " + targetEnemy.name);
-
-                    stun.StunAllEnemies();
-                    ActivateInvincibility();
-
-                    hasTappedEnemy = true;
-                    popupQuestion.ShowQuestionUI();
-                }
-                else
-                {
-                    Debug.LogWarning("No enemy detected on tap.");
+                    Vector2 touchPosition = touch.position.ReadValue();
+                    worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+                    isTap = true;
+                    break; // Stop checking after first tap
                 }
             }
         }
+
+        // **Handle Mouse Clicks (PC) - Prevents Null Errors**
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            isTap = true;
+        }
+
+        // **Only Continue if a Tap or Click was Detected**
+        if (!isTap) return;
+
+        // **Check if Tap is on the UI - Prevents Null Errors**
+        if (EventSystem.current != null)
+        {
+            PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = worldPosition };
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+            bool tappedOnUI = false;
+            foreach (RaycastResult result in raycastResults)
+            {
+                if (result.gameObject.CompareTag("JoystickUI"))
+                {
+                    tappedOnUI = true;
+                    break;
+                }
+            }
+
+            if (tappedOnUI)
+            {
+                Debug.Log("Tap detected on Joystick UI, ignoring.");
+                return;
+            }
+        }
+
+        // **Expand Raycast Detection for Enemies**
+        Vector2 detectionSize = new Vector2(0.5f, 0.5f);
+        Collider2D hitCollider = Physics2D.OverlapBox(worldPosition, detectionSize, 0);
+
+        if (hitCollider != null && hitCollider.CompareTag("Enemy"))
+        {
+            if (hasTappedEnemy)
+            {
+                Debug.Log("Enemy already tapped, ignoring further taps.");
+                return;
+            }
+
+            targetEnemy = hitCollider.transform;
+            Debug.Log("Enemy stored: " + targetEnemy.name);
+
+            stun.StunAllEnemies();
+            ActivateInvincibility();
+
+            hasTappedEnemy = true;
+            popupQuestion.ShowQuestionUI();
+        }
+        else
+        {
+            Debug.LogWarning("No enemy detected on tap.");
+        }
     }
+
+
 
     public void Correct()
     {

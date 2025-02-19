@@ -15,22 +15,37 @@ public class PopupQuestion : MonoBehaviour
     public Button[] answerButtons; // Array of buttons
     public TMP_Text[] answerTexts; // Texts for the buttons
 
+    public bool divisionMode;
     public float n2;
     private float n1, correctAnswer;
     public int limit; // Ensure a limit is set
 
     private void Start()
-    {
+    { 
         questionUIPanel.SetActive(false);
     }
     public void GenerateQuestion()
     {
         n1 = Random.Range(1, 10);
-        correctAnswer = n1 * n2;
+        if (divisionMode == false)
+        {
+            correctAnswer = n1 * n2;
+        }
+        else if (divisionMode == true)
+        {
+            correctAnswer = n1 / n2;
+        }
 
         if (questionText != null)
         {
-            questionText.text = $"{n1} × {n2}?"; // Set the question text
+            if (divisionMode == false)
+            {
+            questionText.text = $"{n1} × {n2}?";
+            } else if (divisionMode == true)
+            {
+                questionText.text = $"{n1} ÷ {n2}?";
+            }
+
         }
 
         // Generate wrong answers
