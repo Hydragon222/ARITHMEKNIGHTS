@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -35,6 +35,11 @@ public class PlayerControls : MonoBehaviour
     public float XY;
     public float YX;
     public Vector2 currentDirection;
+    private bool hasTappedDialogue = false;
+    private float tapCooldown = 0.3f;  // Time between taps
+    private float lastTapTime = 0f;
+
+
 
     private void Start()
     {
@@ -98,85 +103,100 @@ public class PlayerControls : MonoBehaviour
 
     private void OnTap()
     {
-        Vector2 worldPosition = Vector2.zero; // Store the tap/click position
-        bool isTap = false; // Flag to check if an input happened
+        Vector2 worldPosition = Vector2.zero;
+        bool isTap = false;
 
-        // **Handle Touch Input (Mobile) - Prevents Null Errors**
+        // Handle Touch Input (Mobile)
         if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
         {
             foreach (TouchControl touch in Touchscreen.current.touches)
             {
                 if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
                 {
-                    Vector2 touchPosition = touch.position.ReadValue();
-                    worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+                    worldPosition = Camera.main.ScreenToWorldPoint(touch.position.ReadValue());
                     isTap = true;
-                    break; // Stop checking after first tap
+                    break;
                 }
             }
         }
 
-        // **Handle Mouse Clicks (PC) - Prevents Null Errors**
+        // Handle Mouse Clicks (PC)
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            worldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             isTap = true;
         }
 
-        // **Only Continue if a Tap or Click was Detected**
         if (!isTap) return;
 
-        // **Check if Tap is on the UI - Prevents Null Errors**
+        // Prevent clicking UI elements
         if (EventSystem.current != null)
         {
             PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = worldPosition };
             List<RaycastResult> raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerData, raycastResults);
 
-            bool tappedOnUI = false;
             foreach (RaycastResult result in raycastResults)
             {
                 if (result.gameObject.CompareTag("JoystickUI"))
                 {
-                    tappedOnUI = true;
-                    break;
+                    Debug.Log("Tap detected on Joystick UI, ignoring.");
+                    return;
                 }
             }
-
-            if (tappedOnUI)
-            {
-                Debug.Log("Tap detected on Joystick UI, ignoring.");
-                return;
-            }
         }
 
-        // **Expand Raycast Detection for Enemies**
-        Vector2 detectionSize = new Vector2(0.5f, 0.5f);
-        Collider2D hitCollider = Physics2D.OverlapBox(worldPosition, detectionSize, 0);
+        // **Check for a tap on an object**
+        Collider2D hitCollider = Physics2D.OverlapPoint(worldPosition);
 
-        if (hitCollider != null && hitCollider.CompareTag("Enemy"))
+        if (hitCollider != null)
         {
-            if (hasTappedEnemy)
+            if (hitCollider.CompareTag("Enemy"))
             {
-                Debug.Log("Enemy already tapped, ignoring further taps.");
-                return;
+                if (hasTappedEnemy)
+                {
+                    Debug.Log("Enemy already tapped, ignoring further taps.");
+                    return;
+                }
+
+                targetEnemy = hitCollider.transform;
+                Debug.Log("Enemy stored: " + targetEnemy.name);
+
+                stun.StunAllEnemies();
+                ActivateInvincibility();
+
+                hasTappedEnemy = true;
+                popupQuestion.ShowQuestionUI();
             }
+            else if (hitCollider.CompareTag("Wizzard")) // If tapped on the wizard
+            {
+                Debug.Log("Wizzard clicked! Triggering dialogue.");
 
-            targetEnemy = hitCollider.transform;
-            Debug.Log("Enemy stored: " + targetEnemy.name);
+                // ✅ Prevent multiple triggers using cooldown
+                if (Time.time - lastTapTime < tapCooldown) return;
+                lastTapTime = Time.time;
 
-            stun.StunAllEnemies();
-            ActivateInvincibility();
+                // ✅ Prevent re-triggering before reset
+                if (hasTappedDialogue) return;
+                hasTappedDialogue = true;
 
-            hasTappedEnemy = true;
-            popupQuestion.ShowQuestionUI();
-        }
-        else
-        {
-            Debug.LogWarning("No enemy detected on tap.");
+                // Find the DialogueTrigger component on the wizard and trigger dialogue
+                DialogueTrigger wizzardDialogue = hitCollider.GetComponent<DialogueTrigger>();
+                if (wizzardDialogue != null)
+                {
+                    wizzardDialogue.TriggerDialogue();
+                }
+                else
+                {
+                    Debug.LogWarning("Wizzard clicked, but no DialogueTrigger found!");
+                }
+
+                // ✅ Reset flag after a short delay
+                StartCoroutine(ResetDialogueTap());
+            }
         }
     }
+
 
 
 
@@ -278,4 +298,12 @@ public class PlayerControls : MonoBehaviour
         Debug.Log("OVER");
         shield.SetActive(false);
     }
+
+    private IEnumerator ResetDialogueTap()
+    {
+        yield return new WaitForSeconds(tapCooldown);
+        hasTappedDialogue = false;
+    }
+    
+
 }

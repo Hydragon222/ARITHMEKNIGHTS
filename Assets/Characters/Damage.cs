@@ -98,7 +98,7 @@ public class Damage : MonoBehaviour
             {
                 Debug.Log("Player is invincible and takes no damage!");
             }
-            
+            AudioManager.instance.Play("SkeletonA");
             yield return new WaitForSeconds(0.4f);
         }
     }

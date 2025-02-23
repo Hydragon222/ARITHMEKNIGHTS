@@ -73,6 +73,8 @@ public class AudioManager : MonoBehaviour
 
         return s.source.isPlaying;
     }
+    private string currentLevelMusic;
+
     public void PlaySceneMusic(string sceneName)
     {
         string musicToPlay = "";
@@ -80,7 +82,7 @@ public class AudioManager : MonoBehaviour
         switch (sceneName)
         {
             case "MainMenu":
-            case "LevelSelection": // Ensure LevelSelection uses Menu music
+            case "LevelSelection":
                 musicToPlay = "Menu";
                 break;
             case "GameScene":
@@ -92,20 +94,26 @@ public class AudioManager : MonoBehaviour
             case "Level 2":
                 musicToPlay = "Level 2 Theme";
                 break;
+            case "Level 3":
+                musicToPlay = "Level 3 Theme";
+                break;
+            case "Level 4":
+                musicToPlay = "Level 4 Theme";
+                break;
         }
 
         if (!string.IsNullOrEmpty(musicToPlay))
         {
-            // Stop all sounds before playing new music
-            StopAll();
+            StopAll(); // Stop any music before playing new one
 
-            // Check if the music is already playing before playing it again
             if (!IsPlaying(musicToPlay))
             {
                 Play(musicToPlay);
+                currentLevelMusic = musicToPlay; // Store the music of the current level
             }
         }
     }
+
     public void StopAll()
     {
         foreach (var sound in sounds)
@@ -127,4 +135,65 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+    public void Pause(string soundName)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + soundName + " not found!");
+            return;
+        }
+        if (s.source.isPlaying)
+        {
+            s.source.Pause();
+        }
+    }
+    public void PauseLevelMusic()
+    {
+        if (!string.IsNullOrEmpty(currentLevelMusic))
+        {
+            Pause(currentLevelMusic);
+        }
+    }
+
+    public void Resume(string soundName)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + soundName + " not found!");
+            return;
+        }
+        if (!s.source.isPlaying)
+        {
+            s.source.UnPause();
+        }
+    }
+    public void PauseAll()
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound.source.isPlaying)
+            {
+                sound.source.Pause();
+            }
+        }
+    }
+    public void ResumeLevelMusic()
+    {
+        if (!string.IsNullOrEmpty(currentLevelMusic))
+        {
+            Resume(currentLevelMusic);
+        }
+    }
+
+    public void ResumeAll()
+    {
+        foreach (var sound in sounds)
+        {
+            sound.source.UnPause();
+        }
+    }
+
+
 }

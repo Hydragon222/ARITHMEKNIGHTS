@@ -11,6 +11,7 @@ public class PauseMenuController : MonoBehaviour
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(true); // Show Pause Menu
+            AudioManager.instance.PauseLevelMusic();
         }
         else
         {
@@ -24,6 +25,7 @@ public class PauseMenuController : MonoBehaviour
         {
             pauseMenuUI.SetActive(false); // Hide Pause Menu
             AudioManager.instance.Play("Clicking Sound");
+            AudioManager.instance.ResumeLevelMusic();
         }
     }
 
