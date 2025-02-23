@@ -464,6 +464,15 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Dialogue
+    clip: {fileID: 8300000, guid: bd38de754ae1df94c989800e93f84d83, type: 3}
+    volume: 0.313
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &154599397
 Transform:
   m_ObjectHideFlags: 0
