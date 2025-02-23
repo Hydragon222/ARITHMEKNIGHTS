@@ -94,6 +94,11 @@ public class PlayerControls : MonoBehaviour
             }
         }
         OnTap();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ShieldMode();
+        }
     }
 
     private void OnTap()

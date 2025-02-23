@@ -20,6 +20,14 @@ public class Heal : MonoBehaviour
         heal();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F)) 
+        {
+            heal();
+        }
+    }
+
     private void heal()
     {
         health1.health = health1.maxHealth;
