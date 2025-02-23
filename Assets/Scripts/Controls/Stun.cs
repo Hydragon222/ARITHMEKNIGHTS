@@ -15,6 +15,14 @@ public class Stun : MonoBehaviour
         button = GetComponent<Button>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            StunAllEnemies();
+        }
+    }
+
     public void OnButtonPressed()
     {
         button.interactable = false;
