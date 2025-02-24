@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public GameObject player;
     public GameObject controls;
+    private PlayerControls playerControls;
     [SerializeField] private Animator animator;
     public int maxHealth = 100;
     public int health;
@@ -17,6 +18,7 @@ public class Health : MonoBehaviour
         tr = player.GetComponent<Transform>();
         animator = GetComponent<Animator>();
         health = maxHealth;
+        playerControls = GetComponent<PlayerControls>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class Health : MonoBehaviour
         AudioManager.instance.StopAll();
         AudioManager.instance.Play("Death");
         sword.SetActive(false);
-        
+        playerControls.speed = 0;
 
     }
 }

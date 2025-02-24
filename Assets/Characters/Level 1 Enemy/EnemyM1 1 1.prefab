@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3860613077229906321}
-  speed: 2
-  followRange: 50
+  speed: 3
+  followRange: 100
   direction1: {x: 0, y: 0}
   wpnoffset: {x: -0.4, y: 0, z: 0}
   isStunned: 0

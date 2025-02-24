@@ -8,50 +8,59 @@ public class Stun : MonoBehaviour
 {
     public float stunDuration = 5f;
     private Button button;
-    
+    private bool canUseStun = true;
+
     void Start()
     {
-        
         button = GetComponent<Button>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && canUseStun)
         {
-            StunAllEnemies();
+            UseStun();
         }
     }
 
     public void OnButtonPressed()
     {
-        button.interactable = false;
-        StartCoroutine(CooldownCoroutine());
-        StunAllEnemies();
+        if (canUseStun)
+        {
+            UseStun();
+        }
     }
+
+    private void UseStun()
+    {
+        canUseStun = false;
+        if (button != null) button.interactable = false; // Disable button if it exists
+        StunAllEnemies();
+        StartCoroutine(CooldownCoroutine());
+    }
+
     private IEnumerator CooldownCoroutine()
     {
-        yield return new WaitForSeconds(15f); // 10 seconds cooldown
-        button.interactable = true; // Re-enable the button
+        yield return new WaitForSeconds(15f);
+        canUseStun = true;
+        if (button != null) button.interactable = true; // Re-enable button if it exists
     }
+
     public void StunAllEnemies()
     {
-        // Find all enemies with the tag "Enemy"
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         Debug.Log("stun");
-       
+
         foreach (GameObject enemy in enemies)
         {
             EnemybehaviorM1 enemyBehavior = enemy.GetComponent<EnemybehaviorM1>();
-            Damage enemyDamage = enemy.GetComponent<Damage>();
-            SpriteRenderer enemySprite = enemy.GetComponent<SpriteRenderer>();
-            
             if (enemyBehavior != null)
             {
                 enemyBehavior.Stun(stunDuration);
             }
         }
     }
+
     public void UnstunAllEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -62,9 +71,7 @@ public class Stun : MonoBehaviour
             EnemybehaviorM1 enemyBehavior = enemy.GetComponent<EnemybehaviorM1>();
             if (enemyBehavior != null)
             {
-                // Reset the enemy's state to normal
                 enemyBehavior.UnStun();
-                // Make sure this method exists in EnemybehaviorM1
             }
         }
     }
