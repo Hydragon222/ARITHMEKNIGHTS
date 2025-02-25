@@ -36,6 +36,7 @@ public class Heal : MonoBehaviour
         canUseHeal = false;
         if (button != null) button.interactable = false; // Disable button if it exists
         health1.health = health1.maxHealth;
+        AudioManager.instance.Play("Heal");
         StartCoroutine(CooldownCoroutine());
     }
 

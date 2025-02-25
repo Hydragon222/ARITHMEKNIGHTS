@@ -36,6 +36,7 @@ public class Stun : MonoBehaviour
         canUseStun = false;
         if (button != null) button.interactable = false; // Disable button if it exists
         StunAllEnemies();
+        AudioManager.instance.Play("Stun");
         StartCoroutine(CooldownCoroutine());
     }
 

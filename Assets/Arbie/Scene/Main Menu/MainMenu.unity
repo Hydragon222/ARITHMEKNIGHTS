@@ -283,12 +283,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134928081}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 537.0841, y: 273.8209, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -422.9159, y: -266.1791, z: -10}
   m_LocalScale: {x: 10.503983, y: 6.246618, z: 2.7562275}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1315378222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &134928085
 MonoBehaviour:
@@ -384,7 +384,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Slash
-    clip: {fileID: 8300000, guid: f267e9be2dedf2c4ab5967268810745a, type: 3}
+    clip: {fileID: 8300000, guid: 0bb5aefbe09f15f4ba41fa6233933895, type: 3}
     volume: 0.55
     volumeVariance: 0
     pitch: 1
@@ -467,6 +467,33 @@ MonoBehaviour:
   - name: Dialogue
     clip: {fileID: 8300000, guid: bd38de754ae1df94c989800e93f84d83, type: 3}
     volume: 0.313
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 188c6c684d4510c45b796e1d85fb7d44, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Stun
+    clip: {fileID: 8300000, guid: 86cf5eb16dc2c124cb2e5943814c8e73, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Question
+    clip: {fileID: 8300000, guid: 28b11b4517c46d84e8c7a3c3ac0fc7dd, type: 3}
+    volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -1587,6 +1614,7 @@ RectTransform:
   - {fileID: 1480312859}
   - {fileID: 1032808676}
   - {fileID: 1746715259}
+  - {fileID: 134928084}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2646,6 +2674,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 154599397}
-  - {fileID: 134928084}
   - {fileID: 1315378222}
   - {fileID: 2035491679}

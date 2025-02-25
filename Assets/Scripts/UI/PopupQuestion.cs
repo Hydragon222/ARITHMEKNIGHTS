@@ -144,6 +144,7 @@ public class PopupQuestion : MonoBehaviour
         playerControls.stun.UnstunAllEnemies();
         playerControls.targetEnemy = null;
         playerControls.hasTappedEnemy = false;
+        AudioManager.instance.Play("Wrong");
     }
 }
 

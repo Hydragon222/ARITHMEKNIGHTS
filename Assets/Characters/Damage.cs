@@ -76,17 +76,20 @@ public class Damage : MonoBehaviour
             if (!playerControls.isInvincible && !enemybehaviorm1.isStunned)
             {
                 health.TakeDamage(damage);
+                AudioManager.instance.Play("Hit");
                 player.color = Color.red;
                 // Rotate the weapon based on the enemy's facing direction
                 if (spriteRenderer.flipX)
                 {
                     // Counter-clockwise when facing left
                     weaponTransform.rotation = Quaternion.Euler(0, 0, 65);
+                    AudioManager.instance.Play("Axe");
                 }
                 else
                 {
                     // Clockwise when facing right
                     weaponTransform.rotation = Quaternion.Euler(0, 0, -65);
+                    AudioManager.instance.Play("Axe");
                 }
 
                 yield return new WaitForSeconds(0.2f); // Small delay to make the rotation noticeable
