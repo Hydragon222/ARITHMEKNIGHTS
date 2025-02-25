@@ -10,6 +10,7 @@ public class Shield : MonoBehaviour
     private Button button;
     private PlayerControls playerControls;
     private bool canUseShield = true;
+    [SerializeField] private shieldCooldown shieldcooldown;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class Shield : MonoBehaviour
         playerControls.ShieldMode();
         AudioManager.instance.Play("Shield");
         StartCoroutine(CooldownCoroutine());
+        shieldcooldown.StartCooldown();
     }
 
     private IEnumerator CooldownCoroutine()

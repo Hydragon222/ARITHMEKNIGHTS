@@ -8,6 +8,7 @@ public class Heal : MonoBehaviour
 {
     private Button button;
     [SerializeField] private Health health1;
+    [SerializeField] private healCooldown healcooldown;
     private bool canUseHeal = true;
 
     void Start()
@@ -38,6 +39,7 @@ public class Heal : MonoBehaviour
         health1.health = health1.maxHealth;
         AudioManager.instance.Play("Heal");
         StartCoroutine(CooldownCoroutine());
+        healcooldown.StartCooldown();
     }
 
     private IEnumerator CooldownCoroutine()

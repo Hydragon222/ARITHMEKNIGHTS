@@ -34,6 +34,7 @@ public class PopupQuestion : MonoBehaviour
         else if (divisionMode == true)
         {
             correctAnswer = n1 / n2;
+            correctAnswer = Mathf.Round(correctAnswer * 10f) / 10f;
         }
 
         if (questionText != null)

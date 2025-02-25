@@ -24,7 +24,7 @@ public class mobileUI : MonoBehaviour
         }
     }
 
-    private bool IsRunningOnPC()
+    public bool IsRunningOnPC()
     {
         // Returns true if running on Windows, Mac, or Linux
         return Application.platform == RuntimePlatform.WindowsPlayer ||
