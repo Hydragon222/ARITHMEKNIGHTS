@@ -100,10 +100,6 @@ public class PlayerControls : MonoBehaviour
         }
         OnTap();
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ShieldMode();
-        }
     }
 
     private void OnTap()
@@ -309,6 +305,4 @@ public class PlayerControls : MonoBehaviour
         yield return new WaitForSeconds(tapCooldown);
         hasTappedDialogue = false;
     }
-    
-
 }

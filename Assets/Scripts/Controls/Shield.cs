@@ -4,26 +4,48 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
+
 public class Shield : MonoBehaviour
 {
     private Button button;
+    private PlayerControls playerControls;
+    private bool canUseShield = true;
 
     void Start()
     {
         button = GetComponent<Button>();
+        playerControls = FindObjectOfType<PlayerControls>(); // Finds PlayerControls automatically
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && canUseShield)
+        {
+            UseShield();
+        }
     }
 
     public void OnButtonPressed()
-    { 
-        // Disable the button and start the cooldown coroutine
-        button.interactable = false;
-        StartCoroutine(CooldownCoroutine());
+    {
+        if (canUseShield)
+        {
+            UseShield();
+        }
+    }
+
+    private void UseShield()
+    {
+        canUseShield = false;
+        if (button != null) button.interactable = false; // Disable button if it exists
+        playerControls.ShieldMode();
         AudioManager.instance.Play("Shield");
+        StartCoroutine(CooldownCoroutine());
     }
 
     private IEnumerator CooldownCoroutine()
     {
-        yield return new WaitForSeconds(10f); // 10 seconds cooldown
-        button.interactable = true; // Re-enable the button
+        yield return new WaitForSeconds(10f);
+        canUseShield = true;
+        if (button != null) button.interactable = true; // Re-enable button if it exists
     }
 }
