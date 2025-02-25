@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Arbie/Scene/Level Menu/LevelSelection.unity
     guid: a3dc5879917d27b4eb8e26ed52e3cbf9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 1.unity
     guid: 942d024b905861745b3dcce4997368eb
   - enabled: 1

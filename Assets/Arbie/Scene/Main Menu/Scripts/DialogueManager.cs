@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
 using UnityEngine.UI;  // ✅ Required for UI buttons
 
-using UnityEngine.UI;  // ✅ Required for UI buttons
 
 public class DialogueManager : MonoBehaviour
 {

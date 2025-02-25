@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class mobileUI : MonoBehaviour
 {
-    
-[SerializeField] private GameObject mobileUICanvas; // Assign your mobile UI Canvas in Inspector
+    [SerializeField] private GameObject pcUICanvas;
+    [SerializeField] private GameObject mobileUICanvas; // Assign your mobile UI Canvas in Inspector
 
     private void Start()
     {
@@ -13,12 +13,14 @@ public class mobileUI : MonoBehaviour
         if (IsRunningOnPC())
         {
             Debug.Log("PC detected – Hiding Mobile UI");
+            pcUICanvas.SetActive(true);
             mobileUICanvas.SetActive(false); // Disable Mobile UI on PC
         }
         else
         {
             Debug.Log("Mobile detected – Showing Mobile UI");
             mobileUICanvas.SetActive(true); // Keep Mobile UI on Mobile
+            pcUICanvas.SetActive(false);
         }
     }
 
