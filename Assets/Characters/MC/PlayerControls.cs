@@ -228,6 +228,7 @@ public class PlayerControls : MonoBehaviour
         TrailRenderer trail = slashEffect.GetComponent<TrailRenderer>();
         slashEffect.transform.SetParent(transform);
         AudioManager.instance.Play("Dash");
+        AudioManager.instance.Play("Dash");
         AudioManager.instance.Play("Slash");
 
         float dashTime = 0f;
