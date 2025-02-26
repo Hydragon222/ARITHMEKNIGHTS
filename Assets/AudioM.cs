@@ -100,6 +100,9 @@ public class AudioManager : MonoBehaviour
             case "Level 4":
                 musicToPlay = "Level 4 Theme";
                 break;
+            case "Credits":
+                musicToPlay = "Menu";
+                break;
         }
 
         if (!string.IsNullOrEmpty(musicToPlay))
