@@ -9,6 +9,7 @@ public class Stun : MonoBehaviour
     public float stunDuration = 5f;
     private Button button;
     private bool canUseStun = true;
+    [SerializeField] private stunCooldown stuncooldown;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class Stun : MonoBehaviour
         StunAllEnemies();
         AudioManager.instance.Play("Stun");
         StartCoroutine(CooldownCoroutine());
+        stuncooldown.StartCooldown();
     }
 
     private IEnumerator CooldownCoroutine()

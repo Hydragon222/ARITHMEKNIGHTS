@@ -99,12 +99,17 @@ public class EnemybehaviorM1 : MonoBehaviour
                 if (distance <= followRange)
                 {
                     transform.position = Vector2.MoveTowards(this.transform.position, mc.transform.position, speed * Time.deltaTime);
-                    animator.SetTrigger("Run");
+
+                    if (isStunned)
+                    {
+                        animator.SetTrigger("Stand");
+                    }
+                    else 
+                    {
+                        animator.SetTrigger("Run");
+                    }
                 }
-                else
-                {
-                    animator.SetTrigger("Stand");
-                }
+               
 
                 if (direction.x < 0)
                 {
