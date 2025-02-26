@@ -66,13 +66,24 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
 
         AudioManager.instance.Play("Dialogue");  // ✅ Call your AudioManager to play SFX
 
         if (sentences.Count == 0)
         {
             nextButton.interactable = false;
+        }
+
+        IEnumerator TypeSentence (string sentence)
+        {
+            dialogueText.text = "";
+            foreach (char letter in sentence.ToCharArray())
+            {
+                dialogueText.text += letter;
+                yield return null;
+            }
         }
     }
 

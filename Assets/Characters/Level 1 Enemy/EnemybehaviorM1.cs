@@ -77,6 +77,7 @@ public class EnemybehaviorM1 : MonoBehaviour
         if (dScript != null)
             originalDamage = dScript.damage;
 
+
     }
     void Update()
     {
