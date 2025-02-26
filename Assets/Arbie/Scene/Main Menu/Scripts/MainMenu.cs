@@ -45,4 +45,16 @@ public class MainMenuController : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
+
+    public void CreditsMenu()
+    {
+        Debug.Log("Credits Menu Click");
+        SceneManager.LoadScene("CreditsMenu");
+        AudioManager.instance.Play("Clicking Sound");
+    }
+
+
+
+
+
 }
