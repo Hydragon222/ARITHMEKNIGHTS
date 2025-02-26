@@ -24,7 +24,12 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("SettingsScene");
         AudioManager.instance.Play("Clicking Sound");
     }
-
+    public void OpenCredits()
+    {
+        Debug.Log("Credits Scene Click");
+        SceneManager.LoadScene("CreditsScene");
+        AudioManager.instance.Play("Clicking Sound");
+    }
     // Method to quit the game
     public void QuitGame()
     {
@@ -32,6 +37,8 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
         AudioManager.instance.Play("Clicking Sound");
         AudioManager.instance.Stop("Menu");
+
+
 
         // This ensures quitting works in the Unity editor
 #if UNITY_EDITOR
