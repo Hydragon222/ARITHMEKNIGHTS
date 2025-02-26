@@ -7,14 +7,17 @@ using UnityEngine.UI;  // ✅ Required for UI buttons
 
 public class DialogueManager : MonoBehaviour
 {
+    public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
+
+    public Animator animator;
     public GameObject dialogueBox;
     public Button nextButton;  // ✅ Reference to the "Next" button
 
     private Queue<string> sentences;
     private bool isDialogueActive = false;
 
-void Start()
+    void Start()
     {
         Debug.Log("DialogueManager Initialized");
         sentences = new Queue<string>();
@@ -26,6 +29,7 @@ void Start()
     }
     public void StartDialogue(Dialogue dialogue)
     {
+        animator.SetBool("IsOpen", true);
         if (isDialogueActive)
         {
             Debug.Log("Dialogue already in progress!");
@@ -33,7 +37,7 @@ void Start()
         }
 
         isDialogueActive = true;
-        Debug.Log("Starting conversation with " + dialogue.name);
+        nameText.text = dialogue.name;
 
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
@@ -64,12 +68,13 @@ void Start()
         string sentence = sentences.Dequeue();
         dialogueText.text = sentence;
 
+        AudioManager.instance.Play("Dialogue");  // ✅ Call your AudioManager to play SFX
+
         if (sentences.Count == 0)
         {
-            nextButton.interactable = false;  // ✅ Disable button when last sentence is shown
+            nextButton.interactable = false;
         }
     }
-
 
 
 
@@ -77,9 +82,7 @@ void Start()
     {
         Debug.Log("End of conversation.");
         isDialogueActive = false;
-
-        dialogueBox.SetActive(false);  // ❌ Hide the dialogue panel
-        nextButton.gameObject.SetActive(false);  // ❌ Hide "Next" button
+        animator.SetBool("IsOpen", false);
     }
 
 

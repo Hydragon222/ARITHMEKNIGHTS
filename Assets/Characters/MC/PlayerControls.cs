@@ -167,7 +167,9 @@ public class PlayerControls : MonoBehaviour
                 ActivateInvincibility();
 
                 hasTappedEnemy = true;
+                AudioManager.instance.Play("Question");
                 popupQuestion.ShowQuestionUI();
+                
             }
             else if (hitCollider.CompareTag("Wizzard")) // If tapped on the wizard
             {
@@ -225,6 +227,7 @@ public class PlayerControls : MonoBehaviour
         GameObject slashEffect = Instantiate(slashPrefab, transform.position, Quaternion.identity);
         TrailRenderer trail = slashEffect.GetComponent<TrailRenderer>();
         slashEffect.transform.SetParent(transform);
+        AudioManager.instance.Play("Dash");
         AudioManager.instance.Play("Slash");
 
         float dashTime = 0f;
