@@ -12,25 +12,29 @@ public class Health : MonoBehaviour
     public int health;
     private Transform tr;
     [SerializeField] private GameObject sword;
-    // Start is called before the first frame update
+
+    private GameOverManager gameOverManager;
+
     void Start()
     {
         tr = player.GetComponent<Transform>();
         animator = GetComponent<Animator>();
         health = maxHealth;
         playerControls = GetComponent<PlayerControls>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-    
+        // Find the GameOverManager in the scene
+        gameOverManager = FindObjectOfType<GameOverManager>();
+
+        if (gameOverManager == null)
+        {
+            Debug.LogError("GameOverManager not found in the scene!");
+        }
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
-        if(health == 0)
+        if (health <= 0)
         {
             Dead();
             Destroy(controls);
@@ -45,5 +49,13 @@ public class Health : MonoBehaviour
         sword.SetActive(false);
         playerControls.speed = 0;
 
+        if (gameOverManager != null)
+        {
+            gameOverManager.ShowGameOver(); // Call Game Over Screen
+        }
+        else
+        {
+            Debug.LogError("GameOverManager reference is missing!");
+        }
     }
 }

@@ -59,13 +59,5 @@ public class LevelManager : MonoBehaviour
             AudioManager.instance.Play("Menu");
         }
     }
-    public void BackToLevelSelection()
-    {
-        Debug.Log("Returning to Level Selection...");
-        SceneManager.LoadScene("LevelSelection");
-        AudioManager.instance.Stop("Practice Level Theme");
-        AudioManager.instance.Stop("Level 1 Theme");
-        AudioManager.instance.Stop("Level 2 Theme");
-    }
-
+    
 }
