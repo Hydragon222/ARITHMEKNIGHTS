@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000019073, y: -0.000005722}
-  m_SizeDelta: {x: 2146.4434, y: 1265.758}
+  m_AnchoredPosition: {x: -30.183983, y: 31.381714}
+  m_SizeDelta: {x: 2835.4219, y: 1636.179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75563074
 MonoBehaviour:
@@ -1437,8 +1437,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: -33}
-  m_SizeDelta: {x: 1425.8372, y: 778.001}
+  m_AnchoredPosition: {x: -31.3925, y: 30.1802}
+  m_SizeDelta: {x: 1982.7749, y: 1140.3604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127526107
 MonoBehaviour:
@@ -1549,13 +1549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-
-
-
-
-    About us '
+  m_text: Game Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6b28c314555fbd488128039d82d47b1, type: 2}
   m_sharedMaterial: {fileID: -2022341101353618345, guid: e6b28c314555fbd488128039d82d47b1, type: 2}
@@ -1582,8 +1576,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2830,8 +2824,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 869, y: -339}
-  m_SizeDelta: {x: 145.4034, y: 136.41}
+  m_AnchoredPosition: {x: 839, y: -493}
+  m_SizeDelta: {x: 197.0849, y: 52.2438}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802354816
 MonoBehaviour:
@@ -2909,7 +2903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 824f596d0d22c58408d089dd5593c2b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39448ba75cfca0444b05ac9d348ec604, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
