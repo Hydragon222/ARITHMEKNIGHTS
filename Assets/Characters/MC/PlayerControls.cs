@@ -18,6 +18,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
     [SerializeField] private Animator animator;
     public PopupQuestion popupQuestion;
+    public GameObject victorypanel;
+    [SerializeField] private Win win;
 
     private Transform mcSwordTransform;
     private SpriteRenderer spriteRenderer;
@@ -39,10 +41,14 @@ public class PlayerControls : MonoBehaviour
     private float tapCooldown = 0.3f;  // Time between taps
     private float lastTapTime = 0f;
 
+    public float kills;
+    public float killsReqd;
 
+    [SerializeField] private EnemyCounter enemyCounter;
 
     private void Start()
     {
+        kills = 0;
         targetEnemy = GameObject.FindWithTag("Enemy")?.transform;
         if (targetEnemy != null)
         {
@@ -60,6 +66,8 @@ public class PlayerControls : MonoBehaviour
 
         currentDirection = moveDirection;
         isDashing = false;
+
+        victorypanel.SetActive(false);
     }
 
     private void Update()
@@ -99,7 +107,6 @@ public class PlayerControls : MonoBehaviour
             }
         }
         OnTap();
-
     }
 
     private void OnTap()
@@ -200,9 +207,6 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-
-
-
     public void Correct()
     {
         if (targetEnemy == null)
@@ -217,7 +221,20 @@ public class PlayerControls : MonoBehaviour
         {
             // Trigger GetRekt() only for the tapped enemy
             enemyBehavior.GetRekt();
+            kills += 1;
+            enemyCounter.Score();
+            if (kills == killsReqd)
+            {
+                StartCoroutine(Victory());
+            }
         }
+    }
+
+    private IEnumerator Victory()
+    {
+        yield return new WaitForSeconds(0.5f);
+        victorypanel.SetActive(true);
+        win.Winned();
     }
 
     private IEnumerator DashToPosition(Vector3 targetPosition)

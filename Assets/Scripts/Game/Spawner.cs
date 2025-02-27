@@ -14,6 +14,10 @@ public class Spawner : MonoBehaviour
 
     private GameObject playerObject;
 
+    [SerializeField] private int maxEnemies; // Limit in Inspector
+    private List<EnemybehaviorM1> allEnemies = new List<EnemybehaviorM1>();
+
+
     void Awake()
     {
         playerObject = GameObject.FindWithTag("Player");
@@ -26,6 +30,8 @@ public class Spawner : MonoBehaviour
 
     private void OnGet(EnemybehaviorM1 enemy)
     {
+        if (enemy == null) return;
+
         enemy.gameObject.SetActive(true);
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         enemy.transform.position = randomSpawnPoint.position;
@@ -43,16 +49,25 @@ public class Spawner : MonoBehaviour
 
     private EnemybehaviorM1 CreateEnemy()
     {
+        if (allEnemies.Count >= maxEnemies)
+        {
+            return null; // Stop creating new instances
+        }
+
         EnemybehaviorM1 enemy = Instantiate(enemyPrefab);
         enemy.SetPool(enemyPool);
+        allEnemies.Add(enemy); // Keep track of created enemies
         return enemy;
     }
     void Update()
     {
         if (Time.time > timeSinceLastSpawn)
         {
-            enemyPool.Get();
-            timeSinceLastSpawn = Time.time + timeBetweenSpawns;
+        EnemybehaviorM1 enemy = enemyPool.Get();
+                if (enemy != null) // Ensure we don't try to use null enemies
+                {
+                    timeSinceLastSpawn = Time.time + timeBetweenSpawns;
+                }
         }
     }
 }

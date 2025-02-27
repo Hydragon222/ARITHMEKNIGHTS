@@ -88,48 +88,53 @@ public class EnemybehaviorM1 : MonoBehaviour
             {
                 UnStun();
             }
+
+            // Prevent running while stunned
+            animator.ResetTrigger("Run");
+            animator.SetTrigger("Stand");
+            rb.velocity = Vector2.zero; // Stop movement
+            return; // Stop further processing
         }
-        else
+
+        if (mc != null)
         {
-            if (mc != null)
+            distance = Vector2.Distance(transform.position, mc.transform.position);
+            Vector2 direction = mc.transform.position - transform.position;
+
+            if (distance <= followRange)
             {
-                distance = Vector2.Distance(transform.position, mc.transform.position);
-                Vector2 direction = mc.transform.position - transform.position;
+                // 💡 Ensure enemy STARTS running immediately
+                animator.ResetTrigger("Stand"); // Remove Stand state immediately
+                animator.SetTrigger("Run"); // Ensure Run animation starts
 
-                if (distance <= followRange)
-                {
-                    transform.position = Vector2.MoveTowards(this.transform.position, mc.transform.position, speed * Time.deltaTime);
-
-                    if (isStunned)
-                    {
-                        animator.SetTrigger("Stand");
-                    }
-                    else 
-                    {
-                        animator.SetTrigger("Run");
-                    }
-                }
-               
-
-                if (direction.x < 0)
-                {
-                    spriteRenderer.flipX = true;
-                    childSpriteRenderer.flipX = true;
-                    childTransform.localPosition = new Vector3(-wpnoffset.x, wpnoffset.y, wpnoffset.z);
-                }
-                else if (direction.x > 0)
-                {
-                    spriteRenderer.flipX = false;
-                    childSpriteRenderer.flipX = false;
-                    childTransform.localPosition = wpnoffset;
-                }
+                transform.position = Vector2.MoveTowards(this.transform.position, mc.transform.position, speed * Time.deltaTime);
             }
             else
             {
-                Debug.LogWarning("No player assigned to follow!");
+                animator.ResetTrigger("Run"); // Remove Run state
+                animator.SetTrigger("Stand"); // Set Stand animation
+            }
+
+            if (direction.x < 0)
+            {
+                spriteRenderer.flipX = true;
+                childSpriteRenderer.flipX = true;
+                childTransform.localPosition = new Vector3(-wpnoffset.x, wpnoffset.y, wpnoffset.z);
+            }
+            else if (direction.x > 0)
+            {
+                spriteRenderer.flipX = false;
+                childSpriteRenderer.flipX = false;
+                childTransform.localPosition = wpnoffset;
             }
         }
+        else
+        {
+            Debug.LogWarning("No player assigned to follow!");
+        }
     }
+
+
 
     public void Stun(float duration)
     {
@@ -158,6 +163,11 @@ public class EnemybehaviorM1 : MonoBehaviour
         childSpriteRenderer.color = Color.white;
         speed = originalSpeed; // Restore the original speed
         dScript.damage = originalDamage;
+        if (Vector2.Distance(transform.position, mc.transform.position) <= followRange)
+        {
+            animator.ResetTrigger("Stand");
+            animator.SetTrigger("Run"); // Start running instantly
+        }
     }
 
     //void OnMouseDown()
