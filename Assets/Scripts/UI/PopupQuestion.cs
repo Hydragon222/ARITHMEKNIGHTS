@@ -16,9 +16,12 @@ public class PopupQuestion : MonoBehaviour
     public TMP_Text[] answerTexts; // Texts for the buttons
 
     public bool divisionMode;
-    public float n2;
-    private float n1, correctAnswer;
+    public bool inverseMode;
+    public int n2;
+    private int n1;
+    private float correctAnswer;
     public int limit; // Ensure a limit is set
+    private int inverser;
 
     private void Start()
     { 
@@ -26,39 +29,62 @@ public class PopupQuestion : MonoBehaviour
     }
     public void GenerateQuestion()
     {
-        n1 = Random.Range(1, 10);
-        if (divisionMode == false)
+        if (!divisionMode) // Multiplication Mode
         {
-            correctAnswer = n1 * n2;
+            if (inverseMode)
+            {
+                n1 = Random.Range(1, 10);
+                n2 = Random.Range(1, 10);
+                inverser = n1 * n2;
+                correctAnswer = inverser / n1;
+            }
+            else
+            {
+                n1 = Random.Range(1, 10);
+                correctAnswer = n1 * n2;
+            }
         }
-        else if (divisionMode == true)
+        else // **Division Mode (Ensure Whole Number Answer)**
         {
-            correctAnswer = n1 / n2;
-            correctAnswer = Mathf.Round(correctAnswer * 10f) / 10f;
+            if (inverseMode)
+            {
+                n2 = Random.Range(1, 10);
+                int multiplier = Random.Range(1, 10); // Random whole number result
+                n1 = multiplier * n2; // Ensure n1 is a clean multiple of n2
+                inverser = n1 / n2; // Exact division
+                correctAnswer = n2 * inverser;
+            }
+            else
+            {
+                int multiplier = Random.Range(1, 10); // Random whole number result
+                n1 = multiplier * n2; // Ensure n1 is a clean multiple of n2
+                correctAnswer = (float)n1 / n2; // Exact division
+            }
         }
 
         if (questionText != null)
         {
-            if (divisionMode == false)
+            if (!inverseMode)
             {
-            questionText.text = $"{n1} × {n2}?";
-            } else if (divisionMode == true)
+                questionText.text = divisionMode ? $"{n1} ÷ {n2}" : $"{n1} × {n2}";
+            } 
+            else
             {
-                questionText.text = $"{n1} ÷ {n2}?";
+                questionText.text = divisionMode ? $"? ÷ {n2} = {inverser}" : $"{n1} × ? = {inverser}";
             }
 
         }
 
-        // Generate wrong answers
+        // Generate wrong answers (but make sure they are not correct)
         float wrongAnswer1, wrongAnswer2;
         do
         {
-            wrongAnswer1 = n1 * Random.Range(1, limit);
+            wrongAnswer1 = correctAnswer + Random.Range(1, limit);
         } while (wrongAnswer1 == correctAnswer);
 
         do
         {
-            wrongAnswer2 = n2 * Random.Range(1, limit);
+            wrongAnswer2 = Random.Range(1, limit);
         } while (wrongAnswer2 == correctAnswer || wrongAnswer2 == wrongAnswer1);
 
         // Shuffle answers
@@ -68,8 +94,8 @@ public class PopupQuestion : MonoBehaviour
         // Assign answers to buttons
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            answerTexts[i].text = answerOptions[i].ToString();
-            answerButtons[i].onClick.RemoveAllListeners(); // Clear old listeners
+            answerTexts[i].text = answerOptions[i].ToString(); // Display correct or wrong answer
+            answerButtons[i].onClick.RemoveAllListeners();
 
             if (Mathf.Approximately(answerOptions[i], correctAnswer))
             {
@@ -110,14 +136,8 @@ public class PopupQuestion : MonoBehaviour
 
     public IEnumerator CloseQuestionUIAfterDelay(float delay)
     {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < delay)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null; // Wait for the next frame
-        }
-        questionUIPanel.SetActive(false); // Hide the question UI
+        yield return new WaitForSeconds(delay);
+        questionUIPanel.SetActive(false);
         playerControls.targetEnemy = null;
         playerControls.hasTappedEnemy = false;
     }
