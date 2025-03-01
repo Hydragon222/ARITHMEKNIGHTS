@@ -10,7 +10,6 @@ using UnityEngine.UIElements;
 
 public class PlayerControls : MonoBehaviour
 {
-    public Stun stun;
     [SerializeField] private GameObject shield;
     [SerializeField] private GameObject slashPrefab;
     [SerializeField] private GameObject curvedSlashPrefab;
@@ -19,7 +18,11 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private Animator animator;
     public PopupQuestion popupQuestion;
     public GameObject victorypanel;
+
+    public Stun stun;
     [SerializeField] private Win win;
+    [SerializeField] private EnemyCounter enemyCounter;
+    [SerializeField] private mobileUI mobileui;
 
     private Transform mcSwordTransform;
     private SpriteRenderer spriteRenderer;
@@ -27,24 +30,23 @@ public class PlayerControls : MonoBehaviour
     private RaycastHit2D hit;
     private GameObject lastTappedEnemy;
     public Transform targetEnemy;
-    public bool hasTappedEnemy = false;
 
+    public bool hasTappedEnemy = false;
     public bool isInvincible = false;
     private bool isDashing = false;
+    private bool hasTappedDialogue = false;
+
     public float speed;
     public float dashSpeed = 30f; // Dash speed
     public float dashDuration = 0.2f; // Dash duration
     public float XY;
     public float YX;
     public Vector2 currentDirection;
-    private bool hasTappedDialogue = false;
     private float tapCooldown = 0.3f;  // Time between taps
     private float lastTapTime = 0f;
 
     public float kills;
     public float killsReqd;
-
-    [SerializeField] private EnemyCounter enemyCounter;
 
     private void Start()
     {
@@ -107,6 +109,19 @@ public class PlayerControls : MonoBehaviour
             }
         }
         OnTap();
+
+        if (mobileui.IsRunningOnPC()) 
+        {
+            RotateSword();
+        }
+    }
+    private void RotateSword()
+    {
+        Vector2 direction = Camera.main.ScreenToWorldPoint
+            (Input.mousePosition) - mcSwordTransform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        mcSwordTransform.rotation = rotation;
     }
 
     private void OnTap()
@@ -161,6 +176,14 @@ public class PlayerControls : MonoBehaviour
         {
             if (hitCollider.CompareTag("Enemy"))
             {
+                EnemybehaviorM1 enemyBehavior = hitCollider.GetComponent<EnemybehaviorM1>();
+                
+                if (enemyBehavior != null && enemyBehavior.isDying)
+                {
+                    Debug.Log("Tapped a dying enemy, ignoring.");
+                    return; // Ignore if the enemy is dying
+                }
+
                 if (hasTappedEnemy)
                 {
                     Debug.Log("Enemy already tapped, ignoring further taps.");
@@ -237,7 +260,7 @@ public class PlayerControls : MonoBehaviour
         win.Winned();
     }
 
-    private IEnumerator DashToPosition(Vector3 targetPosition)
+    private IEnumerator DashToPosition(Vector3 targetPosition) 
     {
         isDashing = true;
 

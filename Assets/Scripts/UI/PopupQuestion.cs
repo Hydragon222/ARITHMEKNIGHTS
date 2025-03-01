@@ -141,7 +141,7 @@ public class PopupQuestion : MonoBehaviour
         playerControls.targetEnemy = null;
         playerControls.hasTappedEnemy = false;
     }
-    // Called when the correct answer is clicked
+    
     public void CorrectAnswer()
     {
         Debug.Log("Answer tapped, checking correctness...");
@@ -152,7 +152,6 @@ public class PopupQuestion : MonoBehaviour
             return;
         }
 
-        Debug.Log("Correct answer! Proceeding with dash...");
         playerControls.Correct();
         questionUIPanel.SetActive(false);
     }
@@ -160,7 +159,6 @@ public class PopupQuestion : MonoBehaviour
     // Called when a wrong answer is clicked
     private void WrongAnswer()
     {
-        Debug.Log("Wrong Answer! Try Again.");
         questionUIPanel.SetActive(false);
         playerControls.stun.UnstunAllEnemies();
         playerControls.targetEnemy = null;

@@ -10,17 +10,6 @@ public class Win : MonoBehaviour
     
     private float victoryTime;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Winned()
     {
         Time.timeScale = 0f;

@@ -22,6 +22,7 @@ public class EnemybehaviorM1 : MonoBehaviour
     public Vector3 wpnoffset;
 
     public bool isStunned = false;
+    public bool isDying = false;
     private float stunDuration;
     private float stunTimer;
     private float originalSpeed;
@@ -50,7 +51,8 @@ public class EnemybehaviorM1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        child = transform.GetChild(0).gameObject;
+
         dScript = GetComponent<Damage>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -170,29 +172,15 @@ public class EnemybehaviorM1 : MonoBehaviour
         }
     }
 
-    //void OnMouseDown()
-    // {
-    // This function is called when the enemy is clicked
-    //Debug.Log("Enemy clicked!");
-    // Add your desired action here
-    //if (chargeCounter.counter == equationGenerator.expectedAnswer)
-    //{
-    //Debug.Log("CORRECT");
-    //equationGenerator.equationText.text = equationGenerator.expectedAnswer.ToString();
-    //animator.SetTrigger("Death");
-    //speed = 0;
-    //}
-    //else
-    //{
-    //Debug.Log("WRONG");
-    // }
-    //}
     public void GetRekt()
     {
+        isDying = true;
+
         animator.SetTrigger("Death");
         speed = 0;
         dScript.damage = 0;
 
+        child.SetActive(false);
         childSpriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
         StartCoroutine(WaitAndRelease());
     }
@@ -203,10 +191,11 @@ public class EnemybehaviorM1 : MonoBehaviour
         dScript.damage = 0;
         // Wait for 4 seconds before releasing
         yield return new WaitForSeconds(2f);
+        child.SetActive(true);
         childSpriteRenderer.color = Color.white;
         spriteRenderer.color = Color.white;
         // Release the enemy back into the pool
         enemyPool.Release(this);
-
+        isDying = false;
     }
 }
