@@ -141903,8 +141903,8 @@ MonoBehaviour:
   - {fileID: 438324052}
   - {fileID: 614833674}
   - {fileID: 817196147}
-  divisionMode: 0
-  inverseMode: 0
+  divisionMode: 1
+  inverseMode: 1
   n2: 2
   limit: 20
 --- !u!114 &2058856287

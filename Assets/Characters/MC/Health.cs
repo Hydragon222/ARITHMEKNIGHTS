@@ -5,7 +5,6 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public GameObject player;
-    public GameObject controls;
     private PlayerControls playerControls;
     [SerializeField] private Animator animator;
     public int maxHealth = 100;
@@ -37,7 +36,6 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             Dead();
-            Destroy(controls);
         }
     }
 

@@ -2980,9 +2980,9 @@ MonoBehaviour:
   - {fileID: 1061976736}
   - {fileID: 1824581112}
   divisionMode: 0
-  inverseMode: 0
-  n2: 2
-  limit: 20
+  inverseMode: 1
+  n2: 10
+  limit: 10
 --- !u!114 &370264432
 MonoBehaviour:
   m_ObjectHideFlags: 0

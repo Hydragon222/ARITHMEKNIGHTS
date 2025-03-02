@@ -181,6 +181,8 @@ public class EnemybehaviorM1 : MonoBehaviour
         dScript.damage = 0;
 
         child.SetActive(false);
+        rb.simulated = false;
+        
         childSpriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
         StartCoroutine(WaitAndRelease());
     }
@@ -192,6 +194,8 @@ public class EnemybehaviorM1 : MonoBehaviour
         // Wait for 4 seconds before releasing
         yield return new WaitForSeconds(2f);
         child.SetActive(true);
+        
+        rb.simulated = true;
         childSpriteRenderer.color = Color.white;
         spriteRenderer.color = Color.white;
         // Release the enemy back into the pool

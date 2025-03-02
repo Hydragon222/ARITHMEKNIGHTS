@@ -11748,8 +11748,8 @@ MonoBehaviour:
   - {fileID: 878620620}
   divisionMode: 0
   inverseMode: 0
-  n2: 2
-  limit: 20
+  n2: 3
+  limit: 30
 --- !u!114 &491393307
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3512765256603423849}
   - component: {fileID: 1447108348233141167}
-  - component: {fileID: 7587152444514530991}
   m_Layer: 0
   m_Name: enemy weapon
   m_TagString: Untagged
@@ -71,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -253402651
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: -345853439, guid: 97389f2e03edac14e8f78da35ef0760a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -85,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7587152444514530991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2801291311940988667}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cbb5b9ed09410347a551adb88877317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyControls: {fileID: 1721386300034324881}
-  parentObject: {fileID: 3271302687930018766}
-  offset: {x: -0.4, y: -0.2, z: 0}
-  flip: {x: 0, y: 0, z: 0}
 --- !u!1 &3271302687930018766
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +141,7 @@ MonoBehaviour:
   direction1: {x: 0, y: 0}
   wpnoffset: {x: -0.4, y: 0, z: 0}
   isStunned: 0
+  isDying: 0
 --- !u!212 &7932138361429862660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -198,7 +182,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: -702048386, guid: 955811a91ab125e4ba2e6624af747061, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -260,10 +244,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.55}
+  m_Offset: {x: 0, y: -0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -274,7 +258,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1}
+  m_Size: {x: 1.5, y: 2.3}
   m_EdgeRadius: 0
 --- !u!50 &4770235997947504939
 Rigidbody2D:
@@ -346,9 +330,9 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.6, y: 2.5}
+  m_Offset: {x: 0, y: -0.1}
+  m_Size: {x: 1.3, y: 2}
   m_Direction: 0

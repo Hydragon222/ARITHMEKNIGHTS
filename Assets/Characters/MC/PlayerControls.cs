@@ -34,7 +34,7 @@ public class PlayerControls : MonoBehaviour
     public bool hasTappedEnemy = false;
     public bool isInvincible = false;
     private bool isDashing = false;
-    private bool hasTappedDialogue = false;
+    public bool hasTappedDialogue = false;
 
     public float speed;
     public float dashSpeed = 30f; // Dash speed
@@ -189,6 +189,7 @@ public class PlayerControls : MonoBehaviour
                     Debug.Log("Enemy already tapped, ignoring further taps.");
                     return;
                 }
+                if (hasTappedDialogue) return;
 
                 targetEnemy = hitCollider.transform;
                 Debug.Log("Enemy stored: " + targetEnemy.name);
@@ -208,9 +209,8 @@ public class PlayerControls : MonoBehaviour
                 // ✅ Prevent multiple triggers using cooldown
                 if (Time.time - lastTapTime < tapCooldown) return;
                 lastTapTime = Time.time;
+                if (hasTappedEnemy) return;
 
-                // ✅ Prevent re-triggering before reset
-                if (hasTappedDialogue) return;
                 hasTappedDialogue = true;
 
                 // Find the DialogueTrigger component on the wizard and trigger dialogue
@@ -219,11 +219,7 @@ public class PlayerControls : MonoBehaviour
                 {
                     wizzardDialogue.TriggerDialogue();
                 }
-                else
-                {
-                    Debug.LogWarning("Wizzard clicked, but no DialogueTrigger found!");
-                }
-
+                
                 // ✅ Reset flag after a short delay
                 StartCoroutine(ResetDialogueTap());
             }
@@ -267,7 +263,7 @@ public class PlayerControls : MonoBehaviour
         GameObject slashEffect = Instantiate(slashPrefab, transform.position, Quaternion.identity);
         TrailRenderer trail = slashEffect.GetComponent<TrailRenderer>();
         slashEffect.transform.SetParent(transform);
-        AudioManager.instance.Play("Dash");
+        
         AudioManager.instance.Play("Dash");
         AudioManager.instance.Play("Slash");
 
@@ -347,6 +343,5 @@ public class PlayerControls : MonoBehaviour
     private IEnumerator ResetDialogueTap()
     {
         yield return new WaitForSeconds(tapCooldown);
-        hasTappedDialogue = false;
     }
 }

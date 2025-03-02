@@ -586,8 +586,8 @@ MonoBehaviour:
   - {fileID: 492697926}
   divisionMode: 0
   inverseMode: 0
-  n2: 2
-  limit: 20
+  n2: 4
+  limit: 40
 --- !u!114 &55025983
 MonoBehaviour:
   m_ObjectHideFlags: 0

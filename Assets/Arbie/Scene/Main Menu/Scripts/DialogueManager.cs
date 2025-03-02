@@ -94,6 +94,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("End of conversation.");
         isDialogueActive = false;
         animator.SetBool("IsOpen", false);
+        FindObjectOfType<PlayerControls>().hasTappedDialogue = false;
     }
 
 

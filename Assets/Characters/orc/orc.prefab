@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 478041805657007108}
   - component: {fileID: 6640467008395824145}
   - component: {fileID: 3375318833937355650}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: orc
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -57,6 +57,7 @@ MonoBehaviour:
   direction1: {x: 0, y: 0}
   wpnoffset: {x: -0.4, y: 0, z: 0}
   isStunned: 0
+  isDying: 0
 --- !u!212 &2129644800655769401
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -261,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9175032362336372409}
   - component: {fileID: 5340693359899989756}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: enemy weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
