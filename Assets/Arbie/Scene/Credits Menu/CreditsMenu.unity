@@ -392,7 +392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 409}
+  m_AnchoredPosition: {x: 0, y: 1416}
   m_SizeDelta: {x: 992.2742, y: 133.1642}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &510601824
@@ -578,7 +578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: -1042}
+  m_AnchoredPosition: {x: 11, y: -1013}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &683059705
@@ -1058,7 +1058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 384.03857, y: 162}
+  m_AnchoredPosition: {x: 384.03857, y: 1169}
   m_SizeDelta: {x: 582.8777, y: 267.3266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1312326086
@@ -1095,15 +1095,20 @@ MonoBehaviour:
     John Arib\r\nDr. Eischeid Arcenal, PhD\r\nMs. Charina Puentevella, MIT\r\nMs.
     Renein Gonzales, LPT\r\nSir Richmond Vicente, LPT, MAED\nSir John Manuel Monteflor\r\nUSLS
     Grade 2D A.Y. 2024-2025\r\nNahji Mar Jalover\r\n\r\n\r\n\n\nUnity Gaming Software
-    Engine\r\nItch.io\r\nPixabay.com\r\nYouTube\r\n\r\n\n\nAnokolisa.itch.io - timemaps,
-    character & weapon sprites\r\nAnsimuz.itch.io - background, mountain tilemap,
-    circular slash fx\r\nLimezu.itch.io - 24x24 shields\r\nFreesound_Community -
-    Wrong Answer Sfx, Sword Slash Sfx, Shield Power Up Sfx, Death Sound Sfx, \r\nImagne_Impossible
+    Engine\r\nItch.io\r\nPixabay.com\r\nYouTube\r\nGithub\n\r\n\n\nAnokolisa.itch.io
+    - timemaps, character & weapon sprites\r\nAnsimuz.itch.io - background, mountain
+    tilemap, circular slash fx\r\nLimezu.itch.io - 24x24 shields\r\nFreesound_Community
+    - Wrong Answer Sfx, Sword Slash Sfx, Shield Power Up Sfx, Death Sound Sfx, \r\nImagne_Impossible
     - Axe Slash Sfx\r\nAtelier Magicae - PopUp Question Sfx\r\nLeohPaz - Dash Sfx,
     human damage sfx\r\nPolyWitch - Heal Power Ups, Sfx\r\nLulyc - Text Sound\r\nTheJman0205
-    - Font\r\nRunica - Text Box for Game Credits and Tutorial\r\nPix - Level 1 -
-    5  - Theme (Begin your Journey)\r\nFicitum Sounds - Main Menu, Level 6-15 Music
-    Theme\r\nTextCraft - Game Title Font\r\nHome Button in Credits - Icons8"
+    - Font\r\nRunica - Text Box for Game Credits and Tutorial\r\nPix - Level 1, 6,
+    11 - Theme (Begin your Journey)\r\nFicitum Sounds - Main Menu, Level 6-15 Music
+    Theme\r\nTextCraft - Game Title Font\r\nHome Button in Credits - Icons8\ncrosshair
+    pack - cyanglaz.itch.io\nCementary Bg - Knights of Pen & Paper 2, Kyy Games\nVictory
+    & Defeat Banner - reddit.com/user/gmedley/\nThrough Mountains - Level 2 and 7
+    Theme - https://oliviacirilla.itch.io/retro-game-music-pack\nExploring the Unknown
+    - Level 3 and 8 Theme - xDerivuchi\nTime to take a rest and eat! - Level 4 and
+    9 Theme - xDerivuchi\nMysterious Dungeon - Level 5,10, and 12 Theme - xDerivuchi"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
   m_sharedMaterial: {fileID: 6895986573856215192, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
@@ -1214,7 +1219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -377.7872, y: 162}
+  m_AnchoredPosition: {x: -377.7872, y: 1169}
   m_SizeDelta: {x: 755.5752, y: 267.3266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982641385
@@ -1242,7 +1247,7 @@ MonoBehaviour:
     Game Designer\r\nGame Designers\r\n\r\n\r\nArtists\r\nLead UI Designer\r\nUI
     Designers\r\n\r\n\r\nUX Designer\r\n\r\nGame Script Writer\r\n\r\nSound and Music
     Team\r\n\r\n\r\n\r\n\r\nTest Assessments\r\n\r\n\r\n\r\nSpecial Thanks to\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n\n\r\n\n\n\n\n\n\n\n\nPublishing
-    and Legal Rights\r\nMiddleware and Tools Used\r\n\r\n\n\n\r\n\r\n\r\n\r\nFonts,
+    and Legal Rights\r\nMiddleware and Tools Used\r\n\r\n\n\n\n\r\n\r\n\r\n\r\nFonts,
     Assets, Sounds, and Audio Credits\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
