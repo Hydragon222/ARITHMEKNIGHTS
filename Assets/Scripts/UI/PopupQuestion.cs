@@ -33,14 +33,15 @@ public class PopupQuestion : MonoBehaviour
         {
             if (inverseMode)
             {
-                n1 = Random.Range(1, 10);
-                n2 = Random.Range(1, 10);
+                int[] possibleNumbers = { 1, 2, 3, 4, 5, 10 };
+                n2 = Random.Range(1, 11);
+                n1 = possibleNumbers[Random.Range(0, possibleNumbers.Length)];
                 inverser = n1 * n2;
                 correctAnswer = inverser / n1;
             }
             else
             {
-                n1 = Random.Range(1, 10);
+                n1 = Random.Range(1, 11);
                 correctAnswer = n1 * n2;
             }
         }
@@ -48,15 +49,16 @@ public class PopupQuestion : MonoBehaviour
         {
             if (inverseMode)
             {
-                n2 = Random.Range(1, 10);
-                int multiplier = Random.Range(1, 10); // Random whole number result
+                int[] possibleNumbers = { 1, 2, 3, 4, 5, 10 };
+                n2 = possibleNumbers[Random.Range(0, possibleNumbers.Length)];
+                int multiplier = Random.Range(1, 11); // Random whole number result
                 n1 = multiplier * n2; // Ensure n1 is a clean multiple of n2
                 inverser = n1 / n2; // Exact division
                 correctAnswer = n2 * inverser;
             }
             else
             {
-                int multiplier = Random.Range(1, 10); // Random whole number result
+                int multiplier = Random.Range(1, 11); // Random whole number result
                 n1 = multiplier * n2; // Ensure n1 is a clean multiple of n2
                 correctAnswer = (float)n1 / n2; // Exact division
             }

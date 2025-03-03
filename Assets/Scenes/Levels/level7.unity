@@ -10834,7 +10834,7 @@ MonoBehaviour:
   player: {fileID: 222575551}
   animator: {fileID: 222575555}
   maxHealth: 100
-  health: 0
+  health: 100
   sword: {fileID: 1636997627}
 --- !u!4 &222575554
 Transform:
