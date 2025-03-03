@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     }
 
     // Load Level 1
-    public void LoadLevel1()
+    public void Loadlevel1()
     {
         Debug.Log("Loading Level 1...");
         SceneManager.LoadScene("Level 1");
