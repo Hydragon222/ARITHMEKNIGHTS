@@ -88,17 +88,41 @@ public class AudioManager : MonoBehaviour
             case "GameScene":
                 musicToPlay = "Practice Level Theme";
                 break;
-            case "Level 1":
+            case "level1":
                 musicToPlay = "Level 1 Theme";
                 break;
-            case "Level 2":
-                musicToPlay = "Level 2 Theme";
+            case "level2":
+                musicToPlay = "level2";
                 break;
-            case "Level 3":
-                musicToPlay = "Level 3 Theme";
+            case "level3":
+                musicToPlay = "level3";
                 break;
-            case "Level 4":
-                musicToPlay = "Level 4 Theme";
+            case "level4":
+                musicToPlay = "level4";
+                break;
+            case "level5":
+                musicToPlay = "level5";
+                break;
+            case "level6":
+                musicToPlay = "Level 1 Theme";
+                break;
+            case "level7":
+                musicToPlay = "level2";
+                break;
+            case "level8":
+                musicToPlay = "level3";
+                break;
+            case "level9":
+                musicToPlay = "level4";
+                break;
+            case "level10":
+                musicToPlay = "level5";
+                break;
+            case "level11":
+                musicToPlay = "level1";
+                break;
+            case "level12":
+                musicToPlay = "level5";
                 break;
             case "Credits":
                 musicToPlay = "Menu";

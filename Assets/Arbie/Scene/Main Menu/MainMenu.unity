@@ -2467,6 +2467,42 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: level2
+    clip: {fileID: 8300000, guid: a258b130fbd9b9b47b2872933d4c9c2b, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: level3
+    clip: {fileID: 8300000, guid: 4101e5e0c42191e4f960a54cdcedc8e8, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: level4
+    clip: {fileID: 8300000, guid: f87659afbf0657741a5aeda965e42518, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: level5
+    clip: {fileID: 8300000, guid: 4dd5743c39f0b7d4caa5344e5d2e05e6, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &1579619879
 Transform:
   m_ObjectHideFlags: 0
