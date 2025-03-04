@@ -578,10 +578,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1437,7 +1437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31.3925, y: 30.1802}
+  m_AnchoredPosition: {x: -31.387, y: -100}
   m_SizeDelta: {x: 1982.7749, y: 1140.3604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127526107
@@ -1735,9 +1735,9 @@ RectTransform:
   - {fileID: 940726659}
   m_Father: {fileID: 1315378222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.49400002, y: 0.5}
-  m_AnchorMax: {x: 0.49400002, y: 0.5}
-  m_AnchoredPosition: {x: 23.0016, y: 99.424515}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 11.0016, y: 99.424515}
   m_SizeDelta: {x: 582.9863, y: 122.7576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1310903536
@@ -2091,9 +2091,9 @@ RectTransform:
   - {fileID: 1590545263}
   m_Father: {fileID: 1315378222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.49400002, y: 0.5}
-  m_AnchorMax: {x: 0.49400002, y: 0.5}
-  m_AnchoredPosition: {x: 23.003086, y: -200.2073}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 11.003086, y: -200.2073}
   m_SizeDelta: {x: 582.9832, y: 122.7576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1480312860
@@ -2415,7 +2415,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Stun
     clip: {fileID: 8300000, guid: 86cf5eb16dc2c124cb2e5943814c8e73, type: 3}
-    volume: 1
+    volume: 0.677
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -2424,7 +2424,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Question
     clip: {fileID: 8300000, guid: 3bf2c42d835d9604c82ec26cefc8fe67, type: 3}
-    volume: 1
+    volume: 0.649
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -2487,7 +2487,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: level4
     clip: {fileID: 8300000, guid: f87659afbf0657741a5aeda965e42518, type: 3}
-    volume: 0.511
+    volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -2496,7 +2496,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: level5
     clip: {fileID: 8300000, guid: 4dd5743c39f0b7d4caa5344e5d2e05e6, type: 3}
-    volume: 0.511
+    volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -2688,9 +2688,9 @@ RectTransform:
   - {fileID: 1068176267}
   m_Father: {fileID: 1315378222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.49400002, y: 0.5}
-  m_AnchorMax: {x: 0.49400002, y: 0.5}
-  m_AnchoredPosition: {x: 23, y: -45}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 11, y: -45}
   m_SizeDelta: {x: 582.9832, y: 122.7576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612232768
