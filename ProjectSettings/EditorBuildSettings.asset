@@ -26,5 +26,41 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Arbie/Scene/Credits Menu/CreditsMenu.unity
     guid: 50bafa9774434e0478783fcc401034ff
+  - enabled: 1
+    path: Assets/Scenes/Levels/level1.unity
+    guid: 1bc20e2cfd1cad54796eeaaafda4084e
+  - enabled: 1
+    path: Assets/Scenes/Levels/level2.unity
+    guid: e96f309728f4dfc43a5611dea6a26ccf
+  - enabled: 1
+    path: Assets/Scenes/Levels/level3.unity
+    guid: 9ca2ac9cc9fb20c408c6dfca1a40fca6
+  - enabled: 1
+    path: Assets/Scenes/Levels/level4.unity
+    guid: 209a0d48df79e604e91a83d7167659de
+  - enabled: 1
+    path: Assets/Scenes/Levels/level5.unity
+    guid: 697e75576ec75e74c9013e5f7950ecb2
+  - enabled: 1
+    path: Assets/Scenes/Levels/level6.unity
+    guid: ed081d34c95f0d249944d81e5dc89411
+  - enabled: 1
+    path: Assets/Scenes/Levels/level7.unity
+    guid: 10417ed803afc4a4e8f49d5ca6a2b11b
+  - enabled: 1
+    path: Assets/Scenes/Levels/level8.unity
+    guid: 6b89e2e3c8162a847b05f9bffa25f982
+  - enabled: 1
+    path: Assets/Scenes/Levels/level9.unity
+    guid: 9c1fb089cb084464d829c4706ac75d46
+  - enabled: 1
+    path: Assets/Scenes/Levels/level10.unity
+    guid: f121413a2a5aa7544b80e873be440487
+  - enabled: 1
+    path: Assets/Scenes/Levels/level11.unity
+    guid: 09fcc2f74bc32cd41856c4b14cba9c8c
+  - enabled: 1
+    path: Assets/Scenes/Levels/level12.unity
+    guid: 1ca9c32b3fb6b554d81857a2a8cd1123
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 22936bc92b606c843b28d3128451b66e, type: 2}
