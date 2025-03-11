@@ -10201,7 +10201,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -253402651
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: -706226793, guid: 4b3cc97875dc2ce468a260323d3bef0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -74827,75 +74827,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556226994}
   m_CullTransparentMesh: 1
---- !u!1001 &1641962014
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 680196466214519736, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_Name
-      value: CursorManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: cursors.Array.data[0]
-      value: 
-      objectReference: {fileID: 2800000, guid: 4d58613bc4e4138479ba41c33bbed227, type: 3}
-    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: cursors.Array.data[1]
-      value: 
-      objectReference: {fileID: 2800000, guid: ee3ac8351bac8774da91069295c985f5, type: 3}
-    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
-      propertyPath: cursors.Array.data[2]
-      value: 
-      objectReference: {fileID: 2800000, guid: e7238feb3f6d82d4c9eb6b1edfd3075a, type: 3}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
 --- !u!1 &1653630942
 GameObject:
   m_ObjectHideFlags: 0
@@ -75813,7 +75744,7 @@ MonoBehaviour:
   dialogue:
     name: Mathematisage
     sentences:
-    - (Press the SpaceBar to continue)
+    - (Press NEXT to continue)
     - 'Who dares disturb my wake, I''m impressed that someone has awoken me from 
       my slumber!
 
@@ -75824,10 +75755,10 @@ MonoBehaviour:
       because I would like to return to sleep
 
 '
-    - In order to move around use the "W"  key to move up
-    - ' Use the "D"  key to move to the right'
-    - Use the "S"  key to go down
-    - 'And use the "A" key to move to the left
+    - In order to move around use the pull the joystick upward to move up
+    - ' Use the pull the joystick to the right to move to the right'
+    - Use the pull the joystick downward to go down
+    - 'And use the pull the joystick to the left to move to the left
 
 '
     - On the top left, you have your HEALTH BAR.
@@ -75837,13 +75768,13 @@ MonoBehaviour:
     - By the magic blessed upon me you are given three POWERUPS! Each with their
       own powers!
     - SHIELD. Just like as the name says, you will become invincible with the SHIELD
-      active! Press the "E" button to activate!
-    - HEAL, Ahh the aura that the MathematiGods blessed. Press the "F" Button to
+      active! Press the yellow button to activate!
+    - HEAL, Ahh the aura that the MathematiGods blessed. Press the green button to
       HEAL!
     - STUN! As the Mathematisage storms their anger, it makes your enemies stop for
-      a few seconds! Press the "Q" key to STUN your enemies.
+      a few seconds! Press the red button to STUN your enemies.
     - And now for the mechanics, lets put your math skills to the test!
-    - To fight, you have to click on an enemy, and you will be shown a math problem...
+    - To fight, you have to tap on an enemy, and you will be shown a math problem...
     - Then choose the right answer to attack the enemy!
     - Try it on the skeleton over there!
     - Smack him 5 times to complete your training.
@@ -78380,4 +78311,3 @@ SceneRoots:
   - {fileID: 1040691526}
   - {fileID: 1257612472}
   - {fileID: 885070195}
-  - {fileID: 1641962014}

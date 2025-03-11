@@ -878,7 +878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &294696332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,6 +893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 1989675500}
   victoryTimeText: {fileID: 1536720204}
+  gameOver: {fileID: 851820707}
 --- !u!224 &294696333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2155,7 +2156,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452994991}
   m_CullTransparentMesh: 1
---- !u!1 &619048006
+--- !u!1 &529916824
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2163,10 +2164,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 619048007}
-  - component: {fileID: 619048010}
-  - component: {fileID: 619048009}
-  - component: {fileID: 619048008}
+  - component: {fileID: 529916825}
+  - component: {fileID: 529916828}
+  - component: {fileID: 529916827}
+  - component: {fileID: 529916826}
   m_Layer: 5
   m_Name: Enemies Remaining
   m_TagString: Untagged
@@ -2174,13 +2175,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &619048007
+--- !u!224 &529916825
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619048006}
+  m_GameObject: {fileID: 529916824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2188,31 +2189,31 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1867982489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -55.000122, y: 52.911987}
-  m_SizeDelta: {x: 103.711, y: 105.82}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.000030517578, y: 40}
+  m_SizeDelta: {x: 103.711, y: 105.82001}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &619048008
+--- !u!114 &529916826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619048006}
+  m_GameObject: {fileID: 529916824}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 190ac66778d894245ac7e65609ee4182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerControls: {fileID: 1695036628}
---- !u!114 &619048009
+--- !u!114 &529916827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619048006}
+  m_GameObject: {fileID: 529916824}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -2295,13 +2296,13 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &619048010
+--- !u!222 &529916828
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619048006}
+  m_GameObject: {fileID: 529916824}
   m_CullTransparentMesh: 1
 --- !u!1 &648761678
 GameObject:
@@ -41961,7 +41962,7 @@ MonoBehaviour:
   victorypanel: {fileID: 294696331}
   stun: {fileID: 157509812}
   win: {fileID: 294696332}
-  enemyCounter: {fileID: 619048008}
+  enemyCounter: {fileID: 529916826}
   mobileui: {fileID: 841685617}
   targetEnemy: {fileID: 0}
   hasTappedEnemy: 0
@@ -42609,7 +42610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1814669757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42895,10 +42896,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 387448282}
+  - {fileID: 529916825}
   - {fileID: 663777291}
   - {fileID: 389640836}
   - {fileID: 1989675503}
-  - {fileID: 619048007}
   - {fileID: 1932641705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43351,10 +43352,10 @@ RectTransform:
   - {fileID: 1509443609}
   m_Father: {fileID: 1867982489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 400, y: 244.89798}
-  m_SizeDelta: {x: 800, y: 489.79593}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 489.7959}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1942435674
 GameObject:
