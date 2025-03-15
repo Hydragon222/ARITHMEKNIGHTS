@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private InputActionReference moveAction;  // Existing move action reference
     [SerializeField] private InputActionReference tapAction;   // Tap action reference
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject popAns;
+    [SerializeField] private TMP_Text popAnsText;
+    public float answer;
     public PopupQuestion popupQuestion;
     public GameObject victorypanel;
 
@@ -248,6 +252,18 @@ public class PlayerControls : MonoBehaviour
             }
         }
     }
+    public void Incorrect()
+    {
+        StartCoroutine(Wrong());
+    }
+    private IEnumerator Wrong()
+    {
+        popAns.SetActive(true);
+        popAnsText.text = $"The answer was {answer}!";
+        
+        yield return new WaitForSeconds(0.8f);
+        popAns.SetActive(false);
+    }
 
     private IEnumerator Victory()
     {
@@ -313,7 +329,6 @@ public class PlayerControls : MonoBehaviour
         moveAction.action.Disable();
         tapAction.action.Disable();
         shield.SetActive(false);
-
     }
 
     public void ShieldMode()

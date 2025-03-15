@@ -161,6 +161,8 @@ public class PopupQuestion : MonoBehaviour
     // Called when a wrong answer is clicked
     private void WrongAnswer()
     {
+        playerControls.answer = correctAnswer;
+        playerControls.Incorrect();
         questionUIPanel.SetActive(false);
         playerControls.stun.UnstunAllEnemies();
         playerControls.targetEnemy = null;
