@@ -81,7 +81,7 @@ public class PopupQuestion : MonoBehaviour
         float wrongAnswer1, wrongAnswer2;
         do
         {
-            wrongAnswer1 = correctAnswer + Random.Range(1, limit);
+            wrongAnswer1 = Random.Range(1, limit);
         } while (wrongAnswer1 == correctAnswer);
 
         do

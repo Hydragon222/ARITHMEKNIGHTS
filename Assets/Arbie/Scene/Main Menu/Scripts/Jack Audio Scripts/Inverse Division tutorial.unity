@@ -77874,8 +77874,8 @@ MonoBehaviour:
   - {fileID: 484272340}
   - {fileID: 1296907211}
   - {fileID: 1429856413}
-  divisionMode: 1
-  inverseMode: 0
+  divisionMode: 0
+  inverseMode: 1
   n2: 2
   limit: 20
 --- !u!114 &1902150737
