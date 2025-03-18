@@ -24782,7 +24782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1143525988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -74785,7 +74785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1457955809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -76417,8 +76417,8 @@ MonoBehaviour:
   dialogue:
     name: Mathematisage
     sentences:
-    - (Tap to continue)
     - Now, you want to learn Division?
+    - (Tap to continue)
     - Im getting too old for this, but I'll teach you!
     - Division is the separation of numbers. It takes a large number and splits it
       up into groups.
@@ -76429,6 +76429,7 @@ MonoBehaviour:
     - Keep Going  [switchMainText]           [showExtraInfo]
     - Last one! [switchMainText] [showExtraInfo]
     - Now you got your answer! 9 seperated into three groups is 3. [switchMainText]
+      [hideExtraInfo]
     - Before I teach you a secret technique I've been using, You must familliarize
       yourself with the parts of division
     - These are the dividend, divisor, division symbol,and the quotient
@@ -76445,22 +76446,23 @@ MonoBehaviour:
     - Last is the quotient. It is the answer in division. [showExtraInfo]
     - In this case, 3 is the quotient when 9 is divided by 3.
     - My secret technique in solving division is I think of the equation seperately.
-      Using sticks [switchMainText]
+      Using sticks [switchMainText] [hideExtraInfo]
     - Look at the example, I seperated the  divisor which is nine into three which
       is the dividend
     - In order to do this, make a stroke using a pen or a pencil and count until
-      you the divisor.
+      you get to your divisor.
     - In this case three is my divisor, so I seperated three stokes seprate until
       I have nine strokes
     - 'Then I counted the strokes.
 
       1... 2... 3... [showExtraInfo]'
-    - So the answer to this equation is three [showMainText] [hideExtraInfo]
+    - So the answer to this equation is three [switchMainText] [hideExtraInfo]
     - Now you know my technique
     - Too try this supa amazin technique... [hideMainText] [hideDiagram]
     - Try it on Bernie over there! Slash her times in order to master the basics
       of division.
     - Now I really need to get back to eating!
+    diagramImages: []
 --- !u!50 &1756266361
 Rigidbody2D:
   serializedVersion: 4

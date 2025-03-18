@@ -15,26 +15,26 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     private bool isDialogueActive = false;
 
-    // ✅ Diagram Variables
     public GameObject diagramPanel;
     public Image diagramImage;
     public Sprite[] diagramSprites;
     private int currentDiagramIndex = -1;
 
-    // ✅ Extra Info Variables
     public GameObject extraInfoPanel;
     public TextMeshProUGUI extraInfoText;
     public RectTransform extraInfoTransform;
     public List<ExtraInfoEntry> extraInfoEntries;
     private int currentExtraInfoIndex = -1;
 
-    // ✅ Main Text Variables (Now with showMainText & switchMainText)
     public GameObject mainTextPanel;
     public TextMeshProUGUI mainText;
     public RectTransform mainTextTransform;
     public List<MainTextEntry> mainTextEntries;
     private int currentMainTextIndex = -1;
-    private bool isMainTextShown = false; // ✅ Tracks if main text is initially shown
+    private bool isMainTextShown = false;
+
+    // Cache the last dialogue used so we can repeat it later.
+    private Dialogue lastDialogue;
 
     void Start()
     {
@@ -49,7 +49,18 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        animator.SetBool("IsOpen", true);
+        // Cache the dialogue for later repeating.
+        lastDialogue = dialogue;
+
+        if (animator != null)
+        {
+            animator.SetBool("IsOpen", true);
+        }
+        else
+        {
+            Debug.LogWarning("Animator not assigned in DialogueManager.");
+        }
+
         if (isDialogueActive)
         {
             Debug.Log("Dialogue already in progress!");
@@ -59,6 +70,12 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = true;
         nameText.text = dialogue.name;
 
+        // Reset indices when starting a new dialogue
+        currentDiagramIndex = -1;
+        currentExtraInfoIndex = -1;
+        currentMainTextIndex = -1;
+        isMainTextShown = false;
+
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
         {
@@ -66,23 +83,36 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialogueBox.SetActive(true);
-        nextButton.gameObject.SetActive(true);
-        nextButton.interactable = true;
+        if (nextButton != null)
+            nextButton.interactable = true;
 
         DisplayNextSentence();
+    }
+
+    // This method allows repeating the dialogue sequence when the character is clicked again.
+    public void RepeatDialogue()
+    {
+        if (!isDialogueActive && lastDialogue != null)
+        {
+            Debug.Log("Repeating dialogue.");
+            StartDialogue(lastDialogue);
+        }
     }
 
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
         {
+            if (nextButton != null)
+            {
+                nextButton.interactable = false;
+            }
             EndDialogue();
             return;
         }
 
         string sentence = sentences.Dequeue();
 
-        // ✅ Handle Diagram Display
         if (sentence.Contains("[showDiagram]"))
         {
             sentence = sentence.Replace("[showDiagram]", "");
@@ -96,7 +126,6 @@ public class DialogueManager : MonoBehaviour
             HideDiagram();
         }
 
-        // ✅ Handle Extra Info Display
         if (sentence.Contains("[showExtraInfo]"))
         {
             sentence = sentence.Replace("[showExtraInfo]", "");
@@ -110,7 +139,6 @@ public class DialogueManager : MonoBehaviour
             HideExtraInfo();
         }
 
-        // ✅ Handle Main Text (First time using [showMainText], then [switchMainText])
         if (sentence.Contains("[showMainText]") && !isMainTextShown)
         {
             sentence = sentence.Replace("[showMainText]", "");
@@ -136,7 +164,7 @@ public class DialogueManager : MonoBehaviour
 
         AudioManager.instance.Play("Dialogue");
 
-        if (sentences.Count == 0)
+        if (sentences.Count == 0 && nextButton != null)
         {
             nextButton.interactable = false;
         }
@@ -156,19 +184,32 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("End of conversation.");
         isDialogueActive = false;
-        animator.SetBool("IsOpen", false);
-        FindObjectOfType<PlayerControls>().hasTappedDialogue = false;
+        if (animator != null)
+        {
+            animator.SetBool("IsOpen", false);
+        }
+        PlayerControls player = FindObjectOfType<PlayerControls>();
+        if (player != null)
+        {
+            player.hasTappedDialogue = false;
+        }
     }
 
     void Update()
     {
+        // Continue dialogue if active and user clicks
         if (isDialogueActive && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
         {
             DisplayNextSentence();
         }
+        // If dialogue is not active, you could check for a character click to repeat dialogue.
+        // For example, you might have code like this (or call RepeatDialogue() from another script):
+        // if (!isDialogueActive && Input.GetMouseButtonDown(0))
+        // {
+        //     RepeatDialogue();
+        // }
     }
 
-    // ✅ Show Diagram Function
     public void ShowDiagram(int index)
     {
         if (diagramPanel == null || diagramImage == null || diagramSprites == null) return;
@@ -180,14 +221,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // ✅ Hide Diagram Function
     public void HideDiagram()
     {
         if (diagramPanel != null)
             diagramPanel.SetActive(false);
     }
 
-    // ✅ Show Extra Info Function
     public void ShowExtraInfo(int index)
     {
         if (extraInfoPanel == null || extraInfoText == null || extraInfoTransform == null) return;
@@ -202,14 +241,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // ✅ Hide Extra Info Function
     public void HideExtraInfo()
     {
         if (extraInfoPanel != null)
             extraInfoPanel.SetActive(false);
     }
 
-    // ✅ Show Main Text Function (First time with [showMainText], then [switchMainText])
     public void ShowMainText(int index)
     {
         if (mainTextPanel == null || mainText == null || mainTextTransform == null) return;
@@ -224,7 +261,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // ✅ Hide Main Text Function
     public void HideMainText()
     {
         if (mainTextPanel != null)
@@ -232,7 +268,7 @@ public class DialogueManager : MonoBehaviour
     }
 }
 
-// ✅ Extra Info Struct (Editable in Inspector)
+// ✅ FIX: Added ExtraInfoEntry & MainTextEntry at the bottom to resolve the errors
 [System.Serializable]
 public class ExtraInfoEntry
 {
@@ -242,7 +278,6 @@ public class ExtraInfoEntry
     public FontStyles fontStyle = FontStyles.Normal;
 }
 
-// ✅ Main Text Struct (Editable in Inspector)
 [System.Serializable]
 public class MainTextEntry
 {

@@ -19681,48 +19681,52 @@ MonoBehaviour:
   extraInfoText: {fileID: 1560097399}
   extraInfoTransform: {fileID: 1560097398}
   extraInfoEntries:
-  - text: Multiplicand
-    position: {x: -48, y: -80}
+  - text: left side                right side
+    position: {x: -13, y: 95}
     fontSize: 36
     fontStyle: 0
-  - text: Symbol
-    position: {x: 140, y: 80}
+  - text: 3x                       x3
+    position: {x: -51, y: 16}
+    fontSize: 50
+    fontStyle: 0
+  - text: left side                right side
+    position: {x: -13, y: 95}
+    fontSize: 36
+    fontStyle: 0
+  - text: y = 12
+    position: {x: -36, y: 101}
     fontSize: 36
     fontStyle: 2
-  - text: Multiplier
-    position: {x: 235, y: -80}
-    fontSize: 36
-    fontStyle: 0
-  - text: 1         2        3       4
-    position: {x: 32.82788, y: -69}
-    fontSize: 36
-    fontStyle: 2
-  - text: Multiplier
-    position: {x: 235, y: -80}
-    fontSize: 36
-    fontStyle: 0
-  - text: Product
-    position: {x: 512, y: -80}
-    fontSize: 36
-    fontStyle: 0
   mainTextPanel: {fileID: 1143525987}
   mainText: {fileID: 944516757}
   mainTextTransform: {fileID: 944516756}
   mainTextEntries:
-  - text: 2+2+2+2
-    position: {x: -184, y: 30}
+  - text: "_ \xF7 3 = 4"
+    position: {x: -192, y: 106}
     fontSize: 200
     fontStyle: 1
-  - text: 2 x 4 = 8
-    position: {x: -177, y: 30}
+  - text: "y \xF7 3 = 4"
+    position: {x: -192, y: 106}
     fontSize: 200
     fontStyle: 1
-  - text: 2+2+2+2
-    position: {x: -184, y: 30}
+  - text: "y \xF7 3 = 4"
+    position: {x: -192, y: 106}
+    fontSize: 175
+    fontStyle: 1
+  - text: y = 4 x 3
+    position: {x: -192, y: 36}
     fontSize: 200
     fontStyle: 1
-  - text: 2 x 4 = 8
-    position: {x: -177, y: 30}
+  - text: y = 12
+    position: {x: -53, y: 41}
+    fontSize: 200
+    fontStyle: 1
+  - text: "y \xF7 3 = 4"
+    position: {x: -192, y: 108}
+    fontSize: 200
+    fontStyle: 1
+  - text: "12 \xF7 3 = 4"
+    position: {x: -230, y: 127}
     fontSize: 200
     fontStyle: 1
 --- !u!4 &901878271
@@ -19775,7 +19779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -177, y: 30}
+  m_AnchoredPosition: {x: -230, y: 127}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944516757
@@ -19798,7 +19802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2 x 4 = 8
+  m_text: "12 \xF7 3 = 4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
   m_sharedMaterial: {fileID: 6895986573856215192, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
@@ -75275,7 +75279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 512, y: -70}
+  m_AnchoredPosition: {x: -51, y: 16}
   m_SizeDelta: {x: 627.6558, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560097399
@@ -75298,7 +75302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: product
+  m_text: 3x                       x3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53fe326ac9585524a9850c508d9b2398, type: 2}
   m_sharedMaterial: {fileID: 4268758153563460561, guid: 53fe326ac9585524a9850c508d9b2398, type: 2}
@@ -75325,8 +75329,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -75361,7 +75365,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -86.75159, w: 0}
+  m_margin: {x: 0, y: 0, z: -131.7279, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -76293,36 +76297,49 @@ MonoBehaviour:
     name: Mathematisage
     sentences:
     - (Tap to continue)
-    - Ah! So you want to learn Multiplication, young ArithmeKnight?
-    - Sit. Keep your eyes peeled and learn.
-    - Multiplication is just repeated addition, a faster way of adding two or more
-      numbers.
-    - like adding in groups.
-    - For example, what is four groups of two? [showDiagram] [showMainText]
-    - You may do it like this?
-    - But multiplication simplifies the process [switchMainText]
-    - Instead of doing the long process of addition, multiplication does it in two
-      numbers.
-    - 'There are four parts of multiplication '
-    - The multiplicand, multiplication symbol, multiplier, and product.
-    - The MULTIPLICAND is the first part of your equation. [showExtraInfo]
-    - 'This is the number we are adding over and over. '
-    - In this case, we are adding by two's over and over again.
-    - Next is the Multiplication Symbol. In your age, it is typically an "X" symbol.
-      Dont worry about adult stuff just yet. [showExtraInfo]
-    - Then, the MULTIPIER. This how many times we will add the number over and over
-      [showExtraInfo]
-    - Going back to our addition equation, we are counting two, four times. [switchMainText]
-      [showExtraInfo]
-    - In this equation, the number four is the multiplier. [switchMainText] [showExtraInfo]
-    - Last is the product. It shows the total number that we multiplied AKA our answer.
-      Take note that it is always after the equal sign [showExtraInfo]
-    - In this case, 8 is the product of 2 times four
-    - Great! Now you have mastered the basics of multiplication [hideDiagram] [hideMainText]
-      [hideExtraInfo]
-    - To test your learnings...
-    - Try hitting Jeffrey over there 5 times. Do not worry! he's unkillable.
-    - Now finish the game, its time for me to go sleep
+    - Oh? Thy young ArithmeKnight doth study the arts of inverse divison?
+    - Inverse Division, one who deals with numbers, is division but backwards. You're
+      going to use multiplication to get the number.
+    - Aye! Come forth and master the art of inverse division!
+    - You already know the parts of division, yes?
+    - Basically, in inverse division, you must find your dividend  or divisor, depending
+      on the problem.
+    - Lets take this problem for example. [showMainText]
+    - In this problem, we need to find the dividend of this equation.
+    - Like in inverse multiplication, In easier numbers, we may think of just the
+      number that we can use to get the dividend. But actually theres a process behind
+      that!
+    - First, make a symbol that you can replace the empty space with a letter.
+    - We usually use "X" with this. But since we are also using "x" as our symbol.
+      Maybe we will get confused.
+    - So we will use "Y" instead. [switchMainText]
+    - Now, we have put togther an equation. We need to get the number for y
+    - In order to do this, we must transfer the known number in the left side to
+      the right side [showExtraInfo]
+    - This is so that the symbol (y) is the only one left on the left side and the
+      numbers go to the right side
+    - 'So the known number in the left side is the divisor, which is 3 '
+    - In order to "transfer" the number, we must multiply both sides by the known
+      number.
+    - In this equation, 3 is the known number. So we must multiply 3 in both sides
+      in order to "cancel out" the number on the left side to go to the right side
+    - Cancel out is a term that we use in order to erase a number from its side that
+      we want to transfer to the other side.
+    - So our equation will know look like this [switchMainText] [showExtraInfo]
+    - "Now, we will solve for 3x (\xF73)  and 4x3"
+    - "So \"3x (\xF73)\" will \"cancel out\". Now our Equation will look like this
+      [switchMainText] [showExtraInfo]"
+    - Now our known number and dividend, 3 is on the right side.
+    - Lets solve the rest of the equation to get "Y", to do than lets multiply 4
+      and 3
+    - Soo... that equals to 12, i think.. try to do that on your own [switchMainText]
+    - So we know have the value for "y". lets set that aside and go back to our equation
+      [switchMainText] [showExtraInfo]
+    - We now know "y" has a value of 12 so lets replace "y" with 12 [switchMainText].
+    - Now the equation is now correct! Easy Peasy!
+    - Now its your turn [hideDiagram] [hideMainText] [hideExtraInfo]
+    - Try it on Dheniel! He's a real sucker!
+    diagramImages: []
 --- !u!50 &1756266361
 Rigidbody2D:
   serializedVersion: 4
