@@ -128,7 +128,7 @@ public class PopupQuestion : MonoBehaviour
         {
             questionUIPanel.SetActive(true); // Show the question UI
 
-            StartCoroutine(CloseQuestionUIAfterDelay(5f));
+            StartCoroutine(CloseQuestionUIAfterDelay(4f));
         }
         else
         {

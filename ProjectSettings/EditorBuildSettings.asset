@@ -65,5 +65,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/level12.unity
     guid: 1ca9c32b3fb6b554d81857a2a8cd1123
+  - enabled: 1
+    path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Division tutorial.unity
+    guid: 2cbc1d9275cbc0844bc0a26e9f168042
+  - enabled: 1
+    path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Inverse Division
+      tutorial.unity
+    guid: fa48beb5528f0ed489a8f94073e22054
+  - enabled: 1
+    path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Inverse Multiplication
+      tutorial.unity
+    guid: 575ff019ec552d7409b49739567c367e
+  - enabled: 1
+    path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Multiplication
+      Tutorial Final.unity
+    guid: 9074c3177f924a8479a2e226f5873a28
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 22936bc92b606c843b28d3128451b66e, type: 2}

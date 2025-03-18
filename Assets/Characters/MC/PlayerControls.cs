@@ -261,7 +261,7 @@ public class PlayerControls : MonoBehaviour
         popAns.SetActive(true);
         popAnsText.text = $"The answer was {answer}!";
         
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.5f);
         popAns.SetActive(false);
     }
 
@@ -293,7 +293,7 @@ public class PlayerControls : MonoBehaviour
         {
             GameObject curvedSlash = Instantiate(curvedSlashPrefab, mcSwordTransform.position, Quaternion.Euler(0, 0, angle - 125));
             curvedSlash.transform.SetParent(transform);
-            Destroy(curvedSlash, 0.5f);
+            Destroy(curvedSlash, 0.4f);
 
             dashTime += Time.deltaTime;
             transform.position = Vector3.Lerp(startPosition, targetPosition, dashTime / dashDuration);
