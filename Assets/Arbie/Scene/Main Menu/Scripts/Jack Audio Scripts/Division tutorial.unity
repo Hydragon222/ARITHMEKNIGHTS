@@ -19782,48 +19782,72 @@ MonoBehaviour:
   extraInfoText: {fileID: 1560097399}
   extraInfoTransform: {fileID: 1560097398}
   extraInfoEntries:
-  - text: Multiplicand
-    position: {x: -48, y: -80}
+  - text: 1
+    position: {x: 572, y: -83}
     fontSize: 36
     fontStyle: 0
+  - text: 2
+    position: {x: 572, y: -83}
+    fontSize: 36
+    fontStyle: 2
+  - text: 3
+    position: {x: 572, y: -83}
+    fontSize: 36
+    fontStyle: 2
+  - text: Dividend
+    position: {x: -18, y: -80}
+    fontSize: 36
+    fontStyle: 2
   - text: Symbol
-    position: {x: 140, y: 80}
-    fontSize: 36
-    fontStyle: 2
-  - text: Multiplier
-    position: {x: 235, y: -80}
+    position: {x: 143, y: 102}
     fontSize: 36
     fontStyle: 0
-  - text: 1         2        3       4
-    position: {x: 32.82788, y: -69}
-    fontSize: 36
-    fontStyle: 2
-  - text: Multiplier
-    position: {x: 235, y: -80}
+  - text: Divisor
+    position: {x: 256, y: -80}
     fontSize: 36
     fontStyle: 0
-  - text: Product
+  - text: Quotient
     position: {x: 512, y: -80}
+    fontSize: 36
+    fontStyle: 0
+  - text: 1            2             3
+    position: {x: 48, y: -58}
+    fontSize: 36
+    fontStyle: 0
+  - text: 
+    position: {x: -206, y: 25}
     fontSize: 36
     fontStyle: 0
   mainTextPanel: {fileID: 1143525987}
   mainText: {fileID: 944516757}
   mainTextTransform: {fileID: 944516756}
   mainTextEntries:
-  - text: 2+2+2+2
-    position: {x: -184, y: 30}
+  - text: "9 \xF7 3 = ?"
+    position: {x: -198, y: 125}
     fontSize: 200
     fontStyle: 1
-  - text: 2 x 4 = 8
-    position: {x: -177, y: 30}
+  - text: 9 - 3 = 6
+    position: {x: -180, y: 32}
     fontSize: 200
     fontStyle: 1
-  - text: 2+2+2+2
-    position: {x: -184, y: 30}
+  - text: 6 - 3 = 3
+    position: {x: -180, y: 32}
     fontSize: 200
     fontStyle: 1
-  - text: 2 x 4 = 8
-    position: {x: -177, y: 30}
+  - text: 3 - 3 = 0
+    position: {x: -180, y: 32}
+    fontSize: 200
+    fontStyle: 1
+  - text: "9 \xF7 3 = 3"
+    position: {x: -198, y: 125}
+    fontSize: 200
+    fontStyle: 1
+  - text: '||| / ||| / ||| '
+    position: {x: -224, y: 25}
+    fontSize: 150
+    fontStyle: 1
+  - text: "9 \xF7 3 = 3"
+    position: {x: -198, y: 125}
     fontSize: 200
     fontStyle: 1
 --- !u!4 &901878271
@@ -19876,7 +19900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -177, y: 30}
+  m_AnchoredPosition: {x: -224, y: 25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944516757
@@ -19899,7 +19923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2 x 4 = 8
+  m_text: '||| / ||| / ||| '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
   m_sharedMaterial: {fileID: 6895986573856215192, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
@@ -19926,8 +19950,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -24758,7 +24782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1143525988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -74761,7 +74785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1457955809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -75376,7 +75400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 512, y: -70}
+  m_AnchoredPosition: {x: 48, y: -58}
   m_SizeDelta: {x: 627.6558, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560097399
@@ -75399,7 +75423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: product
+  m_text: 1            2             3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53fe326ac9585524a9850c508d9b2398, type: 2}
   m_sharedMaterial: {fileID: 4268758153563460561, guid: 53fe326ac9585524a9850c508d9b2398, type: 2}
@@ -76394,36 +76418,49 @@ MonoBehaviour:
     name: Mathematisage
     sentences:
     - (Tap to continue)
-    - Ah! So you want to learn Multiplication, young ArithmeKnight?
-    - Sit. Keep your eyes peeled and learn.
-    - Multiplication is just repeated addition, a faster way of adding two or more
-      numbers.
-    - like adding in groups.
-    - For example, what is four groups of two? [showDiagram] [showMainText]
-    - You may do it like this?
-    - But multiplication simplifies the process [switchMainText]
-    - Instead of doing the long process of addition, multiplication does it in two
-      numbers.
-    - 'There are four parts of multiplication '
-    - The multiplicand, multiplication symbol, multiplier, and product.
-    - The MULTIPLICAND is the first part of your equation. [showExtraInfo]
-    - 'This is the number we are adding over and over. '
-    - In this case, we are adding by two's over and over again.
-    - Next is the Multiplication Symbol. In your age, it is typically an "X" symbol.
-      Dont worry about adult stuff just yet. [showExtraInfo]
-    - Then, the MULTIPIER. This how many times we will add the number over and over
-      [showExtraInfo]
-    - Going back to our addition equation, we are counting two, four times. [switchMainText]
-      [showExtraInfo]
-    - In this equation, the number four is the multiplier. [switchMainText] [showExtraInfo]
-    - Last is the product. It shows the total number that we multiplied AKA our answer.
-      Take note that it is always after the equal sign [showExtraInfo]
-    - In this case, 8 is the product of 2 times four
-    - Great! Now you have mastered the basics of multiplication [hideDiagram] [hideMainText]
-      [hideExtraInfo]
-    - To test your learnings...
-    - Try hitting Jeffrey over there 5 times. Do not worry! he's unkillable.
-    - Now finish the game, its time for me to go sleep
+    - Now, you want to learn Division?
+    - Im getting too old for this, but I'll teach you!
+    - Division is the separation of numbers. It takes a large number and splits it
+      up into groups.
+    - Let me give you an example
+    - what is 9 divided into 3 groups? [showMainText]
+    - You may do it like this? You may subtract the number until you get to zero
+      [switchMainText]  [showExtraInfo]
+    - Keep Going  [switchMainText]           [showExtraInfo]
+    - Last one! [switchMainText] [showExtraInfo]
+    - Now you got your answer! 9 seperated into three groups is 3. [switchMainText]
+    - Before I teach you a secret technique I've been using, You must familliarize
+      yourself with the parts of division
+    - These are the dividend, divisor, division symbol,and the quotient
+    - The dividend is the number being divided. It is always located in the first
+      part of the equation. [showExtraInfo]
+    - In this equation, 9 is our dividend. Beacuse it is located at the first part
+      of the equation
+    - Next is the division symbol, at your age is is typically this symbol. But once
+      you climb up the ranks, it may be a different symbol. [showExtraInfo]
+    - Then this is our divisor. It is the number we divide by. It is what the separates
+      the divident into groups. [showExtraInfo]
+    - 'It is found AFTER the division symbol. '
+    - So in this equation, 3 is our divisor.
+    - Last is the quotient. It is the answer in division. [showExtraInfo]
+    - In this case, 3 is the quotient when 9 is divided by 3.
+    - My secret technique in solving division is I think of the equation seperately.
+      Using sticks [switchMainText]
+    - Look at the example, I seperated the  divisor which is nine into three which
+      is the dividend
+    - In order to do this, make a stroke using a pen or a pencil and count until
+      you the divisor.
+    - In this case three is my divisor, so I seperated three stokes seprate until
+      I have nine strokes
+    - 'Then I counted the strokes.
+
+      1... 2... 3... [showExtraInfo]'
+    - So the answer to this equation is three [showMainText] [hideExtraInfo]
+    - Now you know my technique
+    - Too try this supa amazin technique... [hideMainText] [hideDiagram]
+    - Try it on Bernie over there! Slash her times in order to master the basics
+      of division.
+    - Now I really need to get back to eating!
 --- !u!50 &1756266361
 Rigidbody2D:
   serializedVersion: 4
