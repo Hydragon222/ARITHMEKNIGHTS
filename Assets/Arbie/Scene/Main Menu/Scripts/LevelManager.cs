@@ -64,6 +64,41 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.Stop("Menu");
         AudioManager.instance.Play("Tutorial Level Theme");
     }
+    public void LoadMulttut()
+    {
+        
+        SceneManager.LoadScene("Multiplication Tutorial Final");
+        AudioManager.instance.Play("Clicking Sound");
+        AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Tutorial Level Theme");
+    }
+
+    public void LoadDivtut()
+    {
+
+        SceneManager.LoadScene("Division tutorial");
+        AudioManager.instance.Play("Clicking Sound");
+        AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Tutorial Level Theme");
+    }
+
+    public void LoadInvMulttut()
+    {
+
+        SceneManager.LoadScene("Inverse Multiplication tutorial");
+        AudioManager.instance.Play("Clicking Sound");
+        AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Tutorial Level Theme");
+    }
+
+    public void LoadInvDivtut()
+    {
+
+        SceneManager.LoadScene("Inverse Division tutorial");
+        AudioManager.instance.Play("Clicking Sound");
+        AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Tutorial Level Theme");
+    }
 
     // Return to the Main Menu
     public void BackToMainMenu()
