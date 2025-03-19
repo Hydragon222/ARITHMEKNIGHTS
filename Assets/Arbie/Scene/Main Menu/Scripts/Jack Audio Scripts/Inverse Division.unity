@@ -19681,48 +19681,52 @@ MonoBehaviour:
   extraInfoText: {fileID: 1560097399}
   extraInfoTransform: {fileID: 1560097398}
   extraInfoEntries:
-  - text: Multiplicand
-    position: {x: -48, y: -80}
+  - text: left side                right side
+    position: {x: -13, y: 95}
     fontSize: 36
     fontStyle: 0
-  - text: Symbol
-    position: {x: 140, y: 80}
+  - text: 3x                       x3
+    position: {x: -51, y: 16}
+    fontSize: 50
+    fontStyle: 0
+  - text: left side                right side
+    position: {x: -13, y: 95}
+    fontSize: 36
+    fontStyle: 0
+  - text: y = 12
+    position: {x: -36, y: 101}
     fontSize: 36
     fontStyle: 2
-  - text: Multiplier
-    position: {x: 235, y: -80}
-    fontSize: 36
-    fontStyle: 0
-  - text: 1         2        3       4
-    position: {x: 32.82788, y: -69}
-    fontSize: 36
-    fontStyle: 2
-  - text: Multiplier
-    position: {x: 235, y: -80}
-    fontSize: 36
-    fontStyle: 0
-  - text: Product
-    position: {x: 512, y: -80}
-    fontSize: 36
-    fontStyle: 0
   mainTextPanel: {fileID: 1143525987}
   mainText: {fileID: 944516757}
   mainTextTransform: {fileID: 944516756}
   mainTextEntries:
-  - text: 2+2+2+2
-    position: {x: -184, y: 30}
+  - text: "_ \xF7 3 = 4"
+    position: {x: -192, y: 106}
     fontSize: 200
     fontStyle: 1
-  - text: 2 x 4 = 8
-    position: {x: -177, y: 30}
+  - text: "y \xF7 3 = 4"
+    position: {x: -192, y: 106}
     fontSize: 200
     fontStyle: 1
-  - text: 2+2+2+2
-    position: {x: -184, y: 30}
+  - text: "y \xF7 3 = 4"
+    position: {x: -192, y: 106}
+    fontSize: 175
+    fontStyle: 1
+  - text: y = 4 x 3
+    position: {x: -192, y: 36}
     fontSize: 200
     fontStyle: 1
-  - text: 2 x 4 = 8
-    position: {x: -177, y: 30}
+  - text: y = 12
+    position: {x: -53, y: 41}
+    fontSize: 200
+    fontStyle: 1
+  - text: "y \xF7 3 = 4"
+    position: {x: -192, y: 108}
+    fontSize: 200
+    fontStyle: 1
+  - text: "12 \xF7 3 = 4"
+    position: {x: -230, y: 127}
     fontSize: 200
     fontStyle: 1
 --- !u!4 &901878271
@@ -19775,7 +19779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -177, y: 30}
+  m_AnchoredPosition: {x: -230, y: 127}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944516757
@@ -19798,7 +19802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2 x 4 = 8
+  m_text: "12 \xF7 3 = 4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
   m_sharedMaterial: {fileID: 6895986573856215192, guid: 7c135e5214b2fbd43a49bb1fa1dbb395, type: 2}
@@ -74719,6 +74723,272 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457955808}
   m_CullTransparentMesh: 1
+--- !u!1 &1474050056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1474050059}
+  - component: {fileID: 1474050058}
+  - component: {fileID: 1474050057}
+  m_Layer: 0
+  m_Name: AudioManager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1474050057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474050056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3890e05fcb2e4745bfd64e45a12fe27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1474050058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474050056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96aed04b53ed8e4987cb0a02ba6ea16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds:
+  - name: Walking
+    clip: {fileID: 8300000, guid: d4828998b69a15a44a48bace131921e9, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 2
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: acda68b200ee1cc41ad77981e1b8c188, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Slash
+    clip: {fileID: 8300000, guid: 0bb5aefbe09f15f4ba41fa6233933895, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: f2bc8e669b41ea7458168b6c0a39b4f3, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Shield
+    clip: {fileID: 8300000, guid: 3b61136991c4e9745a406da0974df47c, type: 3}
+    volume: 0.55
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Clicking Sound
+    clip: {fileID: 8300000, guid: 8194d6b90bc8da94fb433236960341db, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: 9255c46c7a11afb459920d3f03990586, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: L1Theme
+    clip: {fileID: 8300000, guid: 5f1024d32805c5f478bac312e10d2434, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Practice Level Theme
+    clip: {fileID: 8300000, guid: 2175439b3d9a64e46b72dadc654d647d, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level 1 Theme
+    clip: {fileID: 8300000, guid: 810e727a105a9024a8fbc57af91cb05a, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level 2 Theme
+    clip: {fileID: 8300000, guid: c3670f80f0a0cad4cbd95bdeb19b7034, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Dialogue
+    clip: {fileID: 8300000, guid: bd38de754ae1df94c989800e93f84d83, type: 3}
+    volume: 0.313
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 188c6c684d4510c45b796e1d85fb7d44, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Stun
+    clip: {fileID: 8300000, guid: 86cf5eb16dc2c124cb2e5943814c8e73, type: 3}
+    volume: 0.677
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Question
+    clip: {fileID: 8300000, guid: 3bf2c42d835d9604c82ec26cefc8fe67, type: 3}
+    volume: 0.649
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 74cb6cab8dcb3074580c0cdef15db893, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Axe
+    clip: {fileID: 8300000, guid: bee4c705c5f01b54093f660765cddd62, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 1c4f34c2a3834ff4f8e9c9839132d302, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Wrong
+    clip: {fileID: 8300000, guid: 3a08eddf4274ca34ba5c6e031434d4d4, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: level2
+    clip: {fileID: 8300000, guid: a258b130fbd9b9b47b2872933d4c9c2b, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: level3
+    clip: {fileID: 8300000, guid: 4101e5e0c42191e4f960a54cdcedc8e8, type: 3}
+    volume: 0.511
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: level4
+    clip: {fileID: 8300000, guid: f87659afbf0657741a5aeda965e42518, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: level5
+    clip: {fileID: 8300000, guid: 4dd5743c39f0b7d4caa5344e5d2e05e6, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+--- !u!4 &1474050059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474050056}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.3650503, y: 8.9810705, z: 0.0282389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491859061
 GameObject:
   m_ObjectHideFlags: 0
@@ -75275,7 +75545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 512, y: -70}
+  m_AnchoredPosition: {x: -51, y: 16}
   m_SizeDelta: {x: 627.6558, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560097399
@@ -75298,7 +75568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: product
+  m_text: 3x                       x3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53fe326ac9585524a9850c508d9b2398, type: 2}
   m_sharedMaterial: {fileID: 4268758153563460561, guid: 53fe326ac9585524a9850c508d9b2398, type: 2}
@@ -75325,8 +75595,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -75361,7 +75631,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -86.75159, w: 0}
+  m_margin: {x: 0, y: 0, z: -131.7279, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -75815,223 +76085,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675518863}
   m_CullTransparentMesh: 1
---- !u!1 &1713802429
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1713802431}
-  - component: {fileID: 1713802430}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1713802430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713802429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96aed04b53ed8e4987cb0a02ba6ea16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
-  sounds:
-  - name: Walking
-    clip: {fileID: 8300000, guid: d4828998b69a15a44a48bace131921e9, type: 3}
-    volume: 0.15
-    volumeVariance: 0
-    pitch: 2
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Theme
-    clip: {fileID: 8300000, guid: acda68b200ee1cc41ad77981e1b8c188, type: 3}
-    volume: 0.25
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Slash
-    clip: {fileID: 8300000, guid: 0bb5aefbe09f15f4ba41fa6233933895, type: 3}
-    volume: 0.55
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Death
-    clip: {fileID: 8300000, guid: f2bc8e669b41ea7458168b6c0a39b4f3, type: 3}
-    volume: 0.55
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Shield
-    clip: {fileID: 8300000, guid: 3b61136991c4e9745a406da0974df47c, type: 3}
-    volume: 0.55
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Clicking Sound
-    clip: {fileID: 8300000, guid: 8194d6b90bc8da94fb433236960341db, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Menu
-    clip: {fileID: 8300000, guid: 9255c46c7a11afb459920d3f03990586, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: L1Theme
-    clip: {fileID: 8300000, guid: 5f1024d32805c5f478bac312e10d2434, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Practice Level Theme
-    clip: {fileID: 8300000, guid: 2175439b3d9a64e46b72dadc654d647d, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Level 1 Theme
-    clip: {fileID: 8300000, guid: 810e727a105a9024a8fbc57af91cb05a, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Level 2 Theme
-    clip: {fileID: 8300000, guid: c3670f80f0a0cad4cbd95bdeb19b7034, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Dialogue
-    clip: {fileID: 8300000, guid: bd38de754ae1df94c989800e93f84d83, type: 3}
-    volume: 0.313
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Heal
-    clip: {fileID: 8300000, guid: 188c6c684d4510c45b796e1d85fb7d44, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Stun
-    clip: {fileID: 8300000, guid: 86cf5eb16dc2c124cb2e5943814c8e73, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Question
-    clip: {fileID: 8300000, guid: 3bf2c42d835d9604c82ec26cefc8fe67, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Dash
-    clip: {fileID: 8300000, guid: 74cb6cab8dcb3074580c0cdef15db893, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Axe
-    clip: {fileID: 8300000, guid: bee4c705c5f01b54093f660765cddd62, type: 3}
-    volume: 0.511
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Hit
-    clip: {fileID: 8300000, guid: 1c4f34c2a3834ff4f8e9c9839132d302, type: 3}
-    volume: 0.511
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Wrong
-    clip: {fileID: 8300000, guid: 3a08eddf4274ca34ba5c6e031434d4d4, type: 3}
-    volume: 0.511
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
---- !u!4 &1713802431
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713802429}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3650503, y: 8.9810705, z: 0.0282389}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1724585123
 GameObject:
   m_ObjectHideFlags: 0
@@ -76293,36 +76346,49 @@ MonoBehaviour:
     name: Mathematisage
     sentences:
     - (Tap to continue)
-    - Ah! So you want to learn Multiplication, young ArithmeKnight?
-    - Sit. Keep your eyes peeled and learn.
-    - Multiplication is just repeated addition, a faster way of adding two or more
-      numbers.
-    - like adding in groups.
-    - For example, what is four groups of two? [showDiagram] [showMainText]
-    - You may do it like this?
-    - But multiplication simplifies the process [switchMainText]
-    - Instead of doing the long process of addition, multiplication does it in two
-      numbers.
-    - 'There are four parts of multiplication '
-    - The multiplicand, multiplication symbol, multiplier, and product.
-    - The MULTIPLICAND is the first part of your equation. [showExtraInfo]
-    - 'This is the number we are adding over and over. '
-    - In this case, we are adding by two's over and over again.
-    - Next is the Multiplication Symbol. In your age, it is typically an "X" symbol.
-      Dont worry about adult stuff just yet. [showExtraInfo]
-    - Then, the MULTIPIER. This how many times we will add the number over and over
-      [showExtraInfo]
-    - Going back to our addition equation, we are counting two, four times. [switchMainText]
-      [showExtraInfo]
-    - In this equation, the number four is the multiplier. [switchMainText] [showExtraInfo]
-    - Last is the product. It shows the total number that we multiplied AKA our answer.
-      Take note that it is always after the equal sign [showExtraInfo]
-    - In this case, 8 is the product of 2 times four
-    - Great! Now you have mastered the basics of multiplication [hideDiagram] [hideMainText]
-      [hideExtraInfo]
-    - To test your learnings...
-    - Try hitting Jeffrey over there 5 times. Do not worry! he's unkillable.
-    - Now finish the game, its time for me to go sleep
+    - Oh? Thy young ArithmeKnight doth study the arts of inverse divison?
+    - Inverse Division, one who deals with numbers, is division but backwards. You're
+      going to use multiplication to get the number.
+    - Aye! Come forth and master the art of inverse division!
+    - You already know the parts of division, yes?
+    - Basically, in inverse division, you must find your dividend  or divisor, depending
+      on the problem.
+    - Lets take this problem for example. [showMainText]
+    - In this problem, we need to find the dividend of this equation.
+    - Like in inverse multiplication, In easier numbers, we may think of just the
+      number that we can use to get the dividend. But actually theres a process behind
+      that!
+    - First, make a symbol that you can replace the empty space with a letter.
+    - We usually use "X" with this. But since we are also using "x" as our symbol.
+      Maybe we will get confused.
+    - So we will use "Y" instead. [switchMainText]
+    - Now, we have put togther an equation. We need to get the number for y
+    - In order to do this, we must transfer the known number in the left side to
+      the right side [showExtraInfo]
+    - This is so that the symbol (y) is the only one left on the left side and the
+      numbers go to the right side
+    - 'So the known number in the left side is the divisor, which is 3 '
+    - In order to "transfer" the number, we must multiply both sides by the known
+      number.
+    - In this equation, 3 is the known number. So we must multiply 3 in both sides
+      in order to "cancel out" the number on the left side to go to the right side
+    - Cancel out is a term that we use in order to erase a number from its side that
+      we want to transfer to the other side.
+    - So our equation will know look like this [switchMainText] [showExtraInfo]
+    - "Now, we will solve for 3x (\xF73)  and 4x3"
+    - "So \"3x (\xF73)\" will \"cancel out\". Now our Equation will look like this
+      [switchMainText] [showExtraInfo]"
+    - Now our known number and dividend, 3 is on the right side.
+    - Lets solve the rest of the equation to get "Y", to do than lets multiply 4
+      and 3
+    - Soo... that equals to 12, i think.. try to do that on your own [switchMainText]
+    - So we know have the value for "y". lets set that aside and go back to our equation
+      [switchMainText] [showExtraInfo]
+    - We now know "y" has a value of 12 so lets replace "y" with 12 [switchMainText].
+    - Now the equation is now correct! Easy Peasy!
+    - Now its your turn [hideDiagram] [hideMainText] [hideExtraInfo]
+    - Try it on Dheniel! He's a real sucker!
+    diagramImages: []
 --- !u!50 &1756266361
 Rigidbody2D:
   serializedVersion: 4
@@ -78846,7 +78912,6 @@ SceneRoots:
   - {fileID: 2025652951}
   - {fileID: 901878271}
   - {fileID: 126936062}
-  - {fileID: 1713802431}
   - {fileID: 318385575}
   - {fileID: 329102586}
   - {fileID: 815702266}
@@ -78858,3 +78923,4 @@ SceneRoots:
   - {fileID: 1040691526}
   - {fileID: 1257612472}
   - {fileID: 885070195}
+  - {fileID: 1474050059}

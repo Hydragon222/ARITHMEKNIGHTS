@@ -88,6 +88,18 @@ public class AudioManager : MonoBehaviour
             case "GameScene":
                 musicToPlay = "Practice Level Theme";
                 break;
+            case "Multiplication Tutorial":
+                musicToPlay = "level1";
+                break;
+            case "Division Tutorial":
+                musicToPlay = "level6";
+                break;
+            case "Inverse Multiplication":
+                musicToPlay = "level11";
+                break;
+            case "Inverse Division":
+                musicToPlay = "level12";
+                break;
             case "level1":
                 musicToPlay = "Level 1 Theme";
                 break;
