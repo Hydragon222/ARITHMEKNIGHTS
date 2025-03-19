@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSelectionScroller : MonoBehaviour
@@ -27,6 +28,11 @@ public class LevelSelectionScroller : MonoBehaviour
         contentPanel.anchoredPosition = Vector2.Lerp(contentPanel.anchoredPosition, targetPosition, Time.deltaTime * moveSpeed);
 
         HandleTouchInput();
+        if (IsRunningOnPC())
+        {
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) { MoveRight(); }
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) { MoveLeft(); }
+        }
     }
 
     void HandleTouchInput()
@@ -81,5 +87,14 @@ public class LevelSelectionScroller : MonoBehaviour
             currentIndex++;
             targetPosition -= new Vector2(moveAmount, 0);
         }
+    }
+    
+    public bool IsRunningOnPC()
+    {
+        // Returns true if running on Windows, Mac, or Linux
+        return Application.platform == RuntimePlatform.WindowsPlayer ||
+               Application.platform == RuntimePlatform.OSXPlayer ||
+               Application.platform == RuntimePlatform.LinuxPlayer ||
+               Application.platform == RuntimePlatform.WindowsEditor; // Also applies in Play Mode
     }
 }
