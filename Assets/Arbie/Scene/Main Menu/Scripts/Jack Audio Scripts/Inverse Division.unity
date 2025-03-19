@@ -25295,6 +25295,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271345270}
   m_CullTransparentMesh: 1
+--- !u!1001 &1289389741
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 680196466214519736, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_Name
+      value: CursorManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: cursors.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 4d58613bc4e4138479ba41c33bbed227, type: 3}
+    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: cursors.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: ee3ac8351bac8774da91069295c985f5, type: 3}
+    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: cursors.Array.data[2]
+      value: 
+      objectReference: {fileID: 2800000, guid: e7238feb3f6d82d4c9eb6b1edfd3075a, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
 --- !u!1 &1296907210
 GameObject:
   m_ObjectHideFlags: 0
@@ -76353,7 +76422,7 @@ MonoBehaviour:
       going to use multiplication to get the number.
     - Aye! Come forth and master the art of inverse division!
     - You already know the parts of division, yes?
-    - Basically, in inverse division, you must find your dividend  or divisor, depending
+    - Basically, in inverse division, you must find your dividend or divisor, depending
       on the problem.
     - Lets take this problem for example. [showMainText]
     - In this problem, we need to find the dividend of this equation.
@@ -76389,7 +76458,7 @@ MonoBehaviour:
     - We now know "y" has a value of 12 so lets replace "y" with 12 [switchMainText].
     - Now the equation is now correct! Easy Peasy!
     - Now its your turn [hideDiagram] [hideMainText] [hideExtraInfo]
-    - Try it on Dheniel! He's a real sucker!
+    - Try it on Dheniel! He's a tough nut to crack!
     diagramImages: []
 --- !u!50 &1756266361
 Rigidbody2D:
@@ -78926,3 +78995,4 @@ SceneRoots:
   - {fileID: 1257612472}
   - {fileID: 885070195}
   - {fileID: 1474050059}
+  - {fileID: 1289389741}

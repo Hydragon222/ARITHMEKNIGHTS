@@ -56,6 +56,13 @@ public class LevelManager : MonoBehaviour
     }
 
     // Load Tutorial Level (GameScene)
+    public void LoadTut()
+    {
+        SceneManager.LoadScene("GameScene");
+        AudioManager.instance.Play("Clicking Sound");
+        AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Practice Level Theme");
+    }
     
     public void LoadMulttut()
     {

@@ -9535,6 +9535,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257312917}
   m_CullTransparentMesh: 1
+--- !u!1001 &260139592
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 680196466214519736, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_Name
+      value: CursorManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107690215595241530, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: cursors.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 4d58613bc4e4138479ba41c33bbed227, type: 3}
+    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: cursors.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: ee3ac8351bac8774da91069295c985f5, type: 3}
+    - target: {fileID: 8994802409255421315, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
+      propertyPath: cursors.Array.data[2]
+      value: 
+      objectReference: {fileID: 2800000, guid: e7238feb3f6d82d4c9eb6b1edfd3075a, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 479c67da3d87b4544acbbddafad41a77, type: 3}
 --- !u!1 &265230140
 GameObject:
   m_ObjectHideFlags: 0
@@ -76367,8 +76436,8 @@ MonoBehaviour:
   dialogue:
     name: Mathematisage
     sentences:
-    - Now, you want to learn Division?
     - (Tap to continue)
+    - Now, you want to learn Division?
     - Im getting too old for this, but I'll teach you!
     - Division is the separation of numbers. It takes a large number and splits it
       up into groups.
@@ -76408,8 +76477,8 @@ MonoBehaviour:
       1... 2... 3... [showExtraInfo]'
     - So the answer to this equation is three [switchMainText] [hideExtraInfo]
     - Now you know my technique
-    - Too try this supa amazin technique... [hideMainText] [hideDiagram]
-    - Try it on Bernie over there! Slash her times in order to master the basics
+    - Soo try this supa amazin technique... [hideMainText] [hideDiagram]
+    - Try it on Jana over there! Practice with her in order to master the basics
       of division.
     - Now I really need to get back to eating!
     diagramImages: []
@@ -78948,3 +79017,4 @@ SceneRoots:
   - {fileID: 1257612472}
   - {fileID: 885070195}
   - {fileID: 1023868628}
+  - {fileID: 260139592}
