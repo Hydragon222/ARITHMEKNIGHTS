@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private PauseMenuController pause;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Animator animator;
@@ -197,10 +198,13 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        // Continue dialogue if active and user clicks
-        if (isDialogueActive && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
+        if (!pause.isPaused)
         {
-            DisplayNextSentence();
+            // Continue dialogue if active and user clicks
+            if (isDialogueActive && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
+            {
+                DisplayNextSentence();
+            }
         }
         // If dialogue is not active, you could check for a character click to repeat dialogue.
         // For example, you might have code like this (or call RepeatDialogue() from another script):

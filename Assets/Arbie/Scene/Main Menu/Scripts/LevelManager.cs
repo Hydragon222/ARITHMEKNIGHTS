@@ -56,21 +56,14 @@ public class LevelManager : MonoBehaviour
     }
 
     // Load Tutorial Level (GameScene)
-    public void LoadTutorialLevel()
-    {
-        Debug.Log("Loading Tutorial Level: GameScene");
-        SceneManager.LoadScene("GameScene");
-        AudioManager.instance.Play("Clicking Sound");
-        AudioManager.instance.Stop("Menu");
-        AudioManager.instance.Play("Tutorial Level Theme");
-    }
+    
     public void LoadMulttut()
     {
         
         SceneManager.LoadScene("Multiplication Tutorial Final");
         AudioManager.instance.Play("Clicking Sound");
         AudioManager.instance.Stop("Menu");
-        AudioManager.instance.Play("Tutorial Level Theme");
+        AudioManager.instance.Play("Practice Level Theme");
     }
 
     public void LoadDivtut()
@@ -79,25 +72,25 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("Division tutorial");
         AudioManager.instance.Play("Clicking Sound");
         AudioManager.instance.Stop("Menu");
-        AudioManager.instance.Play("Tutorial Level Theme");
+        AudioManager.instance.Play("Practice Level Theme");
     }
 
     public void LoadInvMulttut()
     {
 
-        SceneManager.LoadScene("Inverse Multiplication tutorial");
+        SceneManager.LoadScene("Inverse Multiplication");
         AudioManager.instance.Play("Clicking Sound");
         AudioManager.instance.Stop("Menu");
-        AudioManager.instance.Play("Tutorial Level Theme");
+        AudioManager.instance.Play("Practice Level Theme");
     }
 
     public void LoadInvDivtut()
     {
 
-        SceneManager.LoadScene("Inverse Division tutorial");
+        SceneManager.LoadScene("Inverse Division");
         AudioManager.instance.Play("Clicking Sound");
         AudioManager.instance.Stop("Menu");
-        AudioManager.instance.Play("Tutorial Level Theme");
+        AudioManager.instance.Play("Practice Level Theme");
     }
 
     // Return to the Main Menu
