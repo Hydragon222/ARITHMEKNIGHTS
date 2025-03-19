@@ -69,12 +69,10 @@ EditorBuildSettings:
     path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Division tutorial.unity
     guid: 2cbc1d9275cbc0844bc0a26e9f168042
   - enabled: 1
-    path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Inverse Division
-      tutorial.unity
+    path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Inverse Multiplication.unity
     guid: fa48beb5528f0ed489a8f94073e22054
   - enabled: 1
-    path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Inverse Multiplication
-      tutorial.unity
+    path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Inverse Division.unity
     guid: 575ff019ec552d7409b49739567c367e
   - enabled: 1
     path: Assets/Arbie/Scene/Main Menu/Scripts/Jack Audio Scripts/Multiplication
